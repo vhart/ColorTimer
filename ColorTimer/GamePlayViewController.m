@@ -1,12 +1,12 @@
 //
-//  ViewController.m
+//  GamePlayViewController.m
 //  ColorTimer
 //
 //  Created by Varindra Hart on 8/15/15.
 //  Copyright (c) 2015 Varindra Hart. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "GamePlayViewController.h"
 
 NSTimeInterval const GameTimerInteval = 0.01f;
 
@@ -16,7 +16,7 @@ NSTimeInterval const GameTimerInteval = 0.01f;
 //    Blue,
 //};
 
-@interface ViewController ()
+@interface GamePlayViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (nonatomic) NSMutableArray *colorsArray;
@@ -35,7 +35,7 @@ NSTimeInterval const GameTimerInteval = 0.01f;
 
 @end
 
-@implementation ViewController
+@implementation GamePlayViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -68,37 +68,6 @@ NSTimeInterval const GameTimerInteval = 0.01f;
 
 
 - (void)setButtonColors{
-    //    NSInteger first = arc4random_uniform(3);
-    //    UIButton *answerButton = self.arrayOfButtons[first];
-    //    answerButton.backgroundColor = self.currentColor;
-    //    NSInteger second;
-    //    NSInteger third;
-    //    UIColor *secondColor;
-    //    UIColor *thirdColor;
-    //    while (YES) {
-    //        second = arc4random_uniform(3);
-    //
-    //        if (second==first) {
-    //            continue;
-    //        }
-    //        else{
-    //            break;
-    //        }
-    //    }
-    //
-    //    while (YES) {
-    //        third = arc4random_uniform(3);
-    //        NSInteger indexForThirdColor =
-    //        if (third==first || third ==second) {
-    //            continue;
-    //        }
-    //        else{
-    //            break;
-    //        }
-    //    }
-    //
-    //    UIButton *secondButton = self.arrayOfButtons[second];
-    //    UIButton *thirdButton = self.arrayOfButtons[third];
     
     NSMutableArray *tempColorsArray = [NSMutableArray new];
     for (int i = 0; i<2; i++) {

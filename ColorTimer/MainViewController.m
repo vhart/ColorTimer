@@ -7,11 +7,11 @@
 //
 
 #import "MainViewController.h"
-#import "ViewController.h"
+#import "GamePlayViewController.h"
 
 @interface MainViewController ()
 
-@property (nonatomic) ViewController *gameViewController;
+@property (nonatomic) GamePlayViewController *gameViewController;
 
 @end
 
@@ -20,7 +20,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self embedTableViewController];
+    
+    [[self.navigationController navigationBar] setHidden:YES];
+     [self embedTableViewController];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,7 +34,7 @@
 
 - (void)embedTableViewController {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    ViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"gameViewController"];
+    GamePlayViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"gameViewController"];
     
     [self addChildViewController:vc];
     vc.view.frame = self.view.bounds;
