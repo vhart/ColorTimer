@@ -217,7 +217,7 @@ NSTimeInterval const GameTimerInteval = 0.01f;
     sender.enabled = NO;
     for(UIButton *b in self.arrayOfButtons){
         b.enabled=YES;
-        b.layer.tra
+//        b.layer.trasform
     }
     [self reset];
     
