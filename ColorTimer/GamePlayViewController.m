@@ -54,6 +54,11 @@ NSTimeInterval const GameTimerInteval = 0.01f;
     
 }
 
+
+//*******************************************************
+
+//Methods that will set up the game screen. Sets up in particular the score, questions, and button colors
+
 - (void)reset {
     self.score = 0;
     self.streak = 0;
@@ -66,6 +71,13 @@ NSTimeInterval const GameTimerInteval = 0.01f;
     [self resetTimer];
 }
 
+- (void)disableButtons{
+    for(UIButton *b in self.arrayOfButtons){
+        b.enabled=NO;
+    }
+}
+
+//*********************** Partitioned for organizational purposes
 
 - (void)setButtonColors{
     
@@ -105,6 +117,101 @@ NSTimeInterval const GameTimerInteval = 0.01f;
     
 }
 
+//**********************************************************
+
+
+
+//EXECUTED BY TIMER TO DECREASE THE GAME's TIMER DISPLAYED TO THE USER
+- (void)decreaseTimer{
+    self.timerValue -=.01;
+    self.timeLabel.text = [NSString stringWithFormat:@"%.2f",self.timerValue];
+    if (self.timerValue<=0.01) {
+        [self gameOver];
+    }
+    
+}
+//**********************************************************
+
+
+
+//GAME OVER METHODS, CANCELES TIMER AND CALLS ALL RESET METHODS
+- (void)gameOver {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"GAME OVER!" message:@"You are bad at this..." delegate:nil cancelButtonTitle:@"womp womp" otherButtonTitles:nil];
+    
+    [alert show];
+    [self cancelTimer];
+    [self disableButtons];
+    self.startButton.enabled = YES;
+    
+    
+    //DELEGATE METHOD TRIGGERED
+    [self.delegate ViewController:self startButtonEnabled:self.startButton.enabled];
+}
+
+- (void)cancelTimer {
+    [self.gameTimer invalidate];
+}
+
+//********************************************************
+
+
+//USER SELECTS AN ANSWER (COLOR BUTTON)
+
+- (IBAction)colorButtonTapped:(UIButton*)sender {
+    if (sender.backgroundColor == self.currentColorView.backgroundColor) {
+        [self incrementScore];
+        [self increaseStreak];
+        [self nextQuestion];
+    }
+    
+    else {
+        [self gameOver];
+        [self disableButtons];
+    }
+}
+
+//*******************************************
+
+
+//GAME BEGINS
+
+- (IBAction)startGameButton:(UIButton *)sender {
+    sender.enabled = NO;
+    for(UIButton *b in self.arrayOfButtons){
+        b.enabled=YES;
+//        b.layer.trasform
+    }
+    [self reset];
+    
+    //DELEGATE METHOD TRIGGERED
+    [self.delegate ViewController:self startButtonEnabled:sender.enabled];
+}
+//********************************************
+
+//METHODS THAT WILL EXECUTE WHEN A QUESTION IS ANSWERED CORRECTLY
+//SCORE, STREAK, COLOR OF BUTTONS AND UIVIEW, AND TIMER ARE UPDATED ACCORDINGLY
+
+- (void)incrementScore {
+    self.score+=ceil([self.timeLabel.text floatValue]*10);
+    self.scoreLabel.text = [NSString stringWithFormat:@"SCORE: %ld",self.score];
+    NSLog(@"%lu", self.score);
+}
+
+
+- (void)increaseStreak {
+    self.streak++;
+    self.streakLabel.text = [NSString stringWithFormat:@"STREAK: %ld",self.streak];
+}
+
+- (void)resetTimer {
+    [self cancelTimer];
+    self.timerValue = 1.0;
+    self.gameTimer = [NSTimer timerWithTimeInterval:GameTimerInteval target:self selector:@selector(decreaseTimer) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:self.gameTimer forMode:NSRunLoopCommonModes];
+}
+
+//*************************
+
 - (void)setNextColor {
     UIColor *realColor;
     while (YES) {
@@ -126,76 +233,13 @@ NSTimeInterval const GameTimerInteval = 0.01f;
     [self setButtonColors];
     
 }
+//************************************************************************
 
+//DELEGATE METHODS
 
-- (void)resetTimer {
-    [self cancelTimer];
-    self.timerValue = 1.0;
-    self.gameTimer = [NSTimer timerWithTimeInterval:GameTimerInteval target:self selector:@selector(decreaseTimer) userInfo:nil repeats:YES];
-    [[NSRunLoop currentRunLoop] addTimer:self.gameTimer forMode:NSRunLoopCommonModes];
+-(void) swipeRecognized:(UISwipeGestureRecognizer *)swipe{
+    [self.delegate ViewController:self swipeGesture:swipe];
 }
 
-
-- (void)decreaseTimer{
-    self.timerValue -=.01;
-    self.timeLabel.text = [NSString stringWithFormat:@"%.2f",self.timerValue];
-    if (self.timerValue<=0.01) {
-        [self gameOver];
-    }
-    
-}
-
-- (void)gameOver {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"GAME OVER!" message:@"You are bad at this..." delegate:nil cancelButtonTitle:@"womp womp" otherButtonTitles:nil];
-    
-    [alert show];
-    [self cancelTimer];
-    [self disableButtons];
-    self.startButton.enabled = YES;
-}
-
-- (void)cancelTimer {
-    [self.gameTimer invalidate];
-}
-
-- (IBAction)colorButtonTapped:(UIButton*)sender {
-    if (sender.backgroundColor == self.currentColorView.backgroundColor) {
-        [self incrementScore];
-        [self increaseStreak];
-        [self nextQuestion];
-    }
-    
-    else {
-        [self gameOver];
-        [self disableButtons];
-    }
-}
-
-- (void)disableButtons{
-    for(UIButton *b in self.arrayOfButtons){
-        b.enabled=NO;
-    }
-}
-
-- (void)increaseStreak {
-    self.streak++;
-    self.streakLabel.text = [NSString stringWithFormat:@"STREAK: %ld",self.streak];
-}
-
-- (IBAction)startGameButton:(UIButton *)sender {
-    sender.enabled = NO;
-    for(UIButton *b in self.arrayOfButtons){
-        b.enabled=YES;
-//        b.layer.trasform
-    }
-    [self reset];
-    
-}
-
-- (void)incrementScore {
-    self.score+=ceil([self.timeLabel.text floatValue]*10);
-    self.scoreLabel.text = [NSString stringWithFormat:@"SCORE: %ld",self.score];
-    NSLog(@"%lu", self.score);
-}
 
 @end

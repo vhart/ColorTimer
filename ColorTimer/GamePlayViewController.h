@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GamePlayViewControllerDelegate.h"
 
 @interface GamePlayViewController : UIViewController
 
+@property (weak,nonatomic) id<GamePlayViewControllerDelegate> delegate;
 
+- (void) swipeRecognized:(UISwipeGestureRecognizer *)swipe;
 @end
 

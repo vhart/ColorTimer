@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GamePlayViewController.h"
+#import "GamePlayViewControllerDelegate.h"
 
-@interface MainViewController : UIViewController
+@interface MainViewController : UIViewController <GamePlayViewControllerDelegate>
 
 @end
