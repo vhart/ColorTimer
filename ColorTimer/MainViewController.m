@@ -9,6 +9,7 @@
 #import "MainViewController.h"
 #import "GamePlayViewController.h"
 #import "SettingsViewController.h"
+#import "HighScoreTableViewController.h"
 
 @interface MainViewController ()
 
@@ -105,6 +106,12 @@
     [settingsTVC willMoveToParentViewController:self];
     
     
+    HighScoreTableViewController *highScoresTVC = [storyboard instantiateViewControllerWithIdentifier:@"HighScoresTableViewController"];
+    [self addChildViewController:highScoresTVC];
+    
+    highScoresTVC.view.frame = self.rightView.bounds;
+    [self.rightView addSubview:highScoresTVC.view];
+    [highScoresTVC willMoveToParentViewController:self];
     
 }
 
