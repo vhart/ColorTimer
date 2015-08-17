@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C71EB8FC1B81145D000B93B9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C71EB8FB1B81145D000B93B9 /* MainViewController.m */; };
+		C762A3D21B818D2F002B09C9 /* HighScoreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C762A3D11B818D2F002B09C9 /* HighScoreTableViewController.m */; };
+		C762A3D51B819327002B09C9 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C762A3D41B819327002B09C9 /* SettingsViewController.m */; };
 		C7827E451B7FAFF70024690F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C7827E441B7FAFF70024690F /* main.m */; };
 		C7827E481B7FAFF70024690F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C7827E471B7FAFF70024690F /* AppDelegate.m */; };
 		C7827E4B1B7FAFF70024690F /* GamePlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7827E4A1B7FAFF70024690F /* GamePlayViewController.m */; };
@@ -31,6 +33,10 @@
 		C71EB8FA1B81145D000B93B9 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		C71EB8FB1B81145D000B93B9 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		C762A3CC1B816929002B09C9 /* GamePlayViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamePlayViewControllerDelegate.h; sourceTree = "<group>"; };
+		C762A3D01B818D2F002B09C9 /* HighScoreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighScoreTableViewController.h; sourceTree = "<group>"; };
+		C762A3D11B818D2F002B09C9 /* HighScoreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighScoreTableViewController.m; sourceTree = "<group>"; };
+		C762A3D31B819327002B09C9 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		C762A3D41B819327002B09C9 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		C7827E3F1B7FAFF70024690F /* ColorTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7827E431B7FAFF70024690F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7827E441B7FAFF70024690F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -91,8 +97,12 @@
 				C7827E4A1B7FAFF70024690F /* GamePlayViewController.m */,
 				C762A3CC1B816929002B09C9 /* GamePlayViewControllerDelegate.h */,
 				C7827E4C1B7FAFF70024690F /* Main.storyboard */,
+				C762A3D31B819327002B09C9 /* SettingsViewController.h */,
+				C762A3D41B819327002B09C9 /* SettingsViewController.m */,
 				C71EB8FA1B81145D000B93B9 /* MainViewController.h */,
 				C71EB8FB1B81145D000B93B9 /* MainViewController.m */,
+				C762A3D01B818D2F002B09C9 /* HighScoreTableViewController.h */,
+				C762A3D11B818D2F002B09C9 /* HighScoreTableViewController.m */,
 				C7827E4F1B7FAFF70024690F /* Images.xcassets */,
 				C7827E511B7FAFF70024690F /* LaunchScreen.xib */,
 				C7827E421B7FAFF70024690F /* Supporting Files */,
@@ -229,6 +239,8 @@
 			files = (
 				C7827E4B1B7FAFF70024690F /* GamePlayViewController.m in Sources */,
 				C7827E481B7FAFF70024690F /* AppDelegate.m in Sources */,
+				C762A3D21B818D2F002B09C9 /* HighScoreTableViewController.m in Sources */,
+				C762A3D51B819327002B09C9 /* SettingsViewController.m in Sources */,
 				C7827E451B7FAFF70024690F /* main.m in Sources */,
 				C71EB8FC1B81145D000B93B9 /* MainViewController.m in Sources */,
 			);

@@ -52,6 +52,16 @@ NSTimeInterval const GameTimerInteval = 0.01f;
     
     [self disableButtons];
     
+    
+    //CREATE AND ADD SWIPE GESTURES
+    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRecognized:)];
+    swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:swipeLeft];
+    
+    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRecognized:)];
+    swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:swipeRight];
+    
 }
 
 
@@ -145,7 +155,7 @@ NSTimeInterval const GameTimerInteval = 0.01f;
     
     
     //DELEGATE METHOD TRIGGERED
-    [self.delegate ViewController:self startButtonEnabled:self.startButton.enabled];
+    [self.delegate viewController:self startButtonEnabled:self.startButton.enabled];
 }
 
 - (void)cancelTimer {
@@ -184,7 +194,7 @@ NSTimeInterval const GameTimerInteval = 0.01f;
     [self reset];
     
     //DELEGATE METHOD TRIGGERED
-    [self.delegate ViewController:self startButtonEnabled:sender.enabled];
+    [self.delegate viewController:self startButtonEnabled:sender.enabled];
 }
 //********************************************
 
@@ -238,7 +248,7 @@ NSTimeInterval const GameTimerInteval = 0.01f;
 //DELEGATE METHODS
 
 -(void) swipeRecognized:(UISwipeGestureRecognizer *)swipe{
-    [self.delegate ViewController:self swipeGesture:swipe];
+    [self.delegate viewController:self swipeGesture:swipe];
 }
 
 

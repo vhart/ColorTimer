@@ -245,24 +245,28 @@
             </objects>
             <point key="canvasLocation" x="324" y="25.5"/>
         </scene>
-        <!--Table View Controller-->
+        <!--High Score Table View Controller-->
         <scene sceneID="2SE-fk-I2x">
             <objects>
-                <tableViewController id="Aht-yG-q0P" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ptM-Po-y6P">
+                <tableViewController storyboardIdentifier="settingsTableView" id="Aht-yG-q0P" customClass="HighScoreTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="45" sectionHeaderHeight="18" sectionFooterHeight="18" id="ptM-Po-y6P">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="separatorColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="mQ9-UB-buS">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HighScoreCells" rowHeight="45" id="mQ9-UB-buS">
+                                <rect key="frame" x="0.0" y="50" width="600" height="45"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mQ9-UB-buS" id="E4Z-QS-guh">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" red="0.32931817506744721" green="0.88018971908220933" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
+                        <sections/>
                         <connections>
                             <outlet property="dataSource" destination="Aht-yG-q0P" id="d7f-Xi-bio"/>
                             <outlet property="delegate" destination="Aht-yG-q0P" id="rYc-l0-LNe"/>
@@ -271,35 +275,57 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="voA-gG-7uN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-805.5" y="-600.75"/>
+            <point key="canvasLocation" x="-930" y="-660"/>
         </scene>
-        <!--Table View Controller-->
-        <scene sceneID="gUg-h4-MGy">
+        <!--Settings View Controller-->
+        <scene sceneID="zH0-lx-bqY">
             <objects>
-                <tableViewController id="dPI-Za-sNd" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="1v4-it-77h">
+                <viewController storyboardIdentifier="settingsViewController" id="um0-IU-gXt" customClass="SettingsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KWS-Du-EEB"/>
+                        <viewControllerLayoutGuide type="bottom" id="UAr-xk-Rls"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="n7m-Mc-nfO">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="cgl-c5-IiW">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cgl-c5-IiW" id="Rxw-N4-FZM">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="dPI-Za-sNd" id="0Fh-sV-1d3"/>
-                            <outlet property="delegate" destination="dPI-Za-sNd" id="TY0-n5-iZl"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="W8s-eQ-nCi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qY3-t8-5Kp">
+                                <rect key="frame" x="238" y="90" width="124" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.1019607931" blue="0.1019607931" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="124" id="ANo-hU-FYT"/>
+                                    <constraint firstAttribute="height" constant="30" id="aFk-aD-CED"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3vD-tc-xd4">
+                                <rect key="frame" x="238" y="193" width="124" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.090196080509999998" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="2kf-fB-qgc"/>
+                                    <constraint firstAttribute="width" constant="124" id="QTI-3F-vP9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.63529413940000001" green="0.84705889229999998" blue="0.91764712329999998" alpha="1" colorSpace="deviceRGB"/>
+                        <constraints>
+                            <constraint firstItem="3vD-tc-xd4" firstAttribute="centerX" secondItem="qY3-t8-5Kp" secondAttribute="centerX" id="365-1K-lGz"/>
+                            <constraint firstItem="qY3-t8-5Kp" firstAttribute="centerX" secondItem="n7m-Mc-nfO" secondAttribute="centerX" id="EcC-2N-TgC"/>
+                            <constraint firstItem="3vD-tc-xd4" firstAttribute="top" secondItem="qY3-t8-5Kp" secondAttribute="bottom" constant="73" id="QOY-Mg-pIZ"/>
+                            <constraint firstItem="qY3-t8-5Kp" firstAttribute="top" secondItem="KWS-Du-EEB" secondAttribute="bottom" constant="70" id="jjH-Rw-sf8"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ddL-jT-wq5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-114" y="-600.75"/>
+            <point key="canvasLocation" x="-217" y="-660"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="ohg-SS-I4T">
@@ -334,18 +360,11 @@
                             <constraint firstItem="Nte-vV-3I0" firstAttribute="leading" secondItem="hDM-Cw-QHo" secondAttribute="leadingMargin" constant="-8" id="jiI-PT-GCP"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="pyD-pB-UiK">
-                        <barButtonItem key="leftBarButtonItem" title="Settings" id="um7-MC-ZmA">
-                            <connections>
-                                <action selector="settingsButton:" destination="LMo-Xd-XKP" id="aqn-Ea-BbG"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="High Scores" id="aFB-NC-dET">
-                            <connections>
-                                <action selector="highScoresButton:" destination="LMo-Xd-XKP" id="8ZB-jf-pkZ"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="pyD-pB-UiK"/>
+                    <connections>
+                        <outlet property="leftView" destination="Nte-vV-3I0" id="d4q-wa-V4b"/>
+                        <outlet property="rightView" destination="Djy-7b-GKL" id="L1n-Io-1v5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mF9-Mg-9pT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
