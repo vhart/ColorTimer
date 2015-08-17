@@ -56,7 +56,7 @@
     swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
     [self.gameViewController.view addGestureRecognizer:swipeLeft];
     
-    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRecognized:)];
+    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self.gameViewController action:@selector(swipeRecognized:)];
     swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
     [self.gameViewController.view addGestureRecognizer:swipeRight];
     
