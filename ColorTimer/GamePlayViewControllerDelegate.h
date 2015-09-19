@@ -13,7 +13,11 @@
 
 @protocol GamePlayViewControllerDelegate <NSObject>
 
--(void) viewController:(GamePlayViewController *)sender startButtonEnabled:(BOOL)enabled ;
+-(void) viewController:(GamePlayViewController *)sender startButtonEnabled:(BOOL)enabled;
 -(void) viewController:(GamePlayViewController *)sender swipeGesture:(UISwipeGestureRecognizer *)swipe;
 
+
+@optional
+
+-(void) viewController:(GamePlayViewController *)sender newScoreAdded:(BOOL)added;
 @end

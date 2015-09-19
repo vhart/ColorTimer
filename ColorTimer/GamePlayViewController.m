@@ -7,6 +7,7 @@
 //
 
 #import "GamePlayViewController.h"
+#import "HighScoresModel.h"
 
 NSTimeInterval const GameTimerInteval = 0.01f;
 
@@ -16,7 +17,7 @@ NSTimeInterval const GameTimerInteval = 0.01f;
 //    Blue,
 //};
 
-@interface GamePlayViewController ()
+@interface GamePlayViewController () <UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (nonatomic) NSMutableArray *colorsArray;
@@ -146,16 +147,32 @@ NSTimeInterval const GameTimerInteval = 0.01f;
 
 //GAME OVER METHODS, CANCELES TIMER AND CALLS ALL RESET METHODS
 - (void)gameOver {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"GAME OVER!" message:@"You are bad at this..." delegate:nil cancelButtonTitle:@"womp womp" otherButtonTitles:nil];
     
-    [alert show];
     [self cancelTimer];
     [self disableButtons];
     self.startButton.enabled = YES;
     
+    [self checkForNewStreak];
+    
     
     //DELEGATE METHOD TRIGGERED
     [self.delegate viewController:self startButtonEnabled:self.startButton.enabled];
+}
+
+- (void)checkForNewStreak{
+    int rank = [[HighScoresModel sharedModel] isNewStreak:[NSString stringWithFormat:@"%lu",self.streak]];
+    if(rank > -1){
+        UIAlertView *alertViewChangeName=[[UIAlertView alloc]initWithTitle:@"NEW HIGH STREAK!" message:[NSString stringWithFormat:@"Streak rank: #%d",rank+1] delegate:self cancelButtonTitle:@"..Meh" otherButtonTitles:@"Add Me!",nil];
+        alertViewChangeName.alertViewStyle=UIAlertViewStylePlainTextInput;
+        [alertViewChangeName show];
+    }
+    
+    else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"GAME OVER!" message:@"You are bad at this..." delegate:nil cancelButtonTitle:@"womp womp" otherButtonTitles:nil];
+        
+        [alert show];
+    }
+    
 }
 
 - (void)cancelTimer {
@@ -251,5 +268,11 @@ NSTimeInterval const GameTimerInteval = 0.01f;
     [self.delegate viewController:self swipeGesture:swipe];
 }
 
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    NSString *userName = [[alertView textFieldAtIndex:0] text];
+    [[HighScoresModel sharedModel] addStreak:[NSString stringWithFormat:@"%lu",self.streak] forUser:userName];
+    [self.delegate viewController:self newScoreAdded:YES];
+}
 
 @end

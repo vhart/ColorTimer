@@ -19,17 +19,35 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.highScoresArray = [NSMutableArray new];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if([defaults objectForKey:@"high streak"] == nil){
+        NSMutableArray *temp = [[NSMutableArray alloc] initWithObjects:@{@"200":@"April"},
+                          @{@"175":@"Derrick"},
+                          @{@"160":@"Kelly"},
+                          @{@"150":@"Mesfin"},
+                          @{@"140":@"Nav"},
+                          @{@"130":@"Kash"},
+                          @{@"120":@"Vic"},
+                          @{@"110":@"Mike"},
+                          @{@"100":@"Max"},
+                          @{@"90" :@"V"},
+                             nil];
     
+        [defaults setObject:temp forKey:@"high streak"];
+    }
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
+    
     [super viewWillAppear:animated];
-    self.highScoresArray = [HighScoresModel sharedModel].scoresData;
+    self.highScoresArray = [HighScoresModel sharedModel].highStreakData;
     [self.tableView reloadData];
     
 }
@@ -47,19 +65,34 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return self.highScoresArray.count+5;
+    return self.highScoresArray.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HighScoresCell" forIndexPath:indexPath];
-    cell.textLabel.text = @"Default info";
+    NSDictionary *cellDictionary = [[NSDictionary alloc] initWithDictionary:[[HighScoresModel sharedModel].highStreakData objectAtIndex:indexPath.row]];
+    
+    NSString *score = [[cellDictionary allKeys]objectAtIndex:0];
+    cell.textLabel.text = score;
+    cell.detailTextLabel.text = [cellDictionary objectForKey:score];
     // Configure the cell...
     
     return cell;
 }
 
 
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    if (section == 0) {
+        return @"HIGHEST STREAKS";
+    }
+    
+    return nil;
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ColorTimer/GamePlayViewController.m"
-            timestampString = "461472066.206353"
+            timestampString = "461659269.329002"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "251"
-            endingLineNumber = "251"
-            landmarkName = "-swipeRecognized:"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
+            landmarkName = "-checkForNewStreak"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,61 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ColorTimer/HighScoreTableViewController.m"
-            timestampString = "461516406.312913"
+            filePath = "ColorTimer/HighScoresModel.m"
+            timestampString = "461659387.119984"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "-isNewStreak:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[HighScoresModel isNewStreak:]"
+                  moduleName = "ColorTimer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/varindra/Projects/c4q/unit-1/week-5/ColorTimer/ColorTimer/HighScoresModel.m"
+                  timestampString = "461663744.33215"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "156">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[HighScoresModel isNewStreak:]"
+                  moduleName = "ColorTimer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/varindra/Projects/c4q/unit-1/week-5/ColorTimer/ColorTimer/HighScoresModel.m"
+                  timestampString = "461663744.332485"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "172">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ColorTimer/HighScoresModel.m"
+            timestampString = "461661348.011601"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "-addStreak:forUser:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

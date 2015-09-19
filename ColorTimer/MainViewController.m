@@ -13,6 +13,7 @@
 
 @interface MainViewController ()
 
+@property (nonatomic) HighScoreTableViewController *highScoreTVC;
 @property (nonatomic) GamePlayViewController *gameViewController;
 @property (nonatomic,weak) IBOutlet UIView *leftView;
 @property (nonatomic, weak) IBOutlet UIView *rightView;
@@ -34,10 +35,13 @@
     [self embedGameViewController];
    
     self.gameVCStartButtonStatus = YES;
+    
+   
 
     
 }
 
+//**********************************
 //DELEGATE METHODS
 
 - (void) viewController:(GamePlayViewController *)sender startButtonEnabled:(BOOL)enabled{
@@ -50,6 +54,10 @@
     [self swipeRecognized:swipe];
 }
 
+- (void) viewController:(GamePlayViewController *)sender newScoreAdded:(BOOL)added{
+    
+    [self.highScoreTVC.tableView reloadData];
+}
 //************************************
 
 //DELEGATE CALLED METHOD
@@ -106,12 +114,12 @@
     [settingsTVC willMoveToParentViewController:self];
     
     
-    HighScoreTableViewController *highScoresTVC = [storyboard instantiateViewControllerWithIdentifier:@"HighScoresTableViewController"];
-    [self addChildViewController:highScoresTVC];
+    self.highScoreTVC = [storyboard instantiateViewControllerWithIdentifier:@"HighScoresTableViewController"];
+    [self addChildViewController:self.highScoreTVC];
     
-    highScoresTVC.view.frame = self.rightView.bounds;
-    [self.rightView addSubview:highScoresTVC.view];
-    [highScoresTVC willMoveToParentViewController:self];
+    self.highScoreTVC.view.frame = self.rightView.bounds;
+    [self.rightView addSubview:self.highScoreTVC.view];
+    [self.highScoreTVC willMoveToParentViewController:self];
     
 }
 

@@ -12,6 +12,8 @@
 
 +(HighScoresModel *)sharedModel;
 
-@property (nonatomic) NSMutableArray *scoresData;
+@property (nonatomic) NSMutableArray *highStreakData;
 
+- (int)isNewStreak:(NSString *)streak ;
+- (void)addStreak:(NSString *)streak forUser:(NSString *)userName;
 @end
