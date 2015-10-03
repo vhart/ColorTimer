@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ColorTimer/GamePlayViewController.m"
-            timestampString = "461659269.329002"
+            timestampString = "465519706.000736"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
             landmarkName = "-checkForNewStreak"
             landmarkType = "5">
          </BreakpointContent>
@@ -33,38 +33,6 @@
             endingLineNumber = "28"
             landmarkName = "-isNewStreak:"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[HighScoresModel isNewStreak:]"
-                  moduleName = "ColorTimer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/varindra/Projects/c4q/unit-1/week-5/ColorTimer/ColorTimer/HighScoresModel.m"
-                  timestampString = "461663744.33215"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "28"
-                  endingLineNumber = "28"
-                  offsetFromSymbolStart = "156">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[HighScoresModel isNewStreak:]"
-                  moduleName = "ColorTimer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/varindra/Projects/c4q/unit-1/week-5/ColorTimer/ColorTimer/HighScoresModel.m"
-                  timestampString = "461663744.332485"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "28"
-                  endingLineNumber = "28"
-                  offsetFromSymbolStart = "172">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

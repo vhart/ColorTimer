@@ -15,8 +15,8 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedMyManager = [[self alloc] init];
-        sharedMyManager.highStreakData = [[NSMutableArray alloc] initWithArray:[[NSUserDefaults standardUserDefaults]objectForKey:@"high streak"] copyItems:YES];
-//        sharedMyManager.highStreakData = [[NSUserDefaults standardUserDefaults] objectForKey:@"high streak"];
+        sharedMyManager.highStreakData = [[NSMutableArray alloc] initWithArray:[[NSUserDefaults standardUserDefaults]objectForKey:@"high streaks"] copyItems:YES];
+        sharedMyManager.highScoreData = [[NSMutableArray alloc]initWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:@"high scores"]copyItems:YES];
       
     });
     return sharedMyManager;
@@ -48,8 +48,8 @@
     
     [self.highStreakData insertObject:newEntry atIndex:rank];
     [self.highStreakData removeObject:[self.highStreakData lastObject]];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"high streak"];
-    [[NSUserDefaults standardUserDefaults] setObject:self.highStreakData forKey:@"high streak"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"high streaks"];
+    [[NSUserDefaults standardUserDefaults] setObject:self.highStreakData forKey:@"high streaks"];
     
 }
 @end

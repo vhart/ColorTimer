@@ -8,6 +8,7 @@
 
 #import "GamePlayViewController.h"
 #import "HighScoresModel.h"
+#import "HDNotificationView.h"
 
 NSTimeInterval const GameTimerInteval = 0.01f;
 
@@ -62,6 +63,8 @@ NSTimeInterval const GameTimerInteval = 0.01f;
     UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRecognized:)];
     swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
     [self.view addGestureRecognizer:swipeRight];
+    
+    [self addShadow];
     
 }
 
@@ -273,6 +276,18 @@ NSTimeInterval const GameTimerInteval = 0.01f;
     NSString *userName = [[alertView textFieldAtIndex:0] text];
     [[HighScoresModel sharedModel] addStreak:[NSString stringWithFormat:@"%lu",self.streak] forUser:userName];
     [self.delegate viewController:self newScoreAdded:YES];
+    [HDNotificationView showNotificationViewWithImage:[UIImage imageNamed:@"welcomeToTheLeaderBoard"] title:@"Crushing It!" message:@"The leaderboard recognizes your skill"];
+}
+
+#pragma mark Add a Shadow
+
+- (void)addShadow{
+    
+    [self.view.layer setCornerRadius:0];
+    [self.view.layer setShadowColor:[UIColor blackColor].CGColor];
+    [self.view.layer setShadowOpacity:0.8];
+    [self.view.layer setShadowOffset:CGSizeMake(0,2.5)];
+    
 }
 
 @end

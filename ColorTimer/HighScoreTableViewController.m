@@ -11,6 +11,8 @@
 
 @interface HighScoreTableViewController ()
 
+@property (nonatomic) NSMutableArray *highStreaksArray;
+
 @property (nonatomic) NSMutableArray *highScoresArray;
 @end
 
@@ -18,11 +20,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.highScoresArray = [NSMutableArray new];
+    self.highStreaksArray = [NSMutableArray new];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if([defaults objectForKey:@"high streak"] == nil){
+    if([defaults objectForKey:@"high streaks"] == nil){
         NSMutableArray *temp = [[NSMutableArray alloc] initWithObjects:@{@"200":@"April"},
-                          @{@"175":@"Derrick"},
+                          @{@"175":@"Derek"},
                           @{@"160":@"Kelly"},
                           @{@"150":@"Mesfin"},
                           @{@"140":@"Nav"},
@@ -30,11 +32,31 @@
                           @{@"120":@"Vic"},
                           @{@"110":@"Mike"},
                           @{@"100":@"Max"},
-                          @{@"90" :@"V"},
+                          @{@"20" :@"V"},
                              nil];
     
-        [defaults setObject:temp forKey:@"high streak"];
+        [defaults setObject:temp forKey:@"high streaks"];
     }
+    
+    self.highScoresArray = [NSMutableArray new];
+    
+    if([defaults objectForKey:@"high scores"] == nil){
+        NSMutableArray *temp = [[NSMutableArray alloc] initWithObjects:@{@"1500":@"April"},
+                                @{@"1200":@"Kelly"},
+                                @{@"1100":@"Derek"},
+                                @{@"1000":@"Mesfin"},
+                                @{@"900":@"Nav"},
+                                @{@"800":@"Kash"},
+                                @{@"700":@"Vic"},
+                                @{@"600":@"Mike"},
+                                @{@"500":@"Max"},
+                                @{@"100" :@"V"},
+                                nil];
+        
+        [defaults setObject:temp forKey:@"high scores"];
+    }
+    
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -47,7 +69,8 @@
 - (void)viewWillAppear:(BOOL)animated{
     
     [super viewWillAppear:animated];
-    self.highScoresArray = [HighScoresModel sharedModel].highStreakData;
+    self.highStreaksArray = [HighScoresModel sharedModel].highStreakData;
+    self.highScoresArray = [HighScoresModel sharedModel].highScoreData;
     [self.tableView reloadData];
     
 }
@@ -60,22 +83,41 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
-    return self.highScoresArray.count;
+    if(section == 0){
+    return self.highStreaksArray.count;
+    }
+    else{
+        return self.highScoresArray.count;
+    }
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HighScoresCell" forIndexPath:indexPath];
+    
+    if (indexPath.section == 0) {
+        
     NSDictionary *cellDictionary = [[NSDictionary alloc] initWithDictionary:[[HighScoresModel sharedModel].highStreakData objectAtIndex:indexPath.row]];
     
     NSString *score = [[cellDictionary allKeys]objectAtIndex:0];
     cell.textLabel.text = score;
     cell.detailTextLabel.text = [cellDictionary objectForKey:score];
+        
+    }
+    
+    if (indexPath.section == 1) {
+        
+        NSDictionary *cellDictionary = [[NSDictionary alloc] initWithDictionary:[[HighScoresModel sharedModel].highScoreData objectAtIndex:indexPath.row]];
+        
+        NSString *score = [[cellDictionary allKeys]objectAtIndex:0];
+        cell.textLabel.text = score;
+        cell.detailTextLabel.text = [cellDictionary objectForKey:score];
+        
+    }
     // Configure the cell...
     
     return cell;
@@ -87,10 +129,18 @@
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    if (section == 0) {
-        return @"HIGHEST STREAKS";
-    }
     
+    switch (section) {
+        case 0:
+            return @"HIGHEST STREAKS";
+            break;
+        case 1:
+            return @"HIGH SCORES";
+            break;
+            
+        default:
+            break;
+    }
     return nil;
 }
 /*

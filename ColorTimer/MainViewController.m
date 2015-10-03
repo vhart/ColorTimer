@@ -17,6 +17,8 @@
 @property (nonatomic) GamePlayViewController *gameViewController;
 @property (nonatomic,weak) IBOutlet UIView *leftView;
 @property (nonatomic, weak) IBOutlet UIView *rightView;
+@property (nonatomic) BOOL isLeft;
+@property (nonatomic) BOOL isRight;
 
 @property (nonatomic) BOOL gameVCStartButtonStatus;
 
@@ -36,7 +38,7 @@
    
     self.gameVCStartButtonStatus = YES;
     
-   
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(prepareToDismiss) name:@"DismissMainViewControllerNotification" object:nil];
 
     
 }
@@ -62,20 +64,53 @@
 
 //DELEGATE CALLED METHOD
 - (void)swipeRecognized:(UISwipeGestureRecognizer *)swipe{
-    if (self.gameVCStartButtonStatus && swipe.direction==UISwipeGestureRecognizerDirectionLeft) {
-        CGPoint newCenter = self.gameViewController.view.center;
-        newCenter.x -= self.gameViewController.view.bounds.size.width/2;
-        self.gameViewController.view.center = newCenter;
+    if (self.gameVCStartButtonStatus && swipe.direction==UISwipeGestureRecognizerDirectionLeft && !self.isLeft) {
+        
+        CGPoint newAnchor = [self findNewAnchor:self.gameViewController.view.center swipeDirection:swipe.direction];
+        
+        CGRect newFrame = CGRectMake(newAnchor.x, newAnchor.y, self.gameViewController.view.bounds.size.width, self.gameViewController.view.bounds.size.height);
+        
+        [UIView animateWithDuration:.27453 animations:^{
+            self.gameViewController.view.frame = newFrame;
+        } completion:^(BOOL finished) {
+            if (self.isRight) {
+                self.isRight = NO;
+            }
+            else{
+                self.isLeft = YES;
+                }
+        }];
+        
     }
     
-    else if (self.gameVCStartButtonStatus && swipe.direction==UISwipeGestureRecognizerDirectionRight){
-        CGPoint newCenter = self.gameViewController.view.center;
-        newCenter.x += self.gameViewController.view.bounds.size.width/2;
-        self.gameViewController.view.center = newCenter;
+    else if (self.gameVCStartButtonStatus && swipe.direction==UISwipeGestureRecognizerDirectionRight && !self.isRight){
+
+        CGPoint newAnchor = [self findNewAnchor:self.gameViewController.view.center swipeDirection:swipe.direction];
+        
+        CGRect newFrame = CGRectMake(newAnchor.x, newAnchor.y, self.gameViewController.view.bounds.size.width, self.gameViewController.view.bounds.size.height);
+        
+        [UIView animateWithDuration:.27453 animations:^{
+            self.gameViewController.view.frame = newFrame;
+        } completion:^(BOOL finished) {
+            if (self.isLeft) {
+                self.isLeft = NO;
+            }
+            else{
+                self.isRight = YES;
+            }
+        }];
     }
 }
 
-
+- (CGPoint) findNewAnchor:(CGPoint)center swipeDirection:(UISwipeGestureRecognizerDirection)direction{
+    
+    CGPoint oldAnchor = CGPointMake(center.x- (self.gameViewController.view.bounds.size.width/2), .5);
+    float shift = direction==UISwipeGestureRecognizerDirectionLeft? -1: 1;
+    CGPoint newAnchor = CGPointMake(oldAnchor.x + (shift*self.gameViewController.view.bounds.size.width/2), .5);
+    
+    return newAnchor;
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -125,14 +160,11 @@
 
 //************************************
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+#pragma mark NSNotificationResponses
+
+- (void) prepareToDismiss{
+    NSLog(@"calling");
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 @end
