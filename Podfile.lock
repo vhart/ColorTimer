@@ -1,10 +1,13 @@
 PODS:
+  - pop (1.0.8)
   - UIColor+uiGradients (0.1.0)
 
 DEPENDENCIES:
+  - pop (~> 1.0)
   - UIColor+uiGradients
 
 SPEC CHECKSUMS:
+  pop: bb773ae2c791ca2629de13b347e7a8b450fa6a57
   UIColor+uiGradients: 0e540aa2d8c75254aaebb6c92f20c1aa43be5f05
 
 COCOAPODS: 0.38.2

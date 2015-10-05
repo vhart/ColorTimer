@@ -25,6 +25,7 @@
 		C7827E501B7FAFF70024690F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7827E4F1B7FAFF70024690F /* Images.xcassets */; };
 		C7827E531B7FAFF70024690F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7827E511B7FAFF70024690F /* LaunchScreen.xib */; };
 		C7827E5F1B7FAFF70024690F /* ColorTimerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C7827E5E1B7FAFF70024690F /* ColorTimerTests.m */; };
+		C7E0EBF31BC332D20098C9F4 /* ChallengesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E0EBF21BC332D20098C9F4 /* ChallengesTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,8 @@
 		C7827E581B7FAFF70024690F /* ColorTimerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ColorTimerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7827E5D1B7FAFF70024690F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7827E5E1B7FAFF70024690F /* ColorTimerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorTimerTests.m; sourceTree = "<group>"; };
+		C7E0EBF11BC332D20098C9F4 /* ChallengesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengesTableViewController.h; sourceTree = "<group>"; };
+		C7E0EBF21BC332D20098C9F4 /* ChallengesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChallengesTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +149,7 @@
 		C7827E361B7FAFF70024690F = {
 			isa = PBXGroup;
 			children = (
+				C7E0EBF01BC3321C0098C9F4 /* Challenges */,
 				C7213B2A1BBED27C004F572D /* ControllerWithSlideOuts */,
 				C7827E411B7FAFF70024690F /* ColorTimer */,
 				C7213B321BBF3A70004F572D /* HDNotificationView */,
@@ -210,6 +214,15 @@
 				C7827E5D1B7FAFF70024690F /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C7E0EBF01BC3321C0098C9F4 /* Challenges */ = {
+			isa = PBXGroup;
+			children = (
+				C7E0EBF11BC332D20098C9F4 /* ChallengesTableViewController.h */,
+				C7E0EBF21BC332D20098C9F4 /* ChallengesTableViewController.m */,
+			);
+			name = Challenges;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -352,6 +365,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7827E4B1B7FAFF70024690F /* GamePlayViewController.m in Sources */,
+				C7E0EBF31BC332D20098C9F4 /* ChallengesTableViewController.m in Sources */,
 				C7827E481B7FAFF70024690F /* AppDelegate.m in Sources */,
 				C762A3D81B81A366002B09C9 /* HighScoresModel.m in Sources */,
 				C7213AE21BB99D4A004F572D /* MenuViewController.m in Sources */,

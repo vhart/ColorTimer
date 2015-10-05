@@ -38,7 +38,7 @@ NSTimeInterval const GameTimerInteval = 0.01f;
 @end
 
 @implementation GamePlayViewController
-
+#pragma mark - Life Cycle Methods
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.colorsArray = [NSMutableArray new];
@@ -72,7 +72,7 @@ NSTimeInterval const GameTimerInteval = 0.01f;
 //*******************************************************
 
 //Methods that will set up the game screen. Sets up in particular the score, questions, and button colors
-
+#pragma mark - GAME SETUP Methods
 - (void)reset {
     self.score = 0;
     self.streak = 0;
@@ -92,7 +92,7 @@ NSTimeInterval const GameTimerInteval = 0.01f;
 }
 
 //*********************** Partitioned for organizational purposes
-
+#pragma mark - Algorithm To Set Button Colors With No Duplicates or Repeats
 - (void)setButtonColors{
     
     NSMutableArray *tempColorsArray = [NSMutableArray new];
@@ -146,7 +146,7 @@ NSTimeInterval const GameTimerInteval = 0.01f;
 }
 //**********************************************************
 
-
+#pragma mark - Game Over Methods
 
 //GAME OVER METHODS, CANCELES TIMER AND CALLS ALL RESET METHODS
 - (void)gameOver {
@@ -162,6 +162,7 @@ NSTimeInterval const GameTimerInteval = 0.01f;
     [self.delegate viewController:self startButtonEnabled:self.startButton.enabled];
 }
 
+#pragma mark - DEFAULT Checking Method (Streak)
 - (void)checkForNewStreak{
     int rank = [[HighScoresModel sharedModel] isNewStreak:[NSString stringWithFormat:@"%lu",self.streak]];
     if(rank > -1){
@@ -186,7 +187,7 @@ NSTimeInterval const GameTimerInteval = 0.01f;
 
 
 //USER SELECTS AN ANSWER (COLOR BUTTON)
-
+#pragma mark - Methods Chained When Answer Selected
 - (IBAction)colorButtonTapped:(UIButton*)sender {
     if (sender.backgroundColor == self.currentColorView.backgroundColor) {
         [self incrementScore];
@@ -201,7 +202,7 @@ NSTimeInterval const GameTimerInteval = 0.01f;
 }
 
 //*******************************************
-
+#pragma mark - Game START button
 
 //GAME BEGINS
 
@@ -220,7 +221,7 @@ NSTimeInterval const GameTimerInteval = 0.01f;
 
 //METHODS THAT WILL EXECUTE WHEN A QUESTION IS ANSWERED CORRECTLY
 //SCORE, STREAK, COLOR OF BUTTONS AND UIVIEW, AND TIMER ARE UPDATED ACCORDINGLY
-
+#pragma mark - Methods Executed For Correct Answers
 - (void)incrementScore {
     self.score+=ceil([self.timeLabel.text floatValue]*10);
     self.scoreLabel.text = [NSString stringWithFormat:@"SCORE: %ld",self.score];
@@ -263,10 +264,10 @@ NSTimeInterval const GameTimerInteval = 0.01f;
     [self setButtonColors];
     
 }
-//************************************************************************
+
 
 //DELEGATE METHODS
-
+#pragma mark - Delegate Methods For Swipes
 -(void) swipeRecognized:(UISwipeGestureRecognizer *)swipe{
     [self.delegate viewController:self swipeGesture:swipe];
 }
@@ -279,7 +280,7 @@ NSTimeInterval const GameTimerInteval = 0.01f;
     [HDNotificationView showNotificationViewWithImage:[UIImage imageNamed:@"welcomeToTheLeaderBoard"] title:@"Crushing It!" message:@"The leaderboard recognizes your skill"];
 }
 
-#pragma mark Add a Shadow
+#pragma mark - Add a Shadow
 
 - (void)addShadow{
     
