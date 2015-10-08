@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8175.2" systemVersion="14F27" minimumToolsVersion="Xcode 7.0">
+    <entity name="Challenge" representedClassName="Challenge" syncable="YES">
+        <attribute name="averageScorePerSec" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="averageStreakPerSec" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="challengeCompletedMessage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="challengeDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="challengeIDNumber" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="completed" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="consecutiveChallenge" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="currentNumberOfSuccesses" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="numberOfSuccessesNeeded" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="scoreChallenge" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="scoreMax" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="speedChallenge" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="streakChallenge" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="streakMax" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="timeMax" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Challenge" positionX="-45" positionY="0" width="128" height="270"/>
+    </elements>
+</model>

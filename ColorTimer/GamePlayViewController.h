@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "GamePlayViewControllerDelegate.h"
-
+#import "Challenge.h"
 @interface GamePlayViewController : UIViewController
 
 @property (weak,nonatomic) id<GamePlayViewControllerDelegate> delegate;
+
+@property (nonatomic) Challenge *currentChallenge;
 
 - (void) swipeRecognized:(UISwipeGestureRecognizer *)swipe;
 @end

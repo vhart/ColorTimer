@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "GamePlayViewController.h"
 #import "GamePlayViewControllerDelegate.h"
-
+#import "Challenge.h"
 @interface MainViewController : UIViewController <GamePlayViewControllerDelegate>
-
+@property (nonatomic) Challenge *currentChallenge;
 @end

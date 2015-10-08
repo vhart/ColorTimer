@@ -26,6 +26,12 @@
 		C7827E531B7FAFF70024690F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7827E511B7FAFF70024690F /* LaunchScreen.xib */; };
 		C7827E5F1B7FAFF70024690F /* ColorTimerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C7827E5E1B7FAFF70024690F /* ColorTimerTests.m */; };
 		C7E0EBF31BC332D20098C9F4 /* ChallengesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E0EBF21BC332D20098C9F4 /* ChallengesTableViewController.m */; };
+		C7E0EBF51BC341820098C9F4 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7E0EBF41BC341820098C9F4 /* CoreData.framework */; };
+		C7E0EBF81BC3423E0098C9F4 /* ColorTimer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C7E0EBF61BC3423E0098C9F4 /* ColorTimer.xcdatamodeld */; };
+		C7E0EBFD1BC3466F0098C9F4 /* Challenge.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E0EBFC1BC3466F0098C9F4 /* Challenge.m */; };
+		C7FFC1DD1BC5FA0100623BAF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7FFC1DC1BC5FA0100623BAF /* AudioToolbox.framework */; };
+		C7FFC1E01BC6255900623BAF /* ChallengesCustomHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FFC1DF1BC6255900623BAF /* ChallengesCustomHeaderView.m */; };
+		C7FFC1E21BC626E600623BAF /* ChallengesCustomHeaderViewNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7FFC1E11BC626E600623BAF /* ChallengesCustomHeaderViewNib.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +80,15 @@
 		C7827E5E1B7FAFF70024690F /* ColorTimerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorTimerTests.m; sourceTree = "<group>"; };
 		C7E0EBF11BC332D20098C9F4 /* ChallengesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengesTableViewController.h; sourceTree = "<group>"; };
 		C7E0EBF21BC332D20098C9F4 /* ChallengesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChallengesTableViewController.m; sourceTree = "<group>"; };
+		C7E0EBF41BC341820098C9F4 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		C7E0EBF71BC3423E0098C9F4 /* ColorTimer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ColorTimer.xcdatamodel; sourceTree = "<group>"; };
+		C7E0EBFA1BC3466F0098C9F4 /* Challenge+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Challenge+CoreDataProperties.h"; sourceTree = "<group>"; };
+		C7E0EBFB1BC3466F0098C9F4 /* Challenge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Challenge.h; sourceTree = "<group>"; };
+		C7E0EBFC1BC3466F0098C9F4 /* Challenge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Challenge.m; sourceTree = "<group>"; };
+		C7FFC1DC1BC5FA0100623BAF /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		C7FFC1DE1BC6255900623BAF /* ChallengesCustomHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengesCustomHeaderView.h; sourceTree = "<group>"; };
+		C7FFC1DF1BC6255900623BAF /* ChallengesCustomHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChallengesCustomHeaderView.m; sourceTree = "<group>"; };
+		C7FFC1E11BC626E600623BAF /* ChallengesCustomHeaderViewNib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChallengesCustomHeaderViewNib.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +96,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7FFC1DD1BC5FA0100623BAF /* AudioToolbox.framework in Frameworks */,
+				C7E0EBF51BC341820098C9F4 /* CoreData.framework in Frameworks */,
 				C7213B251BBB30FA004F572D /* QuartzCore.framework in Frameworks */,
 				A95E39A3EA7122A693ED861A /* libPods.a in Frameworks */,
 			);
@@ -99,6 +116,8 @@
 		0B7ED5E8B982C354E69F6431 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C7FFC1DC1BC5FA0100623BAF /* AudioToolbox.framework */,
+				C7E0EBF41BC341820098C9F4 /* CoreData.framework */,
 				C7213B241BBB30FA004F572D /* QuartzCore.framework */,
 				5DADD3C8CF3733208B009966 /* libPods.a */,
 			);
@@ -185,6 +204,7 @@
 				C7827E4C1B7FAFF70024690F /* Main.storyboard */,
 				C7827E4F1B7FAFF70024690F /* Images.xcassets */,
 				C7827E511B7FAFF70024690F /* LaunchScreen.xib */,
+				C7E0EBF91BC343430098C9F4 /* ColorTimerDataModel */,
 				C7827E421B7FAFF70024690F /* Supporting Files */,
 			);
 			path = ColorTimer;
@@ -219,10 +239,24 @@
 		C7E0EBF01BC3321C0098C9F4 /* Challenges */ = {
 			isa = PBXGroup;
 			children = (
+				C7FFC1DE1BC6255900623BAF /* ChallengesCustomHeaderView.h */,
+				C7FFC1DF1BC6255900623BAF /* ChallengesCustomHeaderView.m */,
+				C7FFC1E11BC626E600623BAF /* ChallengesCustomHeaderViewNib.xib */,
+				C7E0EBFA1BC3466F0098C9F4 /* Challenge+CoreDataProperties.h */,
+				C7E0EBFB1BC3466F0098C9F4 /* Challenge.h */,
+				C7E0EBFC1BC3466F0098C9F4 /* Challenge.m */,
 				C7E0EBF11BC332D20098C9F4 /* ChallengesTableViewController.h */,
 				C7E0EBF21BC332D20098C9F4 /* ChallengesTableViewController.m */,
 			);
 			name = Challenges;
+			sourceTree = "<group>";
+		};
+		C7E0EBF91BC343430098C9F4 /* ColorTimerDataModel */ = {
+			isa = PBXGroup;
+			children = (
+				C7E0EBF61BC3423E0098C9F4 /* ColorTimer.xcdatamodeld */,
+			);
+			name = ColorTimerDataModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,6 +346,7 @@
 				C7213B311BBED6D7004F572D /* Geometos.ttf in Resources */,
 				C7827E4E1B7FAFF70024690F /* Main.storyboard in Resources */,
 				C7213B2D1BBED6BA004F572D /* Kenzo Regular.otf in Resources */,
+				C7FFC1E21BC626E600623BAF /* ChallengesCustomHeaderViewNib.xib in Resources */,
 				C7827E531B7FAFF70024690F /* LaunchScreen.xib in Resources */,
 				C7827E501B7FAFF70024690F /* Images.xcassets in Resources */,
 			);
@@ -364,14 +399,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7E0EBF81BC3423E0098C9F4 /* ColorTimer.xcdatamodeld in Sources */,
 				C7827E4B1B7FAFF70024690F /* GamePlayViewController.m in Sources */,
 				C7E0EBF31BC332D20098C9F4 /* ChallengesTableViewController.m in Sources */,
 				C7827E481B7FAFF70024690F /* AppDelegate.m in Sources */,
 				C762A3D81B81A366002B09C9 /* HighScoresModel.m in Sources */,
+				C7FFC1E01BC6255900623BAF /* ChallengesCustomHeaderView.m in Sources */,
 				C7213AE21BB99D4A004F572D /* MenuViewController.m in Sources */,
 				C762A3D21B818D2F002B09C9 /* HighScoreTableViewController.m in Sources */,
 				C762A3D51B819327002B09C9 /* SettingsViewController.m in Sources */,
 				C7213B351BBF3AA8004F572D /* HDNotificationView.m in Sources */,
+				C7E0EBFD1BC3466F0098C9F4 /* Challenge.m in Sources */,
 				C7827E451B7FAFF70024690F /* main.m in Sources */,
 				C71EB8FC1B81145D000B93B9 /* MainViewController.m in Sources */,
 			);
@@ -590,6 +628,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C7E0EBF61BC3423E0098C9F4 /* ColorTimer.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C7E0EBF71BC3423E0098C9F4 /* ColorTimer.xcdatamodel */,
+			);
+			currentVersion = C7E0EBF71BC3423E0098C9F4 /* ColorTimer.xcdatamodel */;
+			path = ColorTimer.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C7827E371B7FAFF70024690F /* Project object */;
 }

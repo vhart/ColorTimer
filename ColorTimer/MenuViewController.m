@@ -41,6 +41,7 @@ float const orbitRadius = 40.0;
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden=YES;
     CABasicAnimation *anim1 = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
     anim1.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
     anim1.fromValue = @0;

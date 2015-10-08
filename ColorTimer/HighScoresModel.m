@@ -52,4 +52,35 @@
     [[NSUserDefaults standardUserDefaults] setObject:self.highStreakData forKey:@"high streaks"];
     
 }
+
+- (int)isNewScore:(NSString *)score{
+    
+    NSMutableArray * keys = [[NSMutableArray alloc] init];
+    for (NSDictionary *dictionary in self.highScoreData){
+        [keys addObject:[dictionary allKeys][0]];
+    }
+    
+    int counter = 0;
+    for(NSString *scoreKey in keys){
+        if ([score integerValue]>[scoreKey integerValue]) {
+            return counter;
+        }
+        counter++;
+    }
+    
+    return -1;
+}
+
+- (void)addScore:(NSString *)score forUser:(NSString *)userName{
+    
+    int rank = [self isNewScore:score];
+    
+    NSDictionary *newEntry = @{score:userName};
+    
+    [self.highScoreData insertObject:newEntry atIndex:rank];
+    [self.highScoreData removeObject:[self.highScoreData lastObject]];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"high scores"];
+    [[NSUserDefaults standardUserDefaults] setObject:self.highStreakData forKey:@"high scores"];
+    
+}
 @end

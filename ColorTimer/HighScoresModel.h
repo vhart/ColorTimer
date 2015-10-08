@@ -17,4 +17,7 @@
 
 - (int)isNewStreak:(NSString *)streak ;
 - (void)addStreak:(NSString *)streak forUser:(NSString *)userName;
+
+- (int)isNewScore:(NSString *)score;
+- (void)addScore:(NSString *)score forUser:(NSString *)userName;
 @end

@@ -43,6 +43,12 @@
     
 }
 
+- (void)viewWillLayoutSubviews{
+    [super viewWillLayoutSubviews];
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    }
+}
 //**********************************
 //DELEGATE METHODS
 
@@ -124,6 +130,12 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     GamePlayViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"gameViewController"];
     
+    if (self.currentChallenge) {
+        
+        vc.currentChallenge = self.currentChallenge;
+        
+    }
+    
     [self addChildViewController:vc];
     vc.view.frame = self.view.bounds;
     [self.view addSubview:vc.view];
@@ -164,7 +176,8 @@
 
 - (void) prepareToDismiss{
     NSLog(@"calling");
-    [self dismissViewControllerAnimated:YES completion:nil];
+    //[self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 @end
