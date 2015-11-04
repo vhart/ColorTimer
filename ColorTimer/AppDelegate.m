@@ -17,6 +17,23 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    if (![[NSUserDefaults standardUserDefaults]objectForKey:@"stats"]) {
+        NSDictionary *statsDictionary = @{
+                                          @"gamesPlayed":@0,
+                                          @"longestStreak":@0,
+                                          @"highestScore":@0,
+                                          @"streakToDate":@0,
+                                          @"scoreToDate":@0,
+                                          @"fastestReactionTime":@0,
+                                          @"averageReactionTime":@0.0
+                                          
+                                          
+                                          };
+        [[NSUserDefaults standardUserDefaults]setObject:statsDictionary forKey:@"stats"];
+        
+        
+    }
+    
     return YES;
 }
 
@@ -42,6 +59,7 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
+    [[NSUserDefaults standardUserDefaults]synchronize];
 }
 
 #pragma mark - Core Data stack

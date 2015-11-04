@@ -41,6 +41,10 @@ NSTimeInterval const GameTimerInteval = 0.01f;
 @property (nonatomic) int scoreRank;
 
 @property (nonatomic) float valueForNewTap;
+@property (nonatomic) float gameAvg;
+@property (nonatomic) float fastestReaction;
+
+@property (nonatomic) float scoreOffset;
 
 @end
 
@@ -85,6 +89,9 @@ NSTimeInterval const GameTimerInteval = 0.01f;
     self.streak = 0;
     self.streakLabel.text = @"STREAK: 0";
     self.scoreLabel.text = @"SCORE: 0";
+    self.fastestReaction = [[[[NSUserDefaults standardUserDefaults]objectForKey:@"stats"]objectForKey:@"fastestReactionTime"] floatValue];
+    self.fastestReaction = self.fastestReaction > 0.0f ? self.fastestReaction : 100.f;
+    self.gameAvg = 0.0f;
     if (self.currentChallenge) {
         if (self.currentChallenge.speedChallenge) {
             self.timerValue = [[self.currentChallenge valueForKey:@"timeMax"] floatValue];
@@ -94,6 +101,7 @@ NSTimeInterval const GameTimerInteval = 0.01f;
     else{
         self.timerValue = 1.0;
     }
+    self.scoreOffset = 0;
     [self nextQuestion];
 }
 
@@ -194,34 +202,40 @@ NSTimeInterval const GameTimerInteval = 0.01f;
     while (self.currentChallenge) {
         
         if (self.currentChallenge.streakChallenge) {
-            if (self.streak >= [self.currentChallenge.streakMax integerValue]) {
+            if (self.streak >= [self.currentChallenge.streakMax integerValue] && self.currentChallenge.currentNumberOfSuccesses<self.currentChallenge.numberOfSuccessesNeeded) {
                 [self.currentChallenge setValue:@([self.currentChallenge.currentNumberOfSuccesses integerValue]+1) forKey:@"currentNumberOfSuccesses"];
-                if (self.currentChallenge.currentNumberOfSuccesses>self.currentChallenge.numberOfSuccessesNeeded) {
+                if (self.currentChallenge.currentNumberOfSuccesses==self.currentChallenge.numberOfSuccessesNeeded) {
                     [self.currentChallenge setValue:self.currentChallenge.numberOfSuccessesNeeded forKey:@"currentNumberOfSuccesses"];
                     [HDNotificationView showNotificationViewWithImage:[UIImage imageNamed:@"welcomeToTheLeaderBoard"] title:@"Crushing It!" message:@"Challenge complete!"];
                     break;
                 }
+                break;
             }
-            else if (self.currentChallenge.consecutiveChallenge && [self.currentChallenge valueForKey:@"currentNumberOfSuccesses"]!=0){
+            else if (self.currentChallenge.consecutiveChallenge && [self.currentChallenge valueForKey:@"currentNumberOfSuccesses"]!=self.currentChallenge.numberOfSuccessesNeeded && self.currentChallenge.currentNumberOfSuccesses!=0){
                 [self.currentChallenge setValue:@0 forKey:@"currentNumberOfSuccesses"];
                 [HDNotificationView showNotificationViewWithImage:[UIImage imageNamed:@"welcomeToTheLeaderBoard"] title:@"Bad News" message:@"Consecutive Challenge Has Been Reset"];
                 break;
             }
+            break;
         }
         else if(self.currentChallenge.scoreChallenge) {
-            if (self.streak >= [self.currentChallenge.scoreMax integerValue]) {
+            if (self.score >= [self.currentChallenge.scoreMax integerValue] && self.currentChallenge.currentNumberOfSuccesses<self.currentChallenge.numberOfSuccessesNeeded) {
                 [self.currentChallenge setValue:@([self.currentChallenge.currentNumberOfSuccesses integerValue]+1) forKey:@"currentNumberOfSuccesses"];
-                if (self.currentChallenge.currentNumberOfSuccesses>self.currentChallenge.numberOfSuccessesNeeded) {
+                if (self.currentChallenge.currentNumberOfSuccesses==self.currentChallenge.numberOfSuccessesNeeded) {
                     [self.currentChallenge setValue:self.currentChallenge.numberOfSuccessesNeeded forKey:@"currentNumberOfSuccesses"];
                     [HDNotificationView showNotificationViewWithImage:[UIImage imageNamed:@"welcomeToTheLeaderBoard"] title:@"Crushing It!" message:@"Challenge complete!"];
                     break;
                 }
+                break;
             }
-            else if (self.currentChallenge.consecutiveChallenge && [self.currentChallenge valueForKey:@"currentNumberOfSuccesses"]!=0){
+            else if (self.currentChallenge.consecutiveChallenge && [self.currentChallenge valueForKey:@"currentNumberOfSuccesses"]!=self.currentChallenge.numberOfSuccessesNeeded && self.currentChallenge.currentNumberOfSuccesses!=0){
+                
                 [self.currentChallenge setValue:@0 forKey:@"currentNumberOfSuccesses"];
+                
                 [HDNotificationView showNotificationViewWithImage:[UIImage imageNamed:@"welcomeToTheLeaderBoard"] title:@"Bad News" message:@"Consecutive Challenge Has Been Reset"];
                 break;
             }
+            break;
         }
         break;
     }
@@ -230,6 +244,8 @@ NSTimeInterval const GameTimerInteval = 0.01f;
     [delegate.managedObjectContext save:nil];
     
     [self checkForNewStreak];
+    [self updateStats];
+    
 }
 
 
@@ -275,6 +291,44 @@ NSTimeInterval const GameTimerInteval = 0.01f;
     
 }
 
+
+- (void)updateStats{
+    
+    NSMutableDictionary *newStats = [[NSMutableDictionary alloc]initWithDictionary:[[NSUserDefaults standardUserDefaults]objectForKey:@"stats"]];
+    
+    float averageReaction = ([newStats[@"averageReactionTime"]floatValue]*[newStats[@"streakToDate"]floatValue] + self.gameAvg);
+    averageReaction = averageReaction>0? averageReaction/([newStats[@"streakToDate"]floatValue]+self.streak) : 0.0f;
+    [newStats removeObjectForKey:@"averageReactionTime"];
+    [newStats setObject:[NSNumber numberWithFloat:averageReaction] forKey:@"averageReactionTime"];
+    
+    NSInteger newScoreToDate = [newStats[@"scoreToDate"] integerValue];
+    newScoreToDate += self.score;
+    [newStats removeObjectForKey:@"scoreToDate"];
+    [newStats setObject:[NSNumber numberWithInteger:newScoreToDate] forKey:@"scoreToDate"];
+    
+    NSInteger newStreakToDate = [newStats[@"streakToDate"] integerValue];
+    newStreakToDate += self.streak;
+    [newStats removeObjectForKey:@"streakToDate"];
+    [newStats setObject:[NSNumber numberWithInteger:newStreakToDate] forKey:@"streakToDate"];
+    
+    NSInteger newHighScore = [newStats[@"highestScore"] integerValue];
+    if (self.score > newHighScore) {
+        [newStats removeObjectForKey:@"highestScore"];
+        [newStats setObject:[NSNumber numberWithInteger:self.score] forKey:@"highestScore"];
+    }
+    NSInteger newLongestStreak = [newStats[@"longestStreak"] integerValue];
+    if (self.streak > newLongestStreak) {
+        [newStats removeObjectForKey:@"longestStreak"];
+        [newStats setObject:[NSNumber numberWithInteger:self.streak] forKey:@"longestStreak"];
+    }
+    
+    [newStats removeObjectForKey:@"fastestReactionTime"];
+    [newStats setObject:[NSNumber numberWithFloat:self.fastestReaction] forKey:@"fastestReactionTime"];
+    
+    [[NSUserDefaults standardUserDefaults]setObject:newStats forKey:@"stats"];
+    
+}
+
 - (void)cancelTimer {
     [self.gameTimer invalidate];
 }
@@ -314,6 +368,14 @@ NSTimeInterval const GameTimerInteval = 0.01f;
     
     [self reset];
     
+    //Update NSUserDefaults for games played;
+    NSMutableDictionary *newStats = [[NSMutableDictionary alloc]initWithDictionary:[[NSUserDefaults standardUserDefaults]objectForKey:@"stats"]];
+    NSInteger gamesPlayed = [newStats[@"gamesPlayed"] integerValue];
+    gamesPlayed++;
+    [newStats removeObjectForKey:@"gamesPlayed"];
+    [newStats setObject:[NSNumber numberWithInteger:gamesPlayed] forKey:@"gamesPlayed"];
+    [[NSUserDefaults standardUserDefaults]setObject:newStats forKey:@"stats"];
+    
     //DELEGATE METHOD TRIGGERED
     [self.delegate viewController:self startButtonEnabled:sender.enabled];
 }
@@ -330,12 +392,17 @@ NSTimeInterval const GameTimerInteval = 0.01f;
             self.score++;
         }
         else{
-            self.score+=ceil((1-elapsedTime)*10);
+            self.score+=(ceil((1-elapsedTime)*10)+self.scoreOffset);
         }
         self.valueForNewTap = self.timerValue;
+        self.gameAvg += elapsedTime;
+        self.fastestReaction = self.fastestReaction > elapsedTime? elapsedTime:self.fastestReaction;
     }
     else{
         self.score+=ceil([self.timeLabel.text floatValue]*10);
+        self.gameAvg += 1 - [self.timeLabel.text floatValue];
+        float comp = 1 - [self.timeLabel.text floatValue];
+        self.fastestReaction = self.fastestReaction > (comp)? comp:self.fastestReaction;
     }
     self.scoreLabel.text = [NSString stringWithFormat:@"SCORE: %ld",self.score];
     NSLog(@"%lu", self.score);
@@ -351,6 +418,15 @@ NSTimeInterval const GameTimerInteval = 0.01f;
     [self cancelTimer];
     if (!self.currentChallenge || !self.currentChallenge.speedChallenge){
         self.timerValue = 1.0;
+    }
+    if ([self.currentChallenge.challengeIDNumber floatValue]>=3) {
+        self.timerValue = 1.0 - .05*(self.streak/5);
+        self.scoreOffset = floor(-1*(self.timerValue - 1.0)*10);
+        if (self.timerValue<=.45) {
+            self.timerValue = .45;
+            self.scoreOffset = 5;
+        }
+        self.valueForNewTap = self.timerValue;
     }
     self.gameTimer = [NSTimer timerWithTimeInterval:GameTimerInteval target:self selector:@selector(decreaseTimer) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:self.gameTimer forMode:NSRunLoopCommonModes];
@@ -390,6 +466,8 @@ NSTimeInterval const GameTimerInteval = 0.01f;
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     
     if (buttonIndex == 0) {
+        
+        [self.view endEditing:YES];
         return;
     }
     

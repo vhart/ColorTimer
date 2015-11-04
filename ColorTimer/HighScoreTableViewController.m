@@ -5,9 +5,21 @@
 //  Created by Varindra Hart on 8/16/15.
 //  Copyright © 2015 Varindra Hart. All rights reserved.
 //
+#define UIColorFromRGB(rgbValue) \
+[UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
+green:((float)((rgbValue & 0x00FF00) >>  8))/255.0 \
+blue:((float)((rgbValue & 0x0000FF) >>  0))/255.0 \
+alpha:1.0]
+
+#define UIColorFromRGBWithAlpha(rgbValue,a) [UIColor \
+colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
+green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
+blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
 
 #import "HighScoreTableViewController.h"
 #import "HighScoresModel.h"
+#import "HSHeaderView.h"
+
 
 @interface HighScoreTableViewController ()
 
@@ -16,21 +28,27 @@
 @property (nonatomic) NSMutableArray *highScoresArray;
 @end
 
-@implementation HighScoreTableViewController
+
+
+@implementation HighScoreTableViewController{
+    UIColor * _gold;
+    UIColor * _silver;
+    UIColor * _bronze;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.highStreaksArray = [NSMutableArray new];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if([defaults objectForKey:@"high streaks"] == nil){
-        NSMutableArray *temp = [[NSMutableArray alloc] initWithObjects:@{@"200":@"April"},
-                          @{@"175":@"Derek"},
-                          @{@"160":@"Kelly"},
-                          @{@"150":@"Mesfin"},
-                          @{@"140":@"Nav"},
-                          @{@"130":@"Kash"},
-                          @{@"120":@"Vic"},
-                          @{@"110":@"Mike"},
+        NSMutableArray *temp = [[NSMutableArray alloc] initWithObjects:@{@"350":@"April"},
+                          @{@"300":@"Kelly"},
+                          @{@"250":@"Derek"},
+                          @{@"200":@"Mesfin"},
+                          @{@"175":@"Nav"},
+                          @{@"150":@"Kash"},
+                          @{@"140":@"Vic"},
+                          @{@"130":@"Mike"},
                           @{@"100":@"Max"},
                           @{@"20" :@"V"},
                              nil];
@@ -41,21 +59,27 @@
     self.highScoresArray = [NSMutableArray new];
     
     if([defaults objectForKey:@"high scores"] == nil){
-        NSMutableArray *temp = [[NSMutableArray alloc] initWithObjects:@{@"1500":@"April"},
-                                @{@"1200":@"Kelly"},
-                                @{@"1100":@"Derek"},
-                                @{@"1000":@"Mesfin"},
-                                @{@"900":@"Nav"},
-                                @{@"800":@"Kash"},
-                                @{@"700":@"Vic"},
-                                @{@"600":@"Mike"},
-                                @{@"500":@"Max"},
+        NSMutableArray *temp = [[NSMutableArray alloc] initWithObjects:@{@"2500":@"April"},
+                                @{@"2300":@"Kelly"},
+                                @{@"1800":@"Derek"},
+                                @{@"1600":@"Mesfin"},
+                                @{@"1400":@"Nav"},
+                                @{@"1200":@"Kash"},
+                                @{@"1000":@"Vic"},
+                                @{@"800":@"Mike"},
+                                @{@"600":@"Max"},
                                 @{@"100" :@"V"},
                                 nil];
         
         [defaults setObject:temp forKey:@"high scores"];
+    
     }
     
+    _gold = UIColorFromRGB(0xD9C132);
+    _silver = UIColorFromRGB(0xB8B8C7);
+    _bronze = UIColorFromRGB(0xEF530A);
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"HSHeaderViewNib" bundle:nil] forHeaderFooterViewReuseIdentifier:@"HSHeaderIdentifier"];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -77,6 +101,31 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Header methods
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    
+    HSHeaderView *header = [self.tableView dequeueReusableHeaderFooterViewWithIdentifier:@"HSHeaderIdentifier"];
+    switch (section) {
+        case 0:
+            header.leaderBoardTitle.text = @"HIGH STREAKS";
+            break;
+        case 1:
+            header.leaderBoardTitle.text = @"HIGH SCORES";
+            break;
+        default:
+            break;
+    }
+    
+    return header;
+    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    
+    return 40.0f;
 }
 
 #pragma mark - Table view data source
@@ -118,7 +167,22 @@
         cell.detailTextLabel.text = [cellDictionary objectForKey:score];
         
     }
-    // Configure the cell...
+   
+    
+    switch (indexPath.row) {
+        case 0:
+            cell.detailTextLabel.textColor = _gold;
+            break;
+        case 1:
+            cell.detailTextLabel.textColor = _silver;
+            break;
+        case 2:
+            cell.detailTextLabel.textColor = _bronze;
+            break;
+        default:
+            cell.detailTextLabel.textColor = [UIColor blackColor];
+            break;
+    }
     
     return cell;
 }

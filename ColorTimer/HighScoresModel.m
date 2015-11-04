@@ -32,6 +32,7 @@
     int counter = 0;
     for(NSString *streakKey in keys){
         if ([streak integerValue]>[streakKey integerValue]) {
+            
             return counter;
         }
         counter++;
@@ -63,6 +64,7 @@
     int counter = 0;
     for(NSString *scoreKey in keys){
         if ([score integerValue]>[scoreKey integerValue]) {
+            
             return counter;
         }
         counter++;

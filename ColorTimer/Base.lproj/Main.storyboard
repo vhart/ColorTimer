@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8173.3" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4jx-d7-NZn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4jx-d7-NZn">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8142"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -16,12 +16,24 @@
             <string>BebasKai</string>
             <string>BebasKai</string>
             <string>BebasKai</string>
+            <string>BebasKai</string>
+            <string>BebasKai</string>
+            <string>BebasKai</string>
+            <string>BebasKai</string>
+            <string>BebasKai</string>
+            <string>BebasKai</string>
+            <string>BebasKai</string>
+            <string>BebasKai</string>
+            <string>BebasKai</string>
+            <string>BebasKai</string>
+            <string>BebasKai</string>
+            <string>BebasKai</string>
+            <string>BebasKai</string>
+            <string>BebasKai</string>
+            <string>BebasKai</string>
         </mutableArray>
         <mutableArray key="HelveticaNeue.ttc">
             <string>HelveticaNeue</string>
-        </mutableArray>
-        <mutableArray key="Kenzo Regular.otf">
-            <string>Kenzo</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -52,7 +64,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nGJ-Dy-MZ7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2428" y="107"/>
+            <point key="canvasLocation" x="-2528" y="-15"/>
         </scene>
         <!--Challenges Table View Controller-->
         <scene sceneID="8wi-kc-sCf">
@@ -108,7 +120,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SgD-rg-Zax" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1691" y="769"/>
+            <point key="canvasLocation" x="-1775" y="879"/>
         </scene>
         <!--Game Play View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -333,6 +345,244 @@
             </objects>
             <point key="canvasLocation" x="-286" y="55"/>
         </scene>
+        <!--Stats-->
+        <scene sceneID="nN5-Gm-c3Q">
+            <objects>
+                <tableViewController title="Stats" id="cgw-1U-enY" customClass="StatsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="QLc-VE-1Ds">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="850"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection id="1s1-Yo-VB4">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="912" id="3me-WN-H5W">
+                                        <rect key="frame" x="0.0" y="64" width="600" height="912"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3me-WN-H5W" id="ldi-4P-99Z">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="911"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dkz-BG-du5">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="911"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of games played:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oo8-uH-ZHi">
+                                                            <rect key="frame" x="204" y="25" width="192" height="27"/>
+                                                            <fontDescription key="fontDescription" name="BebasKai" family="Bebas Kai" pointSize="22"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ogt-OR-aTb">
+                                                            <rect key="frame" x="272" y="60" width="55" height="55"/>
+                                                            <color key="backgroundColor" red="0.16828303180000001" green="0.44933085340000001" blue="0.60199652780000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="55" id="NdJ-aE-Hkl"/>
+                                                                <constraint firstAttribute="height" constant="55" id="bkd-ym-fGk"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="BebasKai" family="Bebas Kai" pointSize="24"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Longest streak" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RAg-h1-TvH">
+                                                            <rect key="frame" x="241" y="145" width="117" height="27"/>
+                                                            <fontDescription key="fontDescription" name="BebasKai" family="Bebas Kai" pointSize="22"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="7" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sbd-GK-huj">
+                                                            <rect key="frame" x="272" y="780" width="55" height="55"/>
+                                                            <color key="backgroundColor" red="0.17556968789513874" green="0.31235782247697891" blue="0.60199652780000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <fontDescription key="fontDescription" name="BebasKai" family="Bebas Kai" pointSize="24"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Highest Score" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0d-KZ-wKY">
+                                                            <rect key="frame" x="247" y="265" width="106" height="27"/>
+                                                            <fontDescription key="fontDescription" name="BebasKai" family="Bebas Kai" pointSize="22"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FCB-YM-sm9">
+                                                            <rect key="frame" x="272" y="180" width="55" height="55"/>
+                                                            <color key="backgroundColor" red="0.85098039219999999" green="0.25098039220000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <fontDescription key="fontDescription" name="BebasKai" family="Bebas Kai" pointSize="24"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KqJ-Aw-dWT">
+                                                            <rect key="frame" x="272" y="300" width="55" height="55"/>
+                                                            <color key="backgroundColor" red="0.3352390039" green="0.71405460860000003" blue="0.22951932" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <fontDescription key="fontDescription" name="BebasKai" family="Bebas Kai" pointSize="24"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vdh-DQ-Dtd">
+                                                            <rect key="frame" x="272" y="420" width="55" height="55"/>
+                                                            <color key="backgroundColor" red="1" green="0.58131705030000003" blue="0.33112952699999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <fontDescription key="fontDescription" name="BebasKai" family="Bebas Kai" pointSize="24"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="6" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JbE-mR-DHw">
+                                                            <rect key="frame" x="272" y="660" width="55" height="55"/>
+                                                            <color key="backgroundColor" red="0.58622070113140035" green="0.34073799936224186" blue="0.60199652780000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <fontDescription key="fontDescription" name="BebasKai" family="Bebas Kai" pointSize="24"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fastest Reaction Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zYP-FU-0yJ">
+                                                            <rect key="frame" x="217" y="625" width="166" height="27"/>
+                                                            <fontDescription key="fontDescription" name="BebasKai" family="Bebas Kai" pointSize="22"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Average Reaction Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwH-gd-OJR">
+                                                            <rect key="frame" x="214" y="745" width="172" height="27"/>
+                                                            <fontDescription key="fontDescription" name="BebasKai" family="Bebas Kai" pointSize="22"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score To Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LUC-vZ-UcH">
+                                                            <rect key="frame" x="248" y="505" width="104" height="27"/>
+                                                            <fontDescription key="fontDescription" name="BebasKai" family="Bebas Kai" pointSize="22"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cIc-jk-59z">
+                                                            <rect key="frame" x="272" y="540" width="55" height="55"/>
+                                                            <color key="backgroundColor" red="0.85098039219999999" green="0.75686274509999996" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <fontDescription key="fontDescription" name="BebasKai" family="Bebas Kai" pointSize="24"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Streak to Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HbI-eh-XAI">
+                                                            <rect key="frame" x="244" y="385" width="111" height="27"/>
+                                                            <fontDescription key="fontDescription" name="BebasKai" family="Bebas Kai" pointSize="22"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="FCB-YM-sm9" firstAttribute="centerX" secondItem="RAg-h1-TvH" secondAttribute="centerX" id="2ft-E4-AAo"/>
+                                                        <constraint firstItem="Vdh-DQ-Dtd" firstAttribute="height" secondItem="KqJ-Aw-dWT" secondAttribute="height" id="3ZE-io-X1b"/>
+                                                        <constraint firstItem="cIc-jk-59z" firstAttribute="centerX" secondItem="LUC-vZ-UcH" secondAttribute="centerX" id="4Df-3c-thF"/>
+                                                        <constraint firstItem="KqJ-Aw-dWT" firstAttribute="centerX" secondItem="W0d-KZ-wKY" secondAttribute="centerX" id="4cF-hI-wqZ"/>
+                                                        <constraint firstItem="sbd-GK-huj" firstAttribute="width" secondItem="JbE-mR-DHw" secondAttribute="width" id="7Ym-Us-r9a"/>
+                                                        <constraint firstItem="Oo8-uH-ZHi" firstAttribute="top" secondItem="Dkz-BG-du5" secondAttribute="top" constant="25" id="8Dg-4i-weK"/>
+                                                        <constraint firstItem="JbE-mR-DHw" firstAttribute="top" secondItem="zYP-FU-0yJ" secondAttribute="bottom" constant="8" id="8rc-xs-tg5"/>
+                                                        <constraint firstItem="W0d-KZ-wKY" firstAttribute="top" secondItem="FCB-YM-sm9" secondAttribute="bottom" constant="30" id="9rf-SG-5aw"/>
+                                                        <constraint firstItem="sbd-GK-huj" firstAttribute="top" secondItem="cwH-gd-OJR" secondAttribute="bottom" constant="8" id="AVo-K9-qut"/>
+                                                        <constraint firstItem="Vdh-DQ-Dtd" firstAttribute="top" secondItem="HbI-eh-XAI" secondAttribute="bottom" constant="8" id="B5v-WI-DAf"/>
+                                                        <constraint firstItem="KqJ-Aw-dWT" firstAttribute="top" secondItem="W0d-KZ-wKY" secondAttribute="bottom" constant="8" id="C9C-eR-zkN"/>
+                                                        <constraint firstItem="zYP-FU-0yJ" firstAttribute="top" secondItem="cIc-jk-59z" secondAttribute="bottom" constant="30" id="CQq-c8-zpP"/>
+                                                        <constraint firstItem="JbE-mR-DHw" firstAttribute="height" secondItem="cIc-jk-59z" secondAttribute="height" id="EQ8-ep-ekQ"/>
+                                                        <constraint firstItem="HbI-eh-XAI" firstAttribute="centerX" secondItem="KqJ-Aw-dWT" secondAttribute="centerX" id="Hkc-PQ-oIm"/>
+                                                        <constraint firstItem="sbd-GK-huj" firstAttribute="centerX" secondItem="cwH-gd-OJR" secondAttribute="centerX" id="J34-ZK-rg3"/>
+                                                        <constraint firstItem="Vdh-DQ-Dtd" firstAttribute="centerX" secondItem="HbI-eh-XAI" secondAttribute="centerX" id="MJR-Aj-a2y"/>
+                                                        <constraint firstItem="KqJ-Aw-dWT" firstAttribute="height" secondItem="FCB-YM-sm9" secondAttribute="height" id="NUP-h1-ZrE"/>
+                                                        <constraint firstItem="W0d-KZ-wKY" firstAttribute="centerX" secondItem="FCB-YM-sm9" secondAttribute="centerX" id="Rtn-dX-Tud"/>
+                                                        <constraint firstItem="LUC-vZ-UcH" firstAttribute="top" secondItem="Vdh-DQ-Dtd" secondAttribute="bottom" constant="30" id="Sng-ty-MI6"/>
+                                                        <constraint firstItem="FCB-YM-sm9" firstAttribute="width" secondItem="Ogt-OR-aTb" secondAttribute="width" id="THl-Q2-4mH"/>
+                                                        <constraint firstItem="cwH-gd-OJR" firstAttribute="centerX" secondItem="JbE-mR-DHw" secondAttribute="centerX" id="XIR-hd-lyB"/>
+                                                        <constraint firstItem="RAg-h1-TvH" firstAttribute="top" secondItem="Ogt-OR-aTb" secondAttribute="bottom" constant="30" id="XMh-5G-YP3"/>
+                                                        <constraint firstItem="RAg-h1-TvH" firstAttribute="centerX" secondItem="Ogt-OR-aTb" secondAttribute="centerX" id="ZWE-66-7np"/>
+                                                        <constraint firstItem="cIc-jk-59z" firstAttribute="height" secondItem="Vdh-DQ-Dtd" secondAttribute="height" id="a4g-jQ-5MO"/>
+                                                        <constraint firstItem="LUC-vZ-UcH" firstAttribute="centerX" secondItem="Vdh-DQ-Dtd" secondAttribute="centerX" id="c5L-Bm-P5B"/>
+                                                        <constraint firstItem="Vdh-DQ-Dtd" firstAttribute="width" secondItem="KqJ-Aw-dWT" secondAttribute="width" id="dHK-T4-jDw"/>
+                                                        <constraint firstItem="cwH-gd-OJR" firstAttribute="top" secondItem="JbE-mR-DHw" secondAttribute="bottom" constant="30" id="dbX-Bj-whL"/>
+                                                        <constraint firstItem="Ogt-OR-aTb" firstAttribute="top" secondItem="Oo8-uH-ZHi" secondAttribute="bottom" constant="8" id="dr8-f9-7vV"/>
+                                                        <constraint firstItem="Oo8-uH-ZHi" firstAttribute="centerX" secondItem="Dkz-BG-du5" secondAttribute="centerX" id="esv-Ha-cQr"/>
+                                                        <constraint firstItem="FCB-YM-sm9" firstAttribute="height" secondItem="Ogt-OR-aTb" secondAttribute="height" id="gAw-Bx-InV"/>
+                                                        <constraint firstItem="KqJ-Aw-dWT" firstAttribute="width" secondItem="FCB-YM-sm9" secondAttribute="width" id="jCa-GL-k4m"/>
+                                                        <constraint firstItem="zYP-FU-0yJ" firstAttribute="centerX" secondItem="cIc-jk-59z" secondAttribute="centerX" id="loZ-IL-ShD"/>
+                                                        <constraint firstItem="HbI-eh-XAI" firstAttribute="top" secondItem="KqJ-Aw-dWT" secondAttribute="bottom" constant="30" id="n3c-Uk-XM3"/>
+                                                        <constraint firstItem="JbE-mR-DHw" firstAttribute="centerX" secondItem="zYP-FU-0yJ" secondAttribute="centerX" id="opv-qa-Ddd"/>
+                                                        <constraint firstItem="FCB-YM-sm9" firstAttribute="top" secondItem="RAg-h1-TvH" secondAttribute="bottom" constant="8" id="qkO-10-yIC"/>
+                                                        <constraint firstItem="cIc-jk-59z" firstAttribute="top" secondItem="LUC-vZ-UcH" secondAttribute="bottom" constant="8" id="qkc-CJ-jb7"/>
+                                                        <constraint firstItem="JbE-mR-DHw" firstAttribute="width" secondItem="cIc-jk-59z" secondAttribute="width" id="s2z-sb-Jg7"/>
+                                                        <constraint firstItem="Ogt-OR-aTb" firstAttribute="centerX" secondItem="Oo8-uH-ZHi" secondAttribute="centerX" id="tkO-q8-sUu"/>
+                                                        <constraint firstItem="cIc-jk-59z" firstAttribute="width" secondItem="Vdh-DQ-Dtd" secondAttribute="width" id="vgA-ma-TSc"/>
+                                                        <constraint firstItem="sbd-GK-huj" firstAttribute="height" secondItem="JbE-mR-DHw" secondAttribute="height" id="xYz-t4-N70"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="Dkz-BG-du5" secondAttribute="bottom" id="BU9-NH-wie"/>
+                                                <constraint firstItem="Dkz-BG-du5" firstAttribute="leading" secondItem="ldi-4P-99Z" secondAttribute="leading" id="LdS-rF-aod"/>
+                                                <constraint firstItem="Dkz-BG-du5" firstAttribute="top" secondItem="ldi-4P-99Z" secondAttribute="top" id="tSo-bf-ivU"/>
+                                                <constraint firstItem="Dkz-BG-du5" firstAttribute="top" secondItem="ldi-4P-99Z" secondAttribute="top" id="vtO-ne-6NT"/>
+                                                <constraint firstAttribute="trailing" secondItem="Dkz-BG-du5" secondAttribute="trailing" id="w44-CZ-ccN"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="tSo-bf-ivU"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="cgw-1U-enY" id="N3d-kG-Gmv"/>
+                            <outlet property="delegate" destination="cgw-1U-enY" id="Z6p-UC-80q"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="850"/>
+                    <connections>
+                        <outletCollection property="labelArray" destination="Ogt-OR-aTb" id="Qs0-oc-lx9"/>
+                        <outletCollection property="labelArray" destination="FCB-YM-sm9" id="gbP-yF-0HL"/>
+                        <outletCollection property="labelArray" destination="KqJ-Aw-dWT" id="3XA-K7-9Xb"/>
+                        <outletCollection property="labelArray" destination="Vdh-DQ-Dtd" id="CsA-uq-ZSA"/>
+                        <outletCollection property="labelArray" destination="cIc-jk-59z" id="iY6-Zb-4TD"/>
+                        <outletCollection property="labelArray" destination="JbE-mR-DHw" id="sSn-Rl-pLJ"/>
+                        <outletCollection property="labelArray" destination="sbd-GK-huj" id="d97-hS-r1u"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o5v-h7-ct0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2830" y="798"/>
+        </scene>
+        <!--Stats-->
+        <scene sceneID="6Vh-4T-1Uu">
+            <objects>
+                <viewController storyboardIdentifier="StatsViewController" id="vEt-VV-xUv" customClass="StatsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sJ0-b3-KTK"/>
+                        <viewControllerLayoutGuide type="bottom" id="1hn-QH-Nlk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RCx-i0-gP4">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Stats" id="5Hg-nq-whB">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" id="Dcj-Y5-Mzz">
+                            <color key="tintColor" red="0.85075363010000005" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="menuButtonTapped:" destination="vEt-VV-xUv" id="QMW-yF-vqU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outletCollection property="bulletPointArray" destination="cIc-jk-59z" id="3Sw-5m-gbi"/>
+                        <outletCollection property="bulletPointArray" destination="Vdh-DQ-Dtd" id="kP3-dX-0tF"/>
+                        <outletCollection property="bulletPointArray" destination="sbd-GK-huj" id="hiU-ef-6st"/>
+                        <outletCollection property="bulletPointArray" destination="FCB-YM-sm9" id="5J1-tH-MJ5"/>
+                        <outletCollection property="bulletPointArray" destination="JbE-mR-DHw" id="NOf-65-XBL"/>
+                        <outletCollection property="bulletPointArray" destination="Ogt-OR-aTb" id="LMH-bK-inT"/>
+                        <outletCollection property="bulletPointArray" destination="KqJ-Aw-dWT" id="4mY-zK-INL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tSB-nh-eOy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1746" y="1597"/>
+        </scene>
         <!--High Score Table View Controller-->
         <scene sceneID="2SE-fk-I2x">
             <objects>
@@ -503,12 +753,6 @@
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="haC-to-l4e">
                                 <rect key="frame" x="0.0" y="12" width="600" height="596"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color Timer" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBg-Ri-qNS">
-                                        <rect key="frame" x="164" y="35" width="273" height="60"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
-                                        <color key="textColor" red="0.85075363005050508" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MIP-6J-vtL">
                                         <rect key="frame" x="260" y="145" width="80" height="80"/>
                                         <constraints>
@@ -530,8 +774,8 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="evt-CE-FdR">
                                                 <rect key="frame" x="48" y="0.0" width="192" height="40"/>
                                                 <color key="backgroundColor" red="1" green="0.58131705029596303" blue="0.33112952696701281" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name="Kenzo" family="Kenzo" pointSize="30"/>
-                                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="-4"/>
+                                                <fontDescription key="fontDescription" name="BebasKai" family="Bebas Kai" pointSize="30"/>
+                                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
                                                 <size key="titleShadowOffset" width="2.2250738585072014e-308" height="0.0"/>
                                                 <state key="normal" title="  Classic  ">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -639,9 +883,12 @@
                                                 <color key="backgroundColor" red="0.79048295449999995" green="0.79048295449999995" blue="0.79048295449999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="BebasKai" family="Bebas Kai" pointSize="30"/>
                                                 <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
-                                                <state key="normal" title="ACCOLADES">
+                                                <state key="normal" title="Stats">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <segue destination="cgw-1U-enY" kind="show" id="n35-d9-8Nc"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.96811683514344593" green="1" blue="0.51918303359110518" alpha="1" colorSpace="calibratedRGB"/>
@@ -657,6 +904,12 @@
                                             <constraint firstItem="xc1-l4-9dO" firstAttribute="top" secondItem="lUC-bm-FZ7" secondAttribute="top" id="zN5-Pl-2Qt"/>
                                         </constraints>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color Timer" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBg-Ri-qNS">
+                                        <rect key="frame" x="164" y="35" width="273" height="60"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
+                                        <color key="textColor" red="0.85075363005050508" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="bBg-Ri-qNS" firstAttribute="centerX" secondItem="haC-to-l4e" secondAttribute="centerX" id="2a1-yz-WZN"/>

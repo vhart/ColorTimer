@@ -17,6 +17,38 @@
             endingLineNumber = "28"
             landmarkName = "-isNewStreak:"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[HighScoresModel isNewStreak:]"
+                  moduleName = "ColorTimer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/varindra/Projects/c4q/unit-1/week-5/ColorTimer/ColorTimer/HighScoresModel.m"
+                  timestampString = "468303165.624407"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "130">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[HighScoresModel isNewStreak:]"
+                  moduleName = "ColorTimer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/varindra/Projects/c4q/unit-1/week-5/ColorTimer/ColorTimer/HighScoresModel.m"
+                  timestampString = "468303165.624605"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "138">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -26,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ColorTimer/HighScoresModel.m"
-            timestampString = "461661348.011601"
+            timestampString = "467147310.638832"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "-addStreak:forUser:"
             landmarkType = "5">
          </BreakpointContent>

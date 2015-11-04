@@ -15,6 +15,7 @@
 		C7213B2F1BBED6C4004F572D /* BebasKai-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C7213B2E1BBED6C4004F572D /* BebasKai-Regular.otf */; };
 		C7213B311BBED6D7004F572D /* Geometos.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C7213B301BBED6D7004F572D /* Geometos.ttf */; };
 		C7213B351BBF3AA8004F572D /* HDNotificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7213B341BBF3AA8004F572D /* HDNotificationView.m */; };
+		C75E8FC21BD18E95002699B1 /* StatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C75E8FC11BD18E95002699B1 /* StatsViewController.m */; };
 		C762A3D21B818D2F002B09C9 /* HighScoreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C762A3D11B818D2F002B09C9 /* HighScoreTableViewController.m */; };
 		C762A3D51B819327002B09C9 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C762A3D41B819327002B09C9 /* SettingsViewController.m */; };
 		C762A3D81B81A366002B09C9 /* HighScoresModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C762A3D71B81A366002B09C9 /* HighScoresModel.m */; };
@@ -25,6 +26,7 @@
 		C7827E501B7FAFF70024690F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7827E4F1B7FAFF70024690F /* Images.xcassets */; };
 		C7827E531B7FAFF70024690F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7827E511B7FAFF70024690F /* LaunchScreen.xib */; };
 		C7827E5F1B7FAFF70024690F /* ColorTimerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C7827E5E1B7FAFF70024690F /* ColorTimerTests.m */; };
+		C7A6EB051BD35A6E0064BD4A /* StatsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7A6EB041BD35A6E0064BD4A /* StatsTableViewController.m */; };
 		C7E0EBF31BC332D20098C9F4 /* ChallengesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E0EBF21BC332D20098C9F4 /* ChallengesTableViewController.m */; };
 		C7E0EBF51BC341820098C9F4 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7E0EBF41BC341820098C9F4 /* CoreData.framework */; };
 		C7E0EBF81BC3423E0098C9F4 /* ColorTimer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C7E0EBF61BC3423E0098C9F4 /* ColorTimer.xcdatamodeld */; };
@@ -32,6 +34,8 @@
 		C7FFC1DD1BC5FA0100623BAF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7FFC1DC1BC5FA0100623BAF /* AudioToolbox.framework */; };
 		C7FFC1E01BC6255900623BAF /* ChallengesCustomHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FFC1DF1BC6255900623BAF /* ChallengesCustomHeaderView.m */; };
 		C7FFC1E21BC626E600623BAF /* ChallengesCustomHeaderViewNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7FFC1E11BC626E600623BAF /* ChallengesCustomHeaderViewNib.xib */; };
+		C7FFC1E41BC6C65500623BAF /* HSHeaderViewNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7FFC1E31BC6C65500623BAF /* HSHeaderViewNib.xib */; };
+		C7FFC1E71BC6C70800623BAF /* HSHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FFC1E61BC6C70800623BAF /* HSHeaderView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +62,8 @@
 		C7213B301BBED6D7004F572D /* Geometos.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Geometos.ttf; sourceTree = "<group>"; };
 		C7213B331BBF3AA8004F572D /* HDNotificationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDNotificationView.h; sourceTree = "<group>"; };
 		C7213B341BBF3AA8004F572D /* HDNotificationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDNotificationView.m; sourceTree = "<group>"; };
+		C75E8FC01BD18E95002699B1 /* StatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsViewController.h; sourceTree = "<group>"; };
+		C75E8FC11BD18E95002699B1 /* StatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsViewController.m; sourceTree = "<group>"; };
 		C762A3CC1B816929002B09C9 /* GamePlayViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamePlayViewControllerDelegate.h; sourceTree = "<group>"; };
 		C762A3D01B818D2F002B09C9 /* HighScoreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HighScoreTableViewController.h; path = ColorTimer/HighScoreTableViewController.h; sourceTree = "<group>"; };
 		C762A3D11B818D2F002B09C9 /* HighScoreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HighScoreTableViewController.m; path = ColorTimer/HighScoreTableViewController.m; sourceTree = "<group>"; };
@@ -78,6 +84,8 @@
 		C7827E581B7FAFF70024690F /* ColorTimerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ColorTimerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7827E5D1B7FAFF70024690F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7827E5E1B7FAFF70024690F /* ColorTimerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorTimerTests.m; sourceTree = "<group>"; };
+		C7A6EB031BD35A6E0064BD4A /* StatsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsTableViewController.h; sourceTree = "<group>"; };
+		C7A6EB041BD35A6E0064BD4A /* StatsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsTableViewController.m; sourceTree = "<group>"; };
 		C7E0EBF11BC332D20098C9F4 /* ChallengesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengesTableViewController.h; sourceTree = "<group>"; };
 		C7E0EBF21BC332D20098C9F4 /* ChallengesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChallengesTableViewController.m; sourceTree = "<group>"; };
 		C7E0EBF41BC341820098C9F4 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -89,6 +97,9 @@
 		C7FFC1DE1BC6255900623BAF /* ChallengesCustomHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengesCustomHeaderView.h; sourceTree = "<group>"; };
 		C7FFC1DF1BC6255900623BAF /* ChallengesCustomHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChallengesCustomHeaderView.m; sourceTree = "<group>"; };
 		C7FFC1E11BC626E600623BAF /* ChallengesCustomHeaderViewNib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChallengesCustomHeaderViewNib.xib; sourceTree = "<group>"; };
+		C7FFC1E31BC6C65500623BAF /* HSHeaderViewNib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HSHeaderViewNib.xib; sourceTree = "<group>"; };
+		C7FFC1E51BC6C70800623BAF /* HSHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSHeaderView.h; sourceTree = "<group>"; };
+		C7FFC1E61BC6C70800623BAF /* HSHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSHeaderView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +153,9 @@
 				C762A3D41B819327002B09C9 /* SettingsViewController.m */,
 				C762A3D01B818D2F002B09C9 /* HighScoreTableViewController.h */,
 				C762A3D11B818D2F002B09C9 /* HighScoreTableViewController.m */,
+				C7FFC1E31BC6C65500623BAF /* HSHeaderViewNib.xib */,
+				C7FFC1E51BC6C70800623BAF /* HSHeaderView.h */,
+				C7FFC1E61BC6C70800623BAF /* HSHeaderView.m */,
 			);
 			name = ControllerWithSlideOuts;
 			sourceTree = "<group>";
@@ -165,9 +179,21 @@
 			name = HDNotificationView;
 			sourceTree = "<group>";
 		};
+		C75E8FBF1BD18E7A002699B1 /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				C75E8FC01BD18E95002699B1 /* StatsViewController.h */,
+				C75E8FC11BD18E95002699B1 /* StatsViewController.m */,
+				C7A6EB031BD35A6E0064BD4A /* StatsTableViewController.h */,
+				C7A6EB041BD35A6E0064BD4A /* StatsTableViewController.m */,
+			);
+			name = Statistics;
+			sourceTree = "<group>";
+		};
 		C7827E361B7FAFF70024690F = {
 			isa = PBXGroup;
 			children = (
+				C75E8FBF1BD18E7A002699B1 /* Statistics */,
 				C7E0EBF01BC3321C0098C9F4 /* Challenges */,
 				C7213B2A1BBED27C004F572D /* ControllerWithSlideOuts */,
 				C7827E411B7FAFF70024690F /* ColorTimer */,
@@ -346,6 +372,7 @@
 				C7213B311BBED6D7004F572D /* Geometos.ttf in Resources */,
 				C7827E4E1B7FAFF70024690F /* Main.storyboard in Resources */,
 				C7213B2D1BBED6BA004F572D /* Kenzo Regular.otf in Resources */,
+				C7FFC1E41BC6C65500623BAF /* HSHeaderViewNib.xib in Resources */,
 				C7FFC1E21BC626E600623BAF /* ChallengesCustomHeaderViewNib.xib in Resources */,
 				C7827E531B7FAFF70024690F /* LaunchScreen.xib in Resources */,
 				C7827E501B7FAFF70024690F /* Images.xcassets in Resources */,
@@ -410,7 +437,10 @@
 				C762A3D51B819327002B09C9 /* SettingsViewController.m in Sources */,
 				C7213B351BBF3AA8004F572D /* HDNotificationView.m in Sources */,
 				C7E0EBFD1BC3466F0098C9F4 /* Challenge.m in Sources */,
+				C7A6EB051BD35A6E0064BD4A /* StatsTableViewController.m in Sources */,
+				C75E8FC21BD18E95002699B1 /* StatsViewController.m in Sources */,
 				C7827E451B7FAFF70024690F /* main.m in Sources */,
+				C7FFC1E71BC6C70800623BAF /* HSHeaderView.m in Sources */,
 				C71EB8FC1B81145D000B93B9 /* MainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

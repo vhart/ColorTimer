@@ -65,6 +65,10 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
     Challenge *six = [NSEntityDescription insertNewObjectForEntityForName:@"Challenge" inManagedObjectContext:delegate.managedObjectContext];
     Challenge *seven = [NSEntityDescription insertNewObjectForEntityForName:@"Challenge" inManagedObjectContext:delegate.managedObjectContext];
     Challenge *eight = [NSEntityDescription insertNewObjectForEntityForName:@"Challenge" inManagedObjectContext:delegate.managedObjectContext];
+    Challenge *nine = [NSEntityDescription insertNewObjectForEntityForName:@"Challenge" inManagedObjectContext:delegate.managedObjectContext];
+    Challenge *ten = [NSEntityDescription insertNewObjectForEntityForName:@"Challenge" inManagedObjectContext:delegate.managedObjectContext];
+    Challenge *eleven = [NSEntityDescription insertNewObjectForEntityForName:@"Challenge" inManagedObjectContext:delegate.managedObjectContext];
+    Challenge *twelve = [NSEntityDescription insertNewObjectForEntityForName:@"Challenge" inManagedObjectContext:delegate.managedObjectContext];
     
     
     [one setValue:@"Get 5 50+ streaks" forKey:@"challengeDescription"];
@@ -117,25 +121,66 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
     [six setValue:@"Great job! 3/3" forKey:@"challengeCompletedMessage"];
     [six setValue:@1.3 forKey:@"challengeIDNumber"];
     
-    [seven setValue:@"Get a 50+ streak in 30 seconds" forKey:@"challengeDescription"];
+    [seven setValue:@"Get a 60+ streak in 30 seconds" forKey:@"challengeDescription"];
     [seven setValue:[NSNumber numberWithBool:YES] forKey:@"streakChallenge"];
     [seven setValue:[NSNumber numberWithBool:YES] forKey:@"speedChallenge"];
-    [seven setValue:@50 forKey:@"streakMax"];
+    [seven setValue:@60 forKey:@"streakMax"];
     [seven setValue:@30 forKey:@"timeMax"];
     [seven setValue:@1 forKey:@"numberOfSuccessesNeeded"];
     [seven setValue:@0 forKey:@"currentNumberOfSuccesses"];
     [seven setValue:@"Great job! 1/1" forKey:@"challengeCompletedMessage"];
     [seven setValue:@2.1 forKey:@"challengeIDNumber"];
     
-    [eight setValue:@"Get a 300+ score in 30 seconds" forKey:@"challengeDescription"];
+    [eight setValue:@"Get a 350+ score in 30 seconds" forKey:@"challengeDescription"];
     [eight setValue:[NSNumber numberWithBool:YES] forKey:@"scoreChallenge"];
     [eight setValue:[NSNumber numberWithBool:YES] forKey:@"speedChallenge"];
-    [eight setValue:@300 forKey:@"scoreMax"];
+    [eight setValue:@350 forKey:@"scoreMax"];
     [eight setValue:@30 forKey:@"timeMax"];
     [eight setValue:@1 forKey:@"numberOfSuccessesNeeded"];
     [eight setValue:@0 forKey:@"currentNumberOfSuccesses"];
     [eight setValue:@"Great job! 1/1" forKey:@"challengeCompletedMessage"];
     [eight setValue:@2.2 forKey:@"challengeIDNumber"];
+    
+    
+    [nine setValue:@"Get a 22+ streak in 10 seconds" forKey:@"challengeDescription"];
+    [nine setValue:[NSNumber numberWithBool:YES] forKey:@"streakChallenge"];
+    [nine setValue:[NSNumber numberWithBool:YES] forKey:@"speedChallenge"];
+    [nine setValue:@22 forKey:@"streakMax"];
+    [nine setValue:@10 forKey:@"timeMax"];
+    [nine setValue:@1 forKey:@"numberOfSuccessesNeeded"];
+    [nine setValue:@0 forKey:@"currentNumberOfSuccesses"];
+    [nine setValue:@"Great job! 1/1" forKey:@"challengeCompletedMessage"];
+    [nine setValue:@2.3 forKey:@"challengeIDNumber"];
+    
+    [ten setValue:@"Get a 175+ score in 15 seconds" forKey:@"challengeDescription"];
+    [ten setValue:[NSNumber numberWithBool:YES] forKey:@"scoreChallenge"];
+    [ten setValue:[NSNumber numberWithBool:YES] forKey:@"speedChallenge"];
+    [ten setValue:@175 forKey:@"scoreMax"];
+    [ten setValue:@15 forKey:@"timeMax"];
+    [ten setValue:@1 forKey:@"numberOfSuccessesNeeded"];
+    [ten setValue:@0 forKey:@"currentNumberOfSuccesses"];
+    [ten setValue:@"Great job! 1/1" forKey:@"challengeCompletedMessage"];
+    [ten setValue:@2.4 forKey:@"challengeIDNumber"];
+    
+    [eleven setValue:@"Get a 70+ streak " forKey:@"challengeDescription"];
+    [eleven setValue:[NSNumber numberWithBool:YES] forKey:@"streakChallenge"];
+    [eleven setValue:[NSNumber numberWithBool:YES] forKey:@"speedChallenge"];
+    [eleven setValue:@70 forKey:@"streakMax"];
+    [eleven setValue:@1 forKey:@"timeMax"];
+    [eleven setValue:@1 forKey:@"numberOfSuccessesNeeded"];
+    [eleven setValue:@0 forKey:@"currentNumberOfSuccesses"];
+    [eleven setValue:@"Great job! 1/1" forKey:@"challengeCompletedMessage"];
+    [eleven setValue:@3.1 forKey:@"challengeIDNumber"];
+    
+    [twelve setValue:@"Get a 650+ score" forKey:@"challengeDescription"];
+    [twelve setValue:[NSNumber numberWithBool:YES] forKey:@"scoreChallenge"];
+    [twelve setValue:[NSNumber numberWithBool:YES] forKey:@"speedChallenge"];
+    [twelve setValue:@650 forKey:@"scoreMax"];
+    [twelve setValue:@1 forKey:@"timeMax"];
+    [twelve setValue:@1 forKey:@"numberOfSuccessesNeeded"];
+    [twelve setValue:@0 forKey:@"currentNumberOfSuccesses"];
+    [twelve setValue:@"Great job! 1/1" forKey:@"challengeCompletedMessage"];
+    [twelve setValue:@3.2 forKey:@"challengeIDNumber"];
 }
 
 
@@ -170,6 +215,11 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
             customHeader.challengeLabel.text = @"Timing Is Everything";
             break;
         }
+        case 3:
+        {
+            customHeader.colorLabel.backgroundColor = [UIColor blackColor];
+            customHeader.challengeLabel.text = @"Panic! Lose .5s per 5 streak";
+        }
         default:
             break;
     }
@@ -189,7 +239,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -202,6 +252,9 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
             return 3;
             break;
         case 2:
+            return 4;
+            break;
+        case 3:
             return 2;
             break;
         default:
@@ -261,7 +314,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%d<%K AND %K <%d",indexPath.section,@"challengeIDNumber",@"challengeIDNumber",indexPath.section+1];
     NSArray *newArray = [self.fetchedResultsController.fetchedObjects filteredArrayUsingPredicate:predicate];
     Challenge *chal = newArray[indexPath.row];
-    chal.currentNumberOfSuccesses = @0;
+//    chal.currentNumberOfSuccesses = @0;
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
     [delegate.managedObjectContext save:nil];
     [self.tableView reloadData];
@@ -273,7 +326,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%d<%K AND %K <%d",indexPath.section,@"challengeIDNumber",@"challengeIDNumber",indexPath.section+1];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%d<%K AND %K <%d",indexPath.section,@"challengeIDNumber",@"challengeIDNumber",indexPath.section+1]; 
     NSArray *newArray = [self.fetchedResultsController.fetchedObjects filteredArrayUsingPredicate:predicate];
     Challenge *chal = newArray[indexPath.row];
     MainViewController *mainVC = segue.destinationViewController;
