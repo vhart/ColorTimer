@@ -9,6 +9,7 @@
 #import "SettingsViewController.h"
 
 @interface SettingsViewController ()
+@property (weak, nonatomic) IBOutlet UIView *settingOptionsView;
 
 @end
 
@@ -17,6 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.settingOptionsView.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -29,6 +31,8 @@
     
     [[NSNotificationCenter defaultCenter]postNotificationName:@"DismissMainViewControllerNotification" object:nil];
     
+}
+- (IBAction)settingsButtonTapped:(id)sender {
 }
 
 

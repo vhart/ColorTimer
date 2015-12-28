@@ -11,6 +11,7 @@
 #import "HighScoresModel.h"
 #import "HDNotificationView.h"
 #import "AppDelegate.h"
+#import <MarqueeLabel/MarqueeLabel.h>
 
 NSTimeInterval const GameTimerInteval = 0.01f;
 
@@ -31,8 +32,8 @@ NSTimeInterval const GameTimerInteval = 0.01f;
 
 @property (weak, nonatomic) IBOutlet UILabel *streakLabel;
 @property (nonatomic) float timerValue;
-@property (nonatomic) NSInteger score;
-@property (nonatomic) NSInteger streak;
+@property (nonatomic) long score;
+@property (nonatomic) long streak;
 
 @property (nonatomic) NSTimer *gameTimer;
 @property (nonatomic) UIColor *currentColor;
@@ -45,6 +46,7 @@ NSTimeInterval const GameTimerInteval = 0.01f;
 @property (nonatomic) float fastestReaction;
 
 @property (nonatomic) float scoreOffset;
+@property (weak, nonatomic) IBOutlet MarqueeLabel *challengeLabel;
 
 @end
 
@@ -76,6 +78,16 @@ NSTimeInterval const GameTimerInteval = 0.01f;
     [self.view addGestureRecognizer:swipeRight];
     
     [self addShadow];
+    
+    self.challengeLabel.marqueeType = MLContinuous;
+    if (self.currentChallenge) {
+        self.challengeLabel.text = [NSString stringWithFormat:@"%@     Progress: %@/%@", self.currentChallenge.challengeDescription, self.currentChallenge.currentNumberOfSuccesses,self.currentChallenge.numberOfSuccessesNeeded];
+        self.challengeLabel.animationDelay = 2.5f;
+        self.timeLabel.hidden = YES;
+    }
+    else{
+        self.challengeLabel.hidden = YES;
+    }
     
 }
 
@@ -127,7 +139,7 @@ NSTimeInterval const GameTimerInteval = 0.01f;
     NSMutableArray *tempColorsArray = [NSMutableArray new];
     for (int i = 0; i<2; i++) {
         while (YES) {
-            NSInteger idxForColor = arc4random_uniform(self.colorsArray.count);
+            NSInteger idxForColor = arc4random_uniform((int)self.colorsArray.count);
             
             UIColor *color =  [self.colorsArray objectAtIndex:idxForColor];
             
@@ -211,7 +223,7 @@ NSTimeInterval const GameTimerInteval = 0.01f;
                 }
                 break;
             }
-            else if (self.currentChallenge.consecutiveChallenge && [self.currentChallenge valueForKey:@"currentNumberOfSuccesses"]!=self.currentChallenge.numberOfSuccessesNeeded && self.currentChallenge.currentNumberOfSuccesses!=0){
+            else if ((self.currentChallenge.consecutiveChallenge) && ([self.currentChallenge valueForKey:@"currentNumberOfSuccesses"]!=self.currentChallenge.numberOfSuccessesNeeded) && ([self.currentChallenge.currentNumberOfSuccesses integerValue]>0)){
                 [self.currentChallenge setValue:@0 forKey:@"currentNumberOfSuccesses"];
                 [HDNotificationView showNotificationViewWithImage:[UIImage imageNamed:@"welcomeToTheLeaderBoard"] title:@"Bad News" message:@"Consecutive Challenge Has Been Reset"];
                 break;
@@ -262,6 +274,7 @@ NSTimeInterval const GameTimerInteval = 0.01f;
             UITextField* titleField = [alertViewChangeName textFieldAtIndex: 0];
             titleField.autocapitalizationType = UITextAutocapitalizationTypeWords;
             titleField.autocorrectionType = UITextAutocorrectionTypeDefault;
+            alertViewChangeName.delegate = self;
             [alertViewChangeName show];
         }
         else if(rank == -1 && rank2>-1){
@@ -270,6 +283,7 @@ NSTimeInterval const GameTimerInteval = 0.01f;
             UITextField* titleField = [alertViewChangeName textFieldAtIndex: 0];
             titleField.autocapitalizationType = UITextAutocapitalizationTypeWords;
             titleField.autocorrectionType = UITextAutocorrectionTypeDefault;
+            alertViewChangeName.delegate = self;
             [alertViewChangeName show];
             
         }
@@ -279,13 +293,14 @@ NSTimeInterval const GameTimerInteval = 0.01f;
             UITextField* titleField = [alertViewChangeName textFieldAtIndex: 0];
             titleField.autocapitalizationType = UITextAutocapitalizationTypeWords;
             titleField.autocorrectionType = UITextAutocorrectionTypeDefault;
+            alertViewChangeName.delegate = self;
             [alertViewChangeName show];
         }
     }
     
     else{
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"GAME OVER!" message:@"Good Effort\nTry Again!" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
-        
+        alert.delegate = self;
         [alert show];
     }
     
@@ -360,6 +375,10 @@ NSTimeInterval const GameTimerInteval = 0.01f;
 - (IBAction)startGameButton:(UIButton *)sender {
     sender.enabled = NO;
     sender.hidden = YES;
+    
+    self.challengeLabel.hidden = YES;
+    self.timeLabel.hidden = NO;
+    
     for(UIButton *b in self.arrayOfButtons){
         
         b.enabled=YES;
@@ -439,7 +458,7 @@ NSTimeInterval const GameTimerInteval = 0.01f;
     while (YES) {
         
         
-        NSInteger nextColor = arc4random_uniform(self.colorsArray.count);
+        NSInteger nextColor = arc4random_uniform((int)self.colorsArray.count);
         
         realColor =  [self.colorsArray objectAtIndex:nextColor];
         
@@ -468,6 +487,10 @@ NSTimeInterval const GameTimerInteval = 0.01f;
     if (buttonIndex == 0) {
         
         [self.view endEditing:YES];
+        if (self.currentChallenge) {
+            self.challengeLabel.hidden = NO;
+            self.timeLabel.hidden = YES;
+        }
         return;
     }
     
@@ -482,6 +505,11 @@ NSTimeInterval const GameTimerInteval = 0.01f;
     }
     [self.delegate viewController:self newScoreAdded:YES];
     [HDNotificationView showNotificationViewWithImage:[UIImage imageNamed:@"welcomeToTheLeaderBoard"] title:@"Crushing It!" message:@"The leaderboard recognizes your skill"];
+    
+    if (self.currentChallenge) {
+        self.challengeLabel.hidden = NO;
+        self.timeLabel.hidden = YES;
+    }
 }
 
 #pragma mark - Add a Shadow

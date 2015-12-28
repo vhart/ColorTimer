@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>MarqueeLabel.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,17 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0C334B1C22F9F59818D7BDF9303F8588</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>47C800E42623009B7192B025B3DD25A1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>6DCD492FA5A4B895F73E7C25ED0B3AD0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>BEB979B84C67B6AD30CE913CF0894E26</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C21D38C438767AAF39A41EDAA911BCB6</key>
 		<dict>
 			<key>primary</key>
 			<true/>

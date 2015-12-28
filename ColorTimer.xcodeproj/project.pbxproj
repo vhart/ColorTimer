@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		A95E39A3EA7122A693ED861A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DADD3C8CF3733208B009966 /* libPods.a */; };
+		C7127BC51BF840AB0069CF76 /* DemoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7127BC01BF840AB0069CF76 /* DemoCollectionViewCell.xib */; };
+		C7127BC61BF840AB0069CF76 /* DemoCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7127BC11BF840AB0069CF76 /* DemoCollectionViewController.m */; };
+		C7127BC71BF840AB0069CF76 /* DemoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C7127BC31BF840AB0069CF76 /* DemoCollectionViewCell.m */; };
+		C7127BCA1BF85AEE0069CF76 /* ColorSets.m in Sources */ = {isa = PBXBuildFile; fileRef = C7127BC91BF85AEE0069CF76 /* ColorSets.m */; };
 		C71EB8FC1B81145D000B93B9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C71EB8FB1B81145D000B93B9 /* MainViewController.m */; };
 		C7213AE21BB99D4A004F572D /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7213AE11BB99D4A004F572D /* MenuViewController.m */; };
 		C7213B251BBB30FA004F572D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7213B241BBB30FA004F572D /* QuartzCore.framework */; };
@@ -19,6 +23,7 @@
 		C762A3D21B818D2F002B09C9 /* HighScoreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C762A3D11B818D2F002B09C9 /* HighScoreTableViewController.m */; };
 		C762A3D51B819327002B09C9 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C762A3D41B819327002B09C9 /* SettingsViewController.m */; };
 		C762A3D81B81A366002B09C9 /* HighScoresModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C762A3D71B81A366002B09C9 /* HighScoresModel.m */; };
+		C771B2E81C31D3F40049C9DD /* UIColor+HexToUIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = C771B2E71C31D3F40049C9DD /* UIColor+HexToUIColor.m */; };
 		C7827E451B7FAFF70024690F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C7827E441B7FAFF70024690F /* main.m */; };
 		C7827E481B7FAFF70024690F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C7827E471B7FAFF70024690F /* AppDelegate.m */; };
 		C7827E4B1B7FAFF70024690F /* GamePlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7827E4A1B7FAFF70024690F /* GamePlayViewController.m */; };
@@ -52,6 +57,13 @@
 		3E297B1E54ECE6531236172C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		5DADD3C8CF3733208B009966 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A233BC9D7E91D7EA610A9ADD /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		C7127BC01BF840AB0069CF76 /* DemoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DemoCollectionViewCell.xib; sourceTree = "<group>"; };
+		C7127BC11BF840AB0069CF76 /* DemoCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoCollectionViewController.m; sourceTree = "<group>"; };
+		C7127BC21BF840AB0069CF76 /* DemoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoCollectionViewCell.h; sourceTree = "<group>"; };
+		C7127BC31BF840AB0069CF76 /* DemoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoCollectionViewCell.m; sourceTree = "<group>"; };
+		C7127BC41BF840AB0069CF76 /* DemoCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoCollectionViewController.h; sourceTree = "<group>"; };
+		C7127BC81BF85AEE0069CF76 /* ColorSets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorSets.h; sourceTree = "<group>"; };
+		C7127BC91BF85AEE0069CF76 /* ColorSets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorSets.m; sourceTree = "<group>"; };
 		C71EB8FA1B81145D000B93B9 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = ColorTimer/MainViewController.h; sourceTree = "<group>"; };
 		C71EB8FB1B81145D000B93B9 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = ColorTimer/MainViewController.m; sourceTree = "<group>"; };
 		C7213AE01BB99D4A004F572D /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
@@ -71,6 +83,8 @@
 		C762A3D41B819327002B09C9 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = ColorTimer/SettingsViewController.m; sourceTree = "<group>"; };
 		C762A3D61B81A366002B09C9 /* HighScoresModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighScoresModel.h; sourceTree = "<group>"; };
 		C762A3D71B81A366002B09C9 /* HighScoresModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighScoresModel.m; sourceTree = "<group>"; };
+		C771B2E61C31D3F40049C9DD /* UIColor+HexToUIColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexToUIColor.h"; sourceTree = "<group>"; };
+		C771B2E71C31D3F40049C9DD /* UIColor+HexToUIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexToUIColor.m"; sourceTree = "<group>"; };
 		C7827E3F1B7FAFF70024690F /* ColorTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7827E431B7FAFF70024690F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7827E441B7FAFF70024690F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -144,6 +158,22 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		C7127BBF1BF8404E0069CF76 /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				C7127BC01BF840AB0069CF76 /* DemoCollectionViewCell.xib */,
+				C7127BC41BF840AB0069CF76 /* DemoCollectionViewController.h */,
+				C7127BC11BF840AB0069CF76 /* DemoCollectionViewController.m */,
+				C7127BC21BF840AB0069CF76 /* DemoCollectionViewCell.h */,
+				C7127BC31BF840AB0069CF76 /* DemoCollectionViewCell.m */,
+				C7127BC81BF85AEE0069CF76 /* ColorSets.h */,
+				C7127BC91BF85AEE0069CF76 /* ColorSets.m */,
+				C771B2E61C31D3F40049C9DD /* UIColor+HexToUIColor.h */,
+				C771B2E71C31D3F40049C9DD /* UIColor+HexToUIColor.m */,
+			);
+			name = Colors;
+			sourceTree = "<group>";
+		};
 		C7213B2A1BBED27C004F572D /* ControllerWithSlideOuts */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,6 +223,7 @@
 		C7827E361B7FAFF70024690F = {
 			isa = PBXGroup;
 			children = (
+				C7127BBF1BF8404E0069CF76 /* Colors */,
 				C75E8FBF1BD18E7A002699B1 /* Statistics */,
 				C7E0EBF01BC3321C0098C9F4 /* Challenges */,
 				C7213B2A1BBED27C004F572D /* ControllerWithSlideOuts */,
@@ -373,6 +404,7 @@
 				C7827E4E1B7FAFF70024690F /* Main.storyboard in Resources */,
 				C7213B2D1BBED6BA004F572D /* Kenzo Regular.otf in Resources */,
 				C7FFC1E41BC6C65500623BAF /* HSHeaderViewNib.xib in Resources */,
+				C7127BC51BF840AB0069CF76 /* DemoCollectionViewCell.xib in Resources */,
 				C7FFC1E21BC626E600623BAF /* ChallengesCustomHeaderViewNib.xib in Resources */,
 				C7827E531B7FAFF70024690F /* LaunchScreen.xib in Resources */,
 				C7827E501B7FAFF70024690F /* Images.xcassets in Resources */,
@@ -431,15 +463,19 @@
 				C7E0EBF31BC332D20098C9F4 /* ChallengesTableViewController.m in Sources */,
 				C7827E481B7FAFF70024690F /* AppDelegate.m in Sources */,
 				C762A3D81B81A366002B09C9 /* HighScoresModel.m in Sources */,
+				C7127BC61BF840AB0069CF76 /* DemoCollectionViewController.m in Sources */,
 				C7FFC1E01BC6255900623BAF /* ChallengesCustomHeaderView.m in Sources */,
 				C7213AE21BB99D4A004F572D /* MenuViewController.m in Sources */,
 				C762A3D21B818D2F002B09C9 /* HighScoreTableViewController.m in Sources */,
 				C762A3D51B819327002B09C9 /* SettingsViewController.m in Sources */,
 				C7213B351BBF3AA8004F572D /* HDNotificationView.m in Sources */,
 				C7E0EBFD1BC3466F0098C9F4 /* Challenge.m in Sources */,
+				C7127BCA1BF85AEE0069CF76 /* ColorSets.m in Sources */,
 				C7A6EB051BD35A6E0064BD4A /* StatsTableViewController.m in Sources */,
+				C771B2E81C31D3F40049C9DD /* UIColor+HexToUIColor.m in Sources */,
 				C75E8FC21BD18E95002699B1 /* StatsViewController.m in Sources */,
 				C7827E451B7FAFF70024690F /* main.m in Sources */,
+				C7127BC71BF840AB0069CF76 /* DemoCollectionViewCell.m in Sources */,
 				C7FFC1E71BC6C70800623BAF /* HSHeaderView.m in Sources */,
 				C71EB8FC1B81145D000B93B9 /* MainViewController.m in Sources */,
 			);
