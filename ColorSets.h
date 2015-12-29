@@ -30,5 +30,5 @@ typedef enum ColorSetEnum{
 @property (nonatomic) ColorSetType setType;
 
 + (NSArray <ColorSets *> *)getAllColorSets;
-
++ (ColorSets *)getColorSetCurrentlyApplied;
 @end

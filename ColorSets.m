@@ -22,6 +22,13 @@
     return allColorSets;
 }
 
++ (ColorSets *)getColorSetCurrentlyApplied{
+
+    int applied = [[[NSUserDefaults standardUserDefaults] objectForKey:@"AppliedColorSetValue"]intValue];
+    return [self getColorSetForValue:applied];
+
+}
+
 + (ColorSets *)getColorSetForValue:(int)value{
 
     switch (value) {

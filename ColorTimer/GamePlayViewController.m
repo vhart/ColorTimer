@@ -11,42 +11,33 @@
 #import "HighScoresModel.h"
 #import "HDNotificationView.h"
 #import "AppDelegate.h"
+#import "ColorSets.h"
 #import <MarqueeLabel/MarqueeLabel.h>
 
 NSTimeInterval const GameTimerInteval = 0.01f;
 
-//typedef NS_ENUM(NSInteger, QuestionColor) {
-//    Green = 0,
-//    Red,
-//    Blue,
-//};
-
 @interface GamePlayViewController () <UIAlertViewDelegate>
-@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
-@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
-@property (nonatomic) NSMutableArray *colorsArray;
-@property (weak, nonatomic) IBOutlet UIView *currentColorView;
+@property (weak, nonatomic)   IBOutlet UILabel *scoreLabel;
+@property (weak, nonatomic)   IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic)   IBOutlet UIView *currentColorView;
 @property (nonatomic, strong) IBOutletCollection(UIButton) NSArray *arrayOfButtons;
-
-@property (weak, nonatomic) IBOutlet UIButton *startButton;
-
-@property (weak, nonatomic) IBOutlet UILabel *streakLabel;
-@property (nonatomic) float timerValue;
-@property (nonatomic) long score;
-@property (nonatomic) long streak;
+@property (weak, nonatomic)   IBOutlet UIButton *startButton;
+@property (weak, nonatomic)   IBOutlet UILabel *streakLabel;
+@property (weak, nonatomic)   IBOutlet MarqueeLabel *challengeLabel;
 
 @property (nonatomic) NSTimer *gameTimer;
 @property (nonatomic) UIColor *currentColor;
+@property (nonatomic) NSMutableArray *colorsArray;
 
-@property (nonatomic) int streakRank;
-@property (nonatomic) int scoreRank;
-
-@property (nonatomic) float valueForNewTap;
-@property (nonatomic) float gameAvg;
-@property (nonatomic) float fastestReaction;
-
-@property (nonatomic) float scoreOffset;
-@property (weak, nonatomic) IBOutlet MarqueeLabel *challengeLabel;
+@property (nonatomic) int      scoreRank;
+@property (nonatomic) int      streakRank;
+@property (nonatomic) long     score;
+@property (nonatomic) long     streak;
+@property (nonatomic) float    gameAvg;
+@property (nonatomic) float    timerValue;
+@property (nonatomic) float    scoreOffset;
+@property (nonatomic) float    valueForNewTap;
+@property (nonatomic) float    fastestReaction;
 
 @end
 
@@ -54,19 +45,10 @@ NSTimeInterval const GameTimerInteval = 0.01f;
 #pragma mark - Life Cycle Methods
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.colorsArray = [NSMutableArray new];
     
-    [self.colorsArray addObject:[UIColor blackColor]];
-    [self.colorsArray addObject:[UIColor orangeColor]];
-    [self.colorsArray addObject:[UIColor cyanColor]];
-    [self.colorsArray addObject:[UIColor brownColor]];
-    [self.colorsArray addObject:[UIColor purpleColor]];
-    [self.colorsArray addObject:[UIColor magentaColor]];
-    [self.colorsArray addObject:[UIColor redColor]];
-    [self.colorsArray addObject:[UIColor yellowColor]];
+    self.colorsArray = [NSMutableArray arrayWithArray:[ColorSets getColorSetCurrentlyApplied].colors];
     
     [self disableButtons];
-    
     
     //CREATE AND ADD SWIPE GESTURES
     UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRecognized:)];
@@ -81,9 +63,7 @@ NSTimeInterval const GameTimerInteval = 0.01f;
     
     self.challengeLabel.marqueeType = MLContinuous;
     if (self.currentChallenge) {
-        self.challengeLabel.text = [NSString stringWithFormat:@"%@     Progress: %@/%@", self.currentChallenge.challengeDescription, self.currentChallenge.currentNumberOfSuccesses,self.currentChallenge.numberOfSuccessesNeeded];
-        self.challengeLabel.animationDelay = 2.5f;
-        self.timeLabel.hidden = YES;
+        [self updateChallengeLabelText];
     }
     else{
         self.challengeLabel.hidden = YES;
@@ -91,10 +71,6 @@ NSTimeInterval const GameTimerInteval = 0.01f;
     
 }
 
-
-//*******************************************************
-
-//Methods that will set up the game screen. Sets up in particular the score, questions, and button colors
 #pragma mark - GAME SETUP Methods
 - (void)reset {
     self.score = 0;
@@ -117,22 +93,35 @@ NSTimeInterval const GameTimerInteval = 0.01f;
     [self nextQuestion];
 }
 
-- (void)nextQuestion {
+- (void)nextQuestion{
+
     [self setNextColor];
-    
-    
     [self resetTimer];
-    
-    
+
 }
 
 - (void)disableButtons{
+
     for(UIButton *b in self.arrayOfButtons){
         b.enabled=NO;
+        
     }
 }
 
-//*********************** Partitioned for organizational purposes
+- (void)updateChallengeLabelText{
+
+    if (self.currentChallenge) {
+        self.challengeLabel.text = [NSString stringWithFormat:@"%@     Progress: %@/%@", self.currentChallenge.challengeDescription, self.currentChallenge.currentNumberOfSuccesses,self.currentChallenge.numberOfSuccessesNeeded];
+        self.challengeLabel.animationDelay = 2.5f;
+        self.timeLabel.hidden = YES;
+    }
+}
+
+- (void)swapTimeLabelForChallengeLabel{
+    self.challengeLabel.hidden = NO;
+    self.timeLabel.hidden = YES;
+}
+
 #pragma mark - Algorithm To Set Button Colors With No Duplicates or Repeats
 - (void)setButtonColors{
     
@@ -172,11 +161,7 @@ NSTimeInterval const GameTimerInteval = 0.01f;
     
 }
 
-//**********************************************************
 
-
-
-//EXECUTED BY TIMER TO DECREASE THE GAME's TIMER DISPLAYED TO THE USER
 - (void)decreaseTimer{
     self.timerValue -=.01;
     self.timeLabel.text = [NSString stringWithFormat:@"%.2f",self.timerValue];
@@ -187,11 +172,9 @@ NSTimeInterval const GameTimerInteval = 0.01f;
     
     
 }
-//**********************************************************
 
 #pragma mark - Game Over Methods
 
-//GAME OVER METHODS, CANCELES TIMER AND CALLS ALL RESET METHODS
 - (void)gameOver {
     
     //AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
@@ -348,10 +331,7 @@ NSTimeInterval const GameTimerInteval = 0.01f;
     [self.gameTimer invalidate];
 }
 
-//********************************************************
 
-
-//USER SELECTS AN ANSWER (COLOR BUTTON)
 #pragma mark - Methods Chained When Answer Selected
 - (IBAction)colorButtonTapped:(UIButton*)sender {
     if (sender.backgroundColor == self.currentColorView.backgroundColor) {
@@ -367,10 +347,8 @@ NSTimeInterval const GameTimerInteval = 0.01f;
     }
 }
 
-//*******************************************
-#pragma mark - Game START button
 
-//GAME BEGINS
+#pragma mark - Game START button
 
 - (IBAction)startGameButton:(UIButton *)sender {
     sender.enabled = NO;
@@ -400,8 +378,7 @@ NSTimeInterval const GameTimerInteval = 0.01f;
 }
 
 
-//METHODS THAT WILL EXECUTE WHEN A QUESTION IS ANSWERED CORRECTLY
-//SCORE, STREAK, COLOR OF BUTTONS AND UIVIEW, AND TIMER ARE UPDATED ACCORDINGLY
+
 #pragma mark - Methods Executed For Correct Answers
 - (void)incrementScore {
     if (self.currentChallenge.speedChallenge) {
@@ -476,40 +453,35 @@ NSTimeInterval const GameTimerInteval = 0.01f;
 }
 
 
-//DELEGATE METHODS
 #pragma mark - Delegate Methods For Swipes
 -(void) swipeRecognized:(UISwipeGestureRecognizer *)swipe{
     [self.delegate viewController:self swipeGesture:swipe];
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    
+
+    [self swapTimeLabelForChallengeLabel];
+    [self updateChallengeLabelText];
+
     if (buttonIndex == 0) {
-        
         [self.view endEditing:YES];
-        if (self.currentChallenge) {
-            self.challengeLabel.hidden = NO;
-            self.timeLabel.hidden = YES;
-        }
         return;
     }
     
-    
     NSString *userName = [[alertView textFieldAtIndex:0] text];
+
     if (self.streakRank!=-1) {
-        
         [[HighScoresModel sharedModel] addStreak:[NSString stringWithFormat:@"%lu",self.streak] forUser:userName];
     }
+
     if (self.scoreRank!=-1) {
         [[HighScoresModel sharedModel] addScore:[NSString stringWithFormat:@"%lu",self.score] forUser:userName];
     }
+
     [self.delegate viewController:self newScoreAdded:YES];
+
     [HDNotificationView showNotificationViewWithImage:[UIImage imageNamed:@"welcomeToTheLeaderBoard"] title:@"Crushing It!" message:@"The leaderboard recognizes your skill"];
-    
-    if (self.currentChallenge) {
-        self.challengeLabel.hidden = NO;
-        self.timeLabel.hidden = YES;
-    }
+
 }
 
 #pragma mark - Add a Shadow
