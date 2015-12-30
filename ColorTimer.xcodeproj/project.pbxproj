@@ -24,6 +24,7 @@
 		C762A3D51B819327002B09C9 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C762A3D41B819327002B09C9 /* SettingsViewController.m */; };
 		C762A3D81B81A366002B09C9 /* HighScoresModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C762A3D71B81A366002B09C9 /* HighScoresModel.m */; };
 		C771B2E81C31D3F40049C9DD /* UIColor+HexToUIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = C771B2E71C31D3F40049C9DD /* UIColor+HexToUIColor.m */; };
+		C771B2EB1C3276F50049C9DD /* NSUserDefaults+Updates.m in Sources */ = {isa = PBXBuildFile; fileRef = C771B2EA1C3276F50049C9DD /* NSUserDefaults+Updates.m */; };
 		C7827E451B7FAFF70024690F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C7827E441B7FAFF70024690F /* main.m */; };
 		C7827E481B7FAFF70024690F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C7827E471B7FAFF70024690F /* AppDelegate.m */; };
 		C7827E4B1B7FAFF70024690F /* GamePlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7827E4A1B7FAFF70024690F /* GamePlayViewController.m */; };
@@ -85,6 +86,8 @@
 		C762A3D71B81A366002B09C9 /* HighScoresModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighScoresModel.m; sourceTree = "<group>"; };
 		C771B2E61C31D3F40049C9DD /* UIColor+HexToUIColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexToUIColor.h"; sourceTree = "<group>"; };
 		C771B2E71C31D3F40049C9DD /* UIColor+HexToUIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexToUIColor.m"; sourceTree = "<group>"; };
+		C771B2E91C3276F50049C9DD /* NSUserDefaults+Updates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSUserDefaults+Updates.h"; path = "ColorTimer/NSUserDefaults+Updates.h"; sourceTree = "<group>"; };
+		C771B2EA1C3276F50049C9DD /* NSUserDefaults+Updates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSUserDefaults+Updates.m"; path = "ColorTimer/NSUserDefaults+Updates.m"; sourceTree = "<group>"; };
 		C7827E3F1B7FAFF70024690F /* ColorTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7827E431B7FAFF70024690F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7827E441B7FAFF70024690F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -168,8 +171,6 @@
 				C7127BC31BF840AB0069CF76 /* DemoCollectionViewCell.m */,
 				C7127BC81BF85AEE0069CF76 /* ColorSets.h */,
 				C7127BC91BF85AEE0069CF76 /* ColorSets.m */,
-				C771B2E61C31D3F40049C9DD /* UIColor+HexToUIColor.h */,
-				C771B2E71C31D3F40049C9DD /* UIColor+HexToUIColor.m */,
 			);
 			name = Colors;
 			sourceTree = "<group>";
@@ -220,9 +221,21 @@
 			name = Statistics;
 			sourceTree = "<group>";
 		};
+		C771B2EC1C327BCA0049C9DD /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				C771B2E61C31D3F40049C9DD /* UIColor+HexToUIColor.h */,
+				C771B2E71C31D3F40049C9DD /* UIColor+HexToUIColor.m */,
+				C771B2E91C3276F50049C9DD /* NSUserDefaults+Updates.h */,
+				C771B2EA1C3276F50049C9DD /* NSUserDefaults+Updates.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		C7827E361B7FAFF70024690F = {
 			isa = PBXGroup;
 			children = (
+				C771B2EC1C327BCA0049C9DD /* Categories */,
 				C7127BBF1BF8404E0069CF76 /* Colors */,
 				C75E8FBF1BD18E7A002699B1 /* Statistics */,
 				C7E0EBF01BC3321C0098C9F4 /* Challenges */,
@@ -476,6 +489,7 @@
 				C75E8FC21BD18E95002699B1 /* StatsViewController.m in Sources */,
 				C7827E451B7FAFF70024690F /* main.m in Sources */,
 				C7127BC71BF840AB0069CF76 /* DemoCollectionViewCell.m in Sources */,
+				C771B2EB1C3276F50049C9DD /* NSUserDefaults+Updates.m in Sources */,
 				C7FFC1E71BC6C70800623BAF /* HSHeaderView.m in Sources */,
 				C71EB8FC1B81145D000B93B9 /* MainViewController.m in Sources */,
 			);

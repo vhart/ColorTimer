@@ -15,11 +15,10 @@
 
 @property (nonatomic) HighScoreTableViewController *highScoreTVC;
 @property (nonatomic) GamePlayViewController *gameViewController;
-@property (nonatomic,weak) IBOutlet UIView *leftView;
+@property (nonatomic, weak) IBOutlet UIView *leftView;
 @property (nonatomic, weak) IBOutlet UIView *rightView;
 @property (nonatomic) BOOL isLeft;
 @property (nonatomic) BOOL isRight;
-
 @property (nonatomic) BOOL gameVCStartButtonStatus;
 
 @end
@@ -28,8 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
+
     [[self.navigationController navigationBar] setHidden:YES];
     
     [self embedTableViewControllers];
@@ -45,12 +43,12 @@
 
 - (void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];
+
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     }
+
 }
-//**********************************
-//DELEGATE METHODS
 
 - (void) viewController:(GamePlayViewController *)sender startButtonEnabled:(BOOL)enabled{
     
@@ -66,9 +64,7 @@
     
     [self.highScoreTVC.tableView reloadData];
 }
-//************************************
 
-//DELEGATE CALLED METHOD
 - (void)swipeRecognized:(UISwipeGestureRecognizer *)swipe{
     if (self.gameVCStartButtonStatus && swipe.direction==UISwipeGestureRecognizerDirectionLeft && !self.isLeft) {
         
@@ -81,6 +77,7 @@
         } completion:^(BOOL finished) {
             if (self.isRight) {
                 self.isRight = NO;
+                [[NSNotificationCenter defaultCenter]postNotificationName:@"HideSettingsView" object:nil];
             }
             else{
                 self.isLeft = YES;
@@ -120,12 +117,9 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
-//****************************************************
-//EMBEDDING METHODS
-
+#pragma mark - Embedding View Controllers
 - (void)embedGameViewController {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     GamePlayViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"gameViewController"];
@@ -145,10 +139,6 @@
     self.gameViewController.delegate = self;
     
 }
-
-
-
-//********************
 
 - (void)embedTableViewControllers{
     
@@ -170,13 +160,11 @@
     
 }
 
-//************************************
-
 #pragma mark NSNotificationResponses
 
 - (void) prepareToDismiss{
     NSLog(@"calling");
-    //[self dismissViewControllerAnimated:YES completion:nil];
+
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 

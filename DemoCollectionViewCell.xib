@@ -20,30 +20,33 @@
                 <rect key="frame" x="0.0" y="0.0" width="298" height="365"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Starter" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vu0-Xe-J6p">
-                        <rect key="frame" x="0.0" y="8" width="298" height="60"/>
+                        <rect key="frame" x="0.0" y="12" width="298" height="55"/>
                         <color key="backgroundColor" red="0.2040193975" green="0.59008382339999998" blue="0.8224234533" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="60" id="xQp-48-VWA"/>
+                            <constraint firstAttribute="height" constant="55" id="xQp-48-VWA"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="BebasKai" family="Bebas Kai" pointSize="40"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Complete all Green Challenges to Unlock" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CkI-O1-jfg">
-                        <rect key="frame" x="8" y="284" width="282" height="35"/>
-                        <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="14"/>
+                        <rect key="frame" x="8" y="283" width="282" height="37"/>
+                        <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZ2-Cp-KRg">
-                        <rect key="frame" x="125" y="321" width="49" height="36"/>
-                        <fontDescription key="fontDescription" name="BebasKai" family="Bebas Kai" pointSize="20"/>
+                        <rect key="frame" x="121" y="315" width="56" height="40"/>
+                        <fontDescription key="fontDescription" name="BebasKai" family="Bebas Kai" pointSize="23"/>
                         <state key="normal" title="Locked">
                             <color key="titleColor" red="0.85075363010000005" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
+                        <connections>
+                            <action selector="applyButtonSelected:" destination="gTV-IL-0wX" eventType="touchUpInside" id="tJo-v6-wb1"/>
+                        </connections>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bjm-NW-eKR">
-                        <rect key="frame" x="15" y="76" width="268" height="200"/>
+                        <rect key="frame" x="15" y="75" width="268" height="200"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NdH-2M-4Al">
                                 <rect key="frame" x="0.0" y="0.0" width="268" height="100"/>
@@ -286,7 +289,6 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.2040193975" green="0.59008382339999998" blue="0.8224234533" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="NdH-2M-4Al" secondAttribute="trailing" id="EyE-8g-NR5"/>
                             <constraint firstAttribute="bottom" secondItem="y1A-ns-XwM" secondAttribute="bottom" id="IB2-Dz-TkS"/>
@@ -302,8 +304,9 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="PZ2-Cp-KRg" secondAttribute="bottom" constant="8" id="LnP-kH-3J1"/>
+                <constraint firstAttribute="bottom" secondItem="PZ2-Cp-KRg" secondAttribute="bottom" constant="10" id="LnP-kH-3J1"/>
                 <constraint firstItem="Vu0-Xe-J6p" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="NFo-Bs-Sm7"/>
                 <constraint firstItem="PZ2-Cp-KRg" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="OJK-3M-QJT"/>
                 <constraint firstItem="Bjm-NW-eKR" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="Oof-uE-ID6"/>
@@ -312,7 +315,7 @@
                 <constraint firstAttribute="trailing" secondItem="Bjm-NW-eKR" secondAttribute="trailing" constant="15" id="b78-CL-Rd9"/>
                 <constraint firstAttribute="trailing" secondItem="CkI-O1-jfg" secondAttribute="trailing" constant="8" id="e7E-eO-k8X"/>
                 <constraint firstItem="CkI-O1-jfg" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="gZn-Ez-xOz"/>
-                <constraint firstItem="Vu0-Xe-J6p" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="jUN-dU-36k"/>
+                <constraint firstItem="Vu0-Xe-J6p" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="jUN-dU-36k"/>
                 <constraint firstItem="CkI-O1-jfg" firstAttribute="top" secondItem="Bjm-NW-eKR" secondAttribute="bottom" constant="8" id="oUH-75-zis"/>
             </constraints>
             <size key="customSize" width="298" height="492"/>

@@ -9,33 +9,35 @@
 #import "DemoCollectionViewController.h"
 #import "DemoCollectionViewCell.h"
 
-@interface DemoCollectionViewController () <UICollectionViewDelegateFlowLayout>
+@interface DemoCollectionViewController () <UICollectionViewDelegateFlowLayout, DemoCollectionViewCellDelegate>
 
 @property (nonatomic) CGFloat cellWidth;
+@property (nonatomic) NSArray <ColorSets *> *colorSetsArray;
 
 @end
 
 @implementation DemoCollectionViewController
 
-static NSString * const reuseIdentifier = @"Cell";
+static NSString * const reuseIdentifier = @"demoCell";
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.cellWidth = self.view.bounds.size.width-100;
-    // Uncomment the following line to preserve selection between presentations
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Register cell classes
-//    [self.collectionView registerClass:Dem forCellWithReuseIdentifier:reuseIdentifier];
-    
-    // Do any additional setup after loading the view.
     
     UINib *nib = [UINib nibWithNibName:@"DemoCollectionViewCell" bundle:nil];
-    [self.collectionView registerNib:nib forCellWithReuseIdentifier:@"demoCell"];
+    [self.collectionView registerNib:nib forCellWithReuseIdentifier:reuseIdentifier];
     
     self.collectionView.delegate = self;
-    [self.collectionView setPagingEnabled:YES];
+    //[self.collectionView setPagingEnabled:YES];
+    self.collectionView.allowsSelection = NO;
+
+    self.colorSetsArray = [ColorSets getAllColorSets];
+
+    self.navigationController.navigationBar.hidden = NO;
+    self.navigationItem.title = @"Color Sets";
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Menu" style:UIBarButtonItemStylePlain target:self action:@selector(dismiss:)];
+    self.navigationItem.leftBarButtonItem.tintColor = [UIColor colorWithRed:217.0/255.0f green:0 blue:0 alpha:1];
     
 }
 
@@ -57,31 +59,27 @@ static NSString * const reuseIdentifier = @"Cell";
 #pragma mark <UICollectionViewDataSource>
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-#warning Incomplete implementation, return the number of sections
     return 1;
 }
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of items
-    return 4;
+    return self.colorSetsArray.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    DemoCollectionViewCell *cell = (DemoCollectionViewCell*) [collectionView dequeueReusableCellWithReuseIdentifier:@"demoCell" forIndexPath:indexPath];
+    DemoCollectionViewCell *cell = (DemoCollectionViewCell*) [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
-    // Configure the cell
-    cell.layer.borderColor = [[UIColor blackColor] CGColor];
-    cell.layer.borderWidth = 2.0f;
-    
-    
-   
+    [cell setupCellForColorSet:self.colorSetsArray[indexPath.row]];
+    cell.layer.cornerRadius = 10;
+    cell.delegate = self;
+    cell.index = indexPath.row;
     return cell;
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     float width = self.view.bounds.size.width;
-    return CGSizeMake(width-100, 360);
+    return CGSizeMake(width-50, 380);
     //width -20
 }
 
@@ -101,42 +99,30 @@ static NSString * const reuseIdentifier = @"Cell";
     NSInteger numberOfCells = self.view.frame.size.width / self.cellWidth;
     NSInteger edgeInsets = (self.view.frame.size.width - (numberOfCells * self.cellWidth)) / (numberOfCells + 1);
     
-    return UIEdgeInsetsMake(0, edgeInsets, 0, edgeInsets);
+    return UIEdgeInsetsMake(-50, edgeInsets, 0, edgeInsets);
 }
 
 
 #pragma mark <UICollectionViewDelegate>
 
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
+#pragma mark <DemoCollectionViewCellDelegate>
 
-/*
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
+- (void)didTapAppliedAtIndex:(NSInteger)index{
 
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
+    for (NSInteger i = 0; i < self.colorSetsArray.count; i ++) {
+        self.colorSetsArray[i].applied = NO;
+        if (i == index) {
+            self.colorSetsArray[i].applied = YES;
+        }
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:index] forKey:@"ColorSetTypeApplied"];
+
+    [self.collectionView reloadData];
 }
 
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
+- (void)dismiss:(UIBarButtonItem *)sender{
+
+    [self.navigationController popViewControllerAnimated:YES];
+    
 }
-
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	
-}
-*/
-
-
-
-
 @end

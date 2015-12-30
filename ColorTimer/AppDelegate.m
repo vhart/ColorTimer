@@ -17,7 +17,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    if (![[NSUserDefaults standardUserDefaults]objectForKey:@"stats"]) {
+
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+    if (![defaults objectForKey:@"stats"]) {
         NSDictionary *statsDictionary = @{
                                           @"gamesPlayed":@0,
                                           @"longestStreak":@0,
@@ -33,8 +36,24 @@
         
         
     }
-    
+
+    if (![defaults objectForKey:@"GreenComplete"]){
+        [self initializeChallengeCompletionDefaults:defaults];
+    }
+
     return YES;
+}
+
+- (void)initializeChallengeCompletionDefaults:(NSUserDefaults *)defaults{
+
+    NSArray <NSString *> * challengeKeys = @[@"GreenComplete",@"RedComplete",@"BlueComplete",@"BlackComplete",@"MasteredComplete"];
+
+    for (NSString *key in challengeKeys) {
+        [defaults setObject:@NO forKey:key];
+    }
+
+    [defaults setObject:@0 forKey:@"ColorSetTypeApplied"];
+
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

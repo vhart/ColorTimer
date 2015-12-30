@@ -12,6 +12,7 @@
 #import "HDNotificationView.h"
 #import "AppDelegate.h"
 #import "ColorSets.h"
+#import "NSUserDefaults+Updates.h"
 #import <MarqueeLabel/MarqueeLabel.h>
 
 NSTimeInterval const GameTimerInteval = 0.01f;
@@ -45,7 +46,7 @@ NSTimeInterval const GameTimerInteval = 0.01f;
 #pragma mark - Life Cycle Methods
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     self.colorsArray = [NSMutableArray arrayWithArray:[ColorSets getColorSetCurrentlyApplied].colors];
     
     [self disableButtons];
@@ -68,7 +69,7 @@ NSTimeInterval const GameTimerInteval = 0.01f;
     else{
         self.challengeLabel.hidden = YES;
     }
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postLocalNotificationForNewColorSetUnlocks) name:@"NewColorsUnlocked" object:nil];
 }
 
 #pragma mark - GAME SETUP Methods
@@ -118,8 +119,10 @@ NSTimeInterval const GameTimerInteval = 0.01f;
 }
 
 - (void)swapTimeLabelForChallengeLabel{
-    self.challengeLabel.hidden = NO;
-    self.timeLabel.hidden = YES;
+    if (self.currentChallenge) {
+        self.challengeLabel.hidden = NO;
+        self.timeLabel.hidden = YES;
+    }
 }
 
 #pragma mark - Algorithm To Set Button Colors With No Duplicates or Repeats
@@ -128,9 +131,9 @@ NSTimeInterval const GameTimerInteval = 0.01f;
     NSMutableArray *tempColorsArray = [NSMutableArray new];
     for (int i = 0; i<2; i++) {
         while (YES) {
-            NSInteger idxForColor = arc4random_uniform((int)self.colorsArray.count);
+            NSInteger indexForColor = arc4random_uniform((int)self.colorsArray.count);
             
-            UIColor *color =  [self.colorsArray objectAtIndex:idxForColor];
+            UIColor *color =  [self.colorsArray objectAtIndex:indexForColor];
             
             if (color != self.currentColor) {
                 BOOL hasColor = NO;
@@ -178,7 +181,10 @@ NSTimeInterval const GameTimerInteval = 0.01f;
 - (void)gameOver {
     
     //AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
-    AudioServicesPlayAlertSound(1306);
+    if ([NSUserDefaults vibrationStatus]) {
+        AudioServicesPlayAlertSound(1306);
+    }
+
     [self cancelTimer];
     [self disableButtons];
     
@@ -201,7 +207,10 @@ NSTimeInterval const GameTimerInteval = 0.01f;
                 [self.currentChallenge setValue:@([self.currentChallenge.currentNumberOfSuccesses integerValue]+1) forKey:@"currentNumberOfSuccesses"];
                 if (self.currentChallenge.currentNumberOfSuccesses==self.currentChallenge.numberOfSuccessesNeeded) {
                     [self.currentChallenge setValue:self.currentChallenge.numberOfSuccessesNeeded forKey:@"currentNumberOfSuccesses"];
+                    [self.currentChallenge setValue:[NSNumber numberWithBool:YES] forKey:@"completed"];
                     [HDNotificationView showNotificationViewWithImage:[UIImage imageNamed:@"welcomeToTheLeaderBoard"] title:@"Crushing It!" message:@"Challenge complete!"];
+                    [[NSNotificationCenter defaultCenter]postNotificationName:
+                     @"ChallengeCompleted" object:self.currentChallenge];
                     break;
                 }
                 break;
@@ -218,7 +227,10 @@ NSTimeInterval const GameTimerInteval = 0.01f;
                 [self.currentChallenge setValue:@([self.currentChallenge.currentNumberOfSuccesses integerValue]+1) forKey:@"currentNumberOfSuccesses"];
                 if (self.currentChallenge.currentNumberOfSuccesses==self.currentChallenge.numberOfSuccessesNeeded) {
                     [self.currentChallenge setValue:self.currentChallenge.numberOfSuccessesNeeded forKey:@"currentNumberOfSuccesses"];
+                    [self.currentChallenge setValue:[NSNumber numberWithBool:YES] forKey:@"completed"];
                     [HDNotificationView showNotificationViewWithImage:[UIImage imageNamed:@"welcomeToTheLeaderBoard"] title:@"Crushing It!" message:@"Challenge complete!"];
+                    [[NSNotificationCenter defaultCenter]postNotificationName:
+                     @"ChallengeCompleted" object:self.currentChallenge];
                     break;
                 }
                 break;
@@ -334,7 +346,7 @@ NSTimeInterval const GameTimerInteval = 0.01f;
 
 #pragma mark - Methods Chained When Answer Selected
 - (IBAction)colorButtonTapped:(UIButton*)sender {
-    if (sender.backgroundColor == self.currentColorView.backgroundColor) {
+    if ([sender.backgroundColor isEqual: self.currentColorView.backgroundColor]) {
         [self incrementScore];
         [self increaseStreak];
         [self nextQuestion];
@@ -484,7 +496,7 @@ NSTimeInterval const GameTimerInteval = 0.01f;
 
 }
 
-#pragma mark - Add a Shadow
+#pragma MARK - UIConfiguration
 
 - (void)addShadow{
     
@@ -493,6 +505,14 @@ NSTimeInterval const GameTimerInteval = 0.01f;
     [self.view.layer setShadowOpacity:0.8];
     [self.view.layer setShadowOffset:CGSizeMake(0,2.5)];
     
+}
+
+#pragma MARK - Notification Response Method
+
+- (void)postLocalNotificationForNewColorSetUnlocks{
+
+    [HDNotificationView showNotificationViewWithImage:[UIImage imageNamed:@"welcomeToTheLeaderBoard"] title:@"Color Sets" message:@"New color sets unlocked!"];
+
 }
 
 @end

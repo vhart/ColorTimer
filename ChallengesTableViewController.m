@@ -21,6 +21,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
 #import "Challenge.h"
 #import "MainViewController.h"
 #import "ChallengesCustomHeaderView.h"
+#import "NSUserDefaults+Updates.h"
 
 @interface ChallengesTableViewController () <NSFetchedResultsControllerDelegate>
 @property (nonatomic) NSFetchedResultsController *fetchedResultsController;
@@ -52,7 +53,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
     
     
     [delegate.managedObjectContext save:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifyIfChallengeSectionComplete:) name:@"ChallengeCompleted" object:nil];
     
 }
 
@@ -278,24 +279,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
     return cell;
 }
 
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-//    
-//    switch (section) {
-//        case 0:
-//            return @"Practice Makes Perfect";
-//            break;
-//        case 1:
-//            return @"Consistency Is Key";
-//            break;
-//        case 2:
-//            return @"Timing Is Everything";
-//            break;
-//        default:
-//            return nil;
-//            break;
-//    }
-//    
-//}
+
 #pragma mark - NSFetchedResultsController Delegate
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath{
@@ -305,8 +289,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
 }
 
 - (IBAction)menuButtonTapped:(UIBarButtonItem *)sender {
-    
-    //[self dismissViewControllerAnimated:YES completion:nil];
+
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
@@ -314,7 +297,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%d<%K AND %K <%d",indexPath.section,@"challengeIDNumber",@"challengeIDNumber",indexPath.section+1];
     NSArray *newArray = [self.fetchedResultsController.fetchedObjects filteredArrayUsingPredicate:predicate];
     Challenge *chal = newArray[indexPath.row];
-//    chal.currentNumberOfSuccesses = @0;
+    chal.completed = @NO;
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
     [delegate.managedObjectContext save:nil];
     [self.tableView reloadData];
@@ -334,5 +317,31 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
     
 }
 
+- (void)notifyIfChallengeSectionComplete:(NSNotification *)notif{
+
+    Challenge *sentChallenge = notif.object;
+
+    if ([self isChallengeSectionCompleteFor:sentChallenge.challengeIDNumber]) {
+        [[NSUserDefaults standardUserDefaults]
+                     updateColorSetStatusForChallengeSection:
+                             [sentChallenge.challengeIDNumber intValue]];
+    }
+
+}
+
+- (BOOL)isChallengeSectionCompleteFor:(NSNumber *)challengeID{
+
+    double idValue = [challengeID doubleValue];
+
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%d<%K AND %K <%d",(int)floor(idValue),@"challengeIDNumber",@"challengeIDNumber",(int)ceil(idValue)];
+    NSArray *challengesForSection = [self.fetchedResultsController.fetchedObjects filteredArrayUsingPredicate:predicate];
+
+    for (Challenge *chal in challengesForSection) {
+        if ([chal.completed boolValue] == NO) {
+            return NO;
+        }
+    }
+    return YES;
+}
 
 @end
