@@ -51,7 +51,7 @@
     [self.highStreakData removeObject:[self.highStreakData lastObject]];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"high streaks"];
     [[NSUserDefaults standardUserDefaults] setObject:self.highStreakData forKey:@"high streaks"];
-    
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (int)isNewScore:(NSString *)score{
@@ -82,7 +82,7 @@
     [self.highScoreData insertObject:newEntry atIndex:rank];
     [self.highScoreData removeObject:[self.highScoreData lastObject]];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"high scores"];
-    [[NSUserDefaults standardUserDefaults] setObject:self.highStreakData forKey:@"high scores"];
-    
+    [[NSUserDefaults standardUserDefaults] setObject:self.highScoreData forKey:@"high scores"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 @end

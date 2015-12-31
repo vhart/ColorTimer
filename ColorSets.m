@@ -99,7 +99,7 @@
 
 + (ColorSets *)getColorSetGreenComplete{
 
-    NSString *stringOfHexsForSet = @"0D2C54 7FB800 00A6ED FFB400 F6511D E11D25 457B9D 32936F";
+    NSString *stringOfHexsForSet = @"0D2C54 A0DD95 00A6ED FFE838 FF8006 E11D25 BBFFFF 00CC36";
 
     ColorSets *colorset = [ColorSets new];
 
@@ -120,7 +120,7 @@
 
 + (ColorSets *)getColorSetRedComplete{
 
-    NSString *stringOfHexsForSet = @"D55C12 FFFB1E 2078AA 472D30 527F1F 8C3664 BC7247 B21A1A";
+    NSString *stringOfHexsForSet = @"F76D02 FFFB1E 2078AA 472D30 527F1F 8C3664 89522C B21A1A";
 
     ColorSets *colorset = [ColorSets new];
 
@@ -141,7 +141,7 @@
 }
 
 + (ColorSets *)getColorSetBlueComplete{
-    NSString *stringOfHexsForSet = @"4281C0 62AFB7 E6B27B FBF28A FE9342 00B398 00DFFF CD5334";
+    NSString *stringOfHexsForSet = @"2183DF 1CD9BE CFA77D FBFF66 F98451 9078C3 00DFFF FA6261";
 
     ColorSets *colorset = [ColorSets new];
 

@@ -114,9 +114,9 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
     [five setValue:@YES forKey:@"consecutiveChallenge"];
     [five setValue:@1.2 forKey:@"challengeIDNumber"];
     
-    [six setValue:@"Get 3 consecutive 700+ score runs" forKey:@"challengeDescription"];
+    [six setValue:@"Get 3 consecutive 500+ score runs" forKey:@"challengeDescription"];
     [six setValue:[NSNumber numberWithBool:YES] forKey:@"scoreChallenge"];
-    [six setValue:@600 forKey:@"scoreMax"];
+    [six setValue:@500 forKey:@"scoreMax"];
     [six setValue:@3 forKey:@"numberOfSuccessesNeeded"];
     [six setValue:@0 forKey:@"currentNumberOfSuccesses"];
     [six setValue:@"Great job! 3/3" forKey:@"challengeCompletedMessage"];
@@ -132,10 +132,10 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
     [seven setValue:@"Great job! 1/1" forKey:@"challengeCompletedMessage"];
     [seven setValue:@2.1 forKey:@"challengeIDNumber"];
     
-    [eight setValue:@"Get a 350+ score in 30 seconds" forKey:@"challengeDescription"];
+    [eight setValue:@"Get a 310+ score in 30 seconds" forKey:@"challengeDescription"];
     [eight setValue:[NSNumber numberWithBool:YES] forKey:@"scoreChallenge"];
     [eight setValue:[NSNumber numberWithBool:YES] forKey:@"speedChallenge"];
-    [eight setValue:@350 forKey:@"scoreMax"];
+    [eight setValue:@310 forKey:@"scoreMax"];
     [eight setValue:@30 forKey:@"timeMax"];
     [eight setValue:@1 forKey:@"numberOfSuccessesNeeded"];
     [eight setValue:@0 forKey:@"currentNumberOfSuccesses"];
@@ -153,10 +153,10 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
     [nine setValue:@"Great job! 1/1" forKey:@"challengeCompletedMessage"];
     [nine setValue:@2.3 forKey:@"challengeIDNumber"];
     
-    [ten setValue:@"Get a 175+ score in 15 seconds" forKey:@"challengeDescription"];
+    [ten setValue:@"Get a 165+ score in 15 seconds" forKey:@"challengeDescription"];
     [ten setValue:[NSNumber numberWithBool:YES] forKey:@"scoreChallenge"];
     [ten setValue:[NSNumber numberWithBool:YES] forKey:@"speedChallenge"];
-    [ten setValue:@175 forKey:@"scoreMax"];
+    [ten setValue:@165 forKey:@"scoreMax"];
     [ten setValue:@15 forKey:@"timeMax"];
     [ten setValue:@1 forKey:@"numberOfSuccessesNeeded"];
     [ten setValue:@0 forKey:@"currentNumberOfSuccesses"];
@@ -173,10 +173,10 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
     [eleven setValue:@"Great job! 1/1" forKey:@"challengeCompletedMessage"];
     [eleven setValue:@3.1 forKey:@"challengeIDNumber"];
     
-    [twelve setValue:@"Get a 650+ score" forKey:@"challengeDescription"];
+    [twelve setValue:@"Get a 550+ score" forKey:@"challengeDescription"];
     [twelve setValue:[NSNumber numberWithBool:YES] forKey:@"scoreChallenge"];
     [twelve setValue:[NSNumber numberWithBool:YES] forKey:@"speedChallenge"];
-    [twelve setValue:@650 forKey:@"scoreMax"];
+    [twelve setValue:@550 forKey:@"scoreMax"];
     [twelve setValue:@1 forKey:@"timeMax"];
     [twelve setValue:@1 forKey:@"numberOfSuccessesNeeded"];
     [twelve setValue:@0 forKey:@"currentNumberOfSuccesses"];
@@ -219,7 +219,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
         case 3:
         {
             customHeader.colorLabel.backgroundColor = [UIColor blackColor];
-            customHeader.challengeLabel.text = @"Panic! Lose .5s per 5 streak";
+            customHeader.challengeLabel.text = @"Panic! Lose .05s per 5 streak";
         }
         default:
             break;
@@ -275,7 +275,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
     
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@/%@",challenge.currentNumberOfSuccesses,challenge.numberOfSuccessesNeeded];
     // Configure the cell...
-    
+
     return cell;
 }
 

@@ -13,11 +13,12 @@
 #import "AppDelegate.h"
 #import "ColorSets.h"
 #import "NSUserDefaults+Updates.h"
+#import <pop/POP.h>
 #import <MarqueeLabel/MarqueeLabel.h>
 
 NSTimeInterval const GameTimerInteval = 0.01f;
 
-@interface GamePlayViewController () <UIAlertViewDelegate>
+@interface GamePlayViewController () <UIAlertViewDelegate, UITextFieldDelegate>
 @property (weak, nonatomic)   IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic)   IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic)   IBOutlet UIView *currentColorView;
@@ -28,7 +29,9 @@ NSTimeInterval const GameTimerInteval = 0.01f;
 
 @property (nonatomic) NSTimer *gameTimer;
 @property (nonatomic) UIColor *currentColor;
+@property (nonatomic) UIAlertAction *addAction;
 @property (nonatomic) NSMutableArray *colorsArray;
+@property (nonatomic) UIAlertController *alertController;
 
 @property (nonatomic) int      scoreRank;
 @property (nonatomic) int      streakRank;
@@ -48,20 +51,20 @@ NSTimeInterval const GameTimerInteval = 0.01f;
     [super viewDidLoad];
 
     self.colorsArray = [NSMutableArray arrayWithArray:[ColorSets getColorSetCurrentlyApplied].colors];
-    
+
     [self disableButtons];
-    
+
     //CREATE AND ADD SWIPE GESTURES
     UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRecognized:)];
     swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
     [self.view addGestureRecognizer:swipeLeft];
-    
+
     UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRecognized:)];
     swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
     [self.view addGestureRecognizer:swipeRight];
-    
+
     [self addShadow];
-    
+
     self.challengeLabel.marqueeType = MLContinuous;
     if (self.currentChallenge) {
         [self updateChallengeLabelText];
@@ -70,6 +73,7 @@ NSTimeInterval const GameTimerInteval = 0.01f;
         self.challengeLabel.hidden = YES;
     }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postLocalNotificationForNewColorSetUnlocks) name:@"NewColorsUnlocked" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addScoreOrStreak:) name:@"NewHighScoreOrStreak" object:nil];
 }
 
 #pragma mark - GAME SETUP Methods
@@ -105,7 +109,7 @@ NSTimeInterval const GameTimerInteval = 0.01f;
 
     for(UIButton *b in self.arrayOfButtons){
         b.enabled=NO;
-        
+
     }
 }
 
@@ -127,14 +131,14 @@ NSTimeInterval const GameTimerInteval = 0.01f;
 
 #pragma mark - Algorithm To Set Button Colors With No Duplicates or Repeats
 - (void)setButtonColors{
-    
+
     NSMutableArray *tempColorsArray = [NSMutableArray new];
     for (int i = 0; i<2; i++) {
         while (YES) {
             NSInteger indexForColor = arc4random_uniform((int)self.colorsArray.count);
-            
+
             UIColor *color =  [self.colorsArray objectAtIndex:indexForColor];
-            
+
             if (color != self.currentColor) {
                 BOOL hasColor = NO;
                 for (UIColor *c in tempColorsArray) {
@@ -151,17 +155,17 @@ NSTimeInterval const GameTimerInteval = 0.01f;
                     continue;
                 }
             }
-            
+
         }
     }
-    
+
     [tempColorsArray insertObject:self.currentColor atIndex:arc4random_uniform(3)];
     NSInteger indexOfColor = 0;
     for(UIButton *b in self.arrayOfButtons){
         b.backgroundColor = tempColorsArray[indexOfColor];
         indexOfColor++;
     }
-    
+
 }
 
 
@@ -172,14 +176,14 @@ NSTimeInterval const GameTimerInteval = 0.01f;
         self.timeLabel.text = @"0.00";
         [self gameOver];
     }
-    
-    
+
+
 }
 
 #pragma mark - Game Over Methods
 
 - (void)gameOver {
-    
+
     //AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
     if ([NSUserDefaults vibrationStatus]) {
         AudioServicesPlayAlertSound(1306);
@@ -187,13 +191,13 @@ NSTimeInterval const GameTimerInteval = 0.01f;
 
     [self cancelTimer];
     [self disableButtons];
-    
+
     self.startButton.enabled = YES;
     self.startButton.hidden = NO;
-    
+
     [self gameEndChecks];
-    
-    
+
+
     //DELEGATE METHOD TRIGGERED
     [self.delegate viewController:self startButtonEnabled:self.startButton.enabled];
 }
@@ -201,7 +205,7 @@ NSTimeInterval const GameTimerInteval = 0.01f;
 #pragma mark - DEFAULT Checking Method (Streak)
 - (void)gameEndChecks{
     while (self.currentChallenge) {
-        
+
         if (self.currentChallenge.streakChallenge) {
             if (self.streak >= [self.currentChallenge.streakMax integerValue] && self.currentChallenge.currentNumberOfSuccesses<self.currentChallenge.numberOfSuccessesNeeded) {
                 [self.currentChallenge setValue:@([self.currentChallenge.currentNumberOfSuccesses integerValue]+1) forKey:@"currentNumberOfSuccesses"];
@@ -236,9 +240,9 @@ NSTimeInterval const GameTimerInteval = 0.01f;
                 break;
             }
             else if (self.currentChallenge.consecutiveChallenge && [self.currentChallenge valueForKey:@"currentNumberOfSuccesses"]!=self.currentChallenge.numberOfSuccessesNeeded && self.currentChallenge.currentNumberOfSuccesses!=0){
-                
+
                 [self.currentChallenge setValue:@0 forKey:@"currentNumberOfSuccesses"];
-                
+
                 [HDNotificationView showNotificationViewWithImage:[UIImage imageNamed:@"welcomeToTheLeaderBoard"] title:@"Bad News" message:@"Consecutive Challenge Has Been Reset"];
                 break;
             }
@@ -246,13 +250,13 @@ NSTimeInterval const GameTimerInteval = 0.01f;
         }
         break;
     }
-    
+
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
     [delegate.managedObjectContext save:nil];
-    
+
     [self checkForNewStreak];
     [self updateStats];
-    
+
 }
 
 
@@ -262,65 +266,49 @@ NSTimeInterval const GameTimerInteval = 0.01f;
     self.streakRank = rank;
     self.scoreRank = rank2;
     if (rank > -1 || rank2 > -1) {
-        
+
         if(rank > -1 && rank2 == -1){
-            UIAlertView *alertViewChangeName=[[UIAlertView alloc]initWithTitle:@"NEW HIGH STREAK!" message:[NSString stringWithFormat:@"Streak rank: #%d",rank+1] delegate:self cancelButtonTitle:@"..Meh" otherButtonTitles:@"Add Me!",nil];
-            alertViewChangeName.alertViewStyle=UIAlertViewStylePlainTextInput;
-            UITextField* titleField = [alertViewChangeName textFieldAtIndex: 0];
-            titleField.autocapitalizationType = UITextAutocapitalizationTypeWords;
-            titleField.autocorrectionType = UITextAutocorrectionTypeDefault;
-            alertViewChangeName.delegate = self;
-            [alertViewChangeName show];
+
+            [self launchAlertControllerWithTitle:@"NEW HIGH STREAK!" andMessage:[NSString stringWithFormat:@"Streak rank: #%d",rank+1]];
         }
         else if(rank == -1 && rank2>-1){
-            UIAlertView *alertViewChangeName=[[UIAlertView alloc]initWithTitle:@"NEW HIGH SCORE" message:[NSString stringWithFormat:@"Score rank: #%d",rank2+1] delegate:self cancelButtonTitle:@"..Meh" otherButtonTitles:@"Add Me!",nil];
-            alertViewChangeName.alertViewStyle=UIAlertViewStylePlainTextInput;
-            UITextField* titleField = [alertViewChangeName textFieldAtIndex: 0];
-            titleField.autocapitalizationType = UITextAutocapitalizationTypeWords;
-            titleField.autocorrectionType = UITextAutocorrectionTypeDefault;
-            alertViewChangeName.delegate = self;
-            [alertViewChangeName show];
-            
+
+            [self launchAlertControllerWithTitle:@"NEW HIGH STREAK!" andMessage:[NSString stringWithFormat:@"Score rank: #%d",rank2+1]];
         }
         else{
-            UIAlertView *alertViewChangeName=[[UIAlertView alloc]initWithTitle:@"NEW HIGH SCORE AND STREAK" message:[NSString stringWithFormat:@"Score rank: #%d\nStreak rank: #%d",rank2+1,rank+1] delegate:self cancelButtonTitle:@"..Meh" otherButtonTitles:@"Add Me!",nil];
-            alertViewChangeName.alertViewStyle=UIAlertViewStylePlainTextInput;
-            UITextField* titleField = [alertViewChangeName textFieldAtIndex: 0];
-            titleField.autocapitalizationType = UITextAutocapitalizationTypeWords;
-            titleField.autocorrectionType = UITextAutocorrectionTypeDefault;
-            alertViewChangeName.delegate = self;
-            [alertViewChangeName show];
+
+            [self launchAlertControllerWithTitle:@"NEW HIGH STREAK!" andMessage:[NSString stringWithFormat:@"Score rank: #%d\nStreak rank: #%d",rank2+1,rank+1]];
         }
     }
-    
+
     else{
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"GAME OVER!" message:@"Good Effort\nTry Again!" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
         alert.delegate = self;
         [alert show];
     }
-    
+
 }
 
 
 - (void)updateStats{
-    
+
     NSMutableDictionary *newStats = [[NSMutableDictionary alloc]initWithDictionary:[[NSUserDefaults standardUserDefaults]objectForKey:@"stats"]];
-    
+
     float averageReaction = ([newStats[@"averageReactionTime"]floatValue]*[newStats[@"streakToDate"]floatValue] + self.gameAvg);
     averageReaction = averageReaction>0? averageReaction/([newStats[@"streakToDate"]floatValue]+self.streak) : 0.0f;
     [newStats removeObjectForKey:@"averageReactionTime"];
     [newStats setObject:[NSNumber numberWithFloat:averageReaction] forKey:@"averageReactionTime"];
-    
+
     NSInteger newScoreToDate = [newStats[@"scoreToDate"] integerValue];
     newScoreToDate += self.score;
     [newStats removeObjectForKey:@"scoreToDate"];
     [newStats setObject:[NSNumber numberWithInteger:newScoreToDate] forKey:@"scoreToDate"];
-    
+
     NSInteger newStreakToDate = [newStats[@"streakToDate"] integerValue];
     newStreakToDate += self.streak;
     [newStats removeObjectForKey:@"streakToDate"];
     [newStats setObject:[NSNumber numberWithInteger:newStreakToDate] forKey:@"streakToDate"];
-    
+
     NSInteger newHighScore = [newStats[@"highestScore"] integerValue];
     if (self.score > newHighScore) {
         [newStats removeObjectForKey:@"highestScore"];
@@ -331,12 +319,12 @@ NSTimeInterval const GameTimerInteval = 0.01f;
         [newStats removeObjectForKey:@"longestStreak"];
         [newStats setObject:[NSNumber numberWithInteger:self.streak] forKey:@"longestStreak"];
     }
-    
+
     [newStats removeObjectForKey:@"fastestReactionTime"];
     [newStats setObject:[NSNumber numberWithFloat:self.fastestReaction] forKey:@"fastestReactionTime"];
-    
+
     [[NSUserDefaults standardUserDefaults]setObject:newStats forKey:@"stats"];
-    
+
 }
 
 - (void)cancelTimer {
@@ -351,9 +339,9 @@ NSTimeInterval const GameTimerInteval = 0.01f;
         [self increaseStreak];
         [self nextQuestion];
     }
-    
+
     else {
-        
+
         [self gameOver];
         [self disableButtons];
     }
@@ -365,27 +353,27 @@ NSTimeInterval const GameTimerInteval = 0.01f;
 - (IBAction)startGameButton:(UIButton *)sender {
     sender.enabled = NO;
     sender.hidden = YES;
-    
+
     self.challengeLabel.hidden = YES;
     self.timeLabel.hidden = NO;
-    
+
     for(UIButton *b in self.arrayOfButtons){
         
         b.enabled=YES;
-        
     }
-    
+
     [self reset];
-    
-    //Update NSUserDefaults for games played;
+
     NSMutableDictionary *newStats = [[NSMutableDictionary alloc]initWithDictionary:[[NSUserDefaults standardUserDefaults]objectForKey:@"stats"]];
+
     NSInteger gamesPlayed = [newStats[@"gamesPlayed"] integerValue];
     gamesPlayed++;
+
     [newStats removeObjectForKey:@"gamesPlayed"];
     [newStats setObject:[NSNumber numberWithInteger:gamesPlayed] forKey:@"gamesPlayed"];
+
     [[NSUserDefaults standardUserDefaults]setObject:newStats forKey:@"stats"];
-    
-    //DELEGATE METHOD TRIGGERED
+
     [self.delegate viewController:self startButtonEnabled:sender.enabled];
 }
 
@@ -394,7 +382,7 @@ NSTimeInterval const GameTimerInteval = 0.01f;
 #pragma mark - Methods Executed For Correct Answers
 - (void)incrementScore {
     if (self.currentChallenge.speedChallenge) {
-        
+
         float elapsedTime = self.valueForNewTap - self.timerValue;
         if (elapsedTime >= 1) {
             self.score++;
@@ -430,8 +418,8 @@ NSTimeInterval const GameTimerInteval = 0.01f;
     if ([self.currentChallenge.challengeIDNumber floatValue]>=3) {
         self.timerValue = 1.0 - .05*(self.streak/5);
         self.scoreOffset = floor(-1*(self.timerValue - 1.0)*10);
-        if (self.timerValue<=.45) {
-            self.timerValue = .45;
+        if (self.timerValue<=.5) {
+            self.timerValue = .5;
             self.scoreOffset = 5;
         }
         self.valueForNewTap = self.timerValue;
@@ -445,12 +433,12 @@ NSTimeInterval const GameTimerInteval = 0.01f;
 - (void)setNextColor {
     UIColor *realColor;
     while (YES) {
-        
-        
+
+
         NSInteger nextColor = arc4random_uniform((int)self.colorsArray.count);
-        
+
         realColor =  [self.colorsArray objectAtIndex:nextColor];
-        
+
         if (realColor==self.currentColor) {
             continue;
         }
@@ -461,7 +449,7 @@ NSTimeInterval const GameTimerInteval = 0.01f;
     self.currentColor = realColor;
     self.currentColorView.backgroundColor = realColor;
     [self setButtonColors];
-    
+
 }
 
 
@@ -479,25 +467,74 @@ NSTimeInterval const GameTimerInteval = 0.01f;
         [self.view endEditing:YES];
         return;
     }
-    
-    NSString *userName = [[alertView textFieldAtIndex:0] text];
+}
+- (void)launchAlertControllerWithTitle:(NSString *)title andMessage:(NSString *)message{
+
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+
+    [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = @"Name";
+        textField.autocapitalizationType = UITextAutocapitalizationTypeWords;
+
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTextFieldDidChange:) name:UITextFieldTextDidChangeNotification object:textField];
+
+    }];
+
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Nah" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [self.view endEditing:YES];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
+
+    if (!self.addAction){
+
+        UIAlertAction *add = [UIAlertAction actionWithTitle:@"Add me!" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+
+            UITextField *nameTextField = alert.textFields.firstObject;
+                [self.view endEditing:YES];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"NewHighScoreOrStreak" object:nameTextField.text];
+                [self dismissViewControllerAnimated:YES completion:nil];
+
+        }];
+
+        self.addAction = add;
+        self.addAction.enabled = NO;
+    }
+
+    [alert addAction:cancel];
+    [alert addAction:self.addAction];
+
+    [self swapTimeLabelForChallengeLabel];
+
+    [self updateChallengeLabelText];
+
+    self.alertController = alert;
+
+    [self presentViewController:alert animated:YES completion:nil];
+
+}
+
+- (void)addScoreOrStreak:(NSNotification *)notif{
+
+    NSString *name = notif.object;
 
     if (self.streakRank!=-1) {
-        [[HighScoresModel sharedModel] addStreak:[NSString stringWithFormat:@"%lu",self.streak] forUser:userName];
+        [[HighScoresModel sharedModel] addStreak:[NSString stringWithFormat:@"%lu",self.streak] forUser:name];
     }
 
     if (self.scoreRank!=-1) {
-        [[HighScoresModel sharedModel] addScore:[NSString stringWithFormat:@"%lu",self.score] forUser:userName];
+        [[HighScoresModel sharedModel] addScore:[NSString stringWithFormat:@"%lu",self.score] forUser:name];
     }
 
     [self.delegate viewController:self newScoreAdded:YES];
 
     [HDNotificationView showNotificationViewWithImage:[UIImage imageNamed:@"welcomeToTheLeaderBoard"] title:@"Crushing It!" message:@"The leaderboard recognizes your skill"];
 
+    self.addAction.enabled = NO;
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:self.alertController.textFields.firstObject];
 }
 
 #pragma MARK - UIConfiguration
-
 - (void)addShadow{
     
     [self.view.layer setCornerRadius:0];
@@ -508,11 +545,21 @@ NSTimeInterval const GameTimerInteval = 0.01f;
 }
 
 #pragma MARK - Notification Response Method
-
 - (void)postLocalNotificationForNewColorSetUnlocks{
-
+    
     [HDNotificationView showNotificationViewWithImage:[UIImage imageNamed:@"welcomeToTheLeaderBoard"] title:@"Color Sets" message:@"New color sets unlocked!"];
+}
 
+- (void)handleTextFieldDidChange:(NSNotification *)notif{
+    UITextField *textField = notif.object;
+
+    if ([textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length >= 1) {
+
+        self.addAction.enabled = YES;
+    }
+    else{
+        self.addAction.enabled = NO;
+    }
 }
 
 @end
