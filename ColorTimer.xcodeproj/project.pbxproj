@@ -82,8 +82,8 @@
 		C762A3D11B818D2F002B09C9 /* HighScoreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HighScoreTableViewController.m; path = ColorTimer/HighScoreTableViewController.m; sourceTree = "<group>"; };
 		C762A3D31B819327002B09C9 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = ColorTimer/SettingsViewController.h; sourceTree = "<group>"; };
 		C762A3D41B819327002B09C9 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = ColorTimer/SettingsViewController.m; sourceTree = "<group>"; };
-		C762A3D61B81A366002B09C9 /* HighScoresModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighScoresModel.h; sourceTree = "<group>"; };
-		C762A3D71B81A366002B09C9 /* HighScoresModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighScoresModel.m; sourceTree = "<group>"; };
+		C762A3D61B81A366002B09C9 /* HighScoresModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HighScoresModel.h; path = ColorTimer/HighScoresModel.h; sourceTree = "<group>"; };
+		C762A3D71B81A366002B09C9 /* HighScoresModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HighScoresModel.m; path = ColorTimer/HighScoresModel.m; sourceTree = "<group>"; };
 		C771B2E61C31D3F40049C9DD /* UIColor+HexToUIColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexToUIColor.h"; sourceTree = "<group>"; };
 		C771B2E71C31D3F40049C9DD /* UIColor+HexToUIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexToUIColor.m"; sourceTree = "<group>"; };
 		C771B2E91C3276F50049C9DD /* NSUserDefaults+Updates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSUserDefaults+Updates.h"; path = "ColorTimer/NSUserDefaults+Updates.h"; sourceTree = "<group>"; };
@@ -187,6 +187,8 @@
 				C7FFC1E31BC6C65500623BAF /* HSHeaderViewNib.xib */,
 				C7FFC1E51BC6C70800623BAF /* HSHeaderView.h */,
 				C7FFC1E61BC6C70800623BAF /* HSHeaderView.m */,
+				C762A3D61B81A366002B09C9 /* HighScoresModel.h */,
+				C762A3D71B81A366002B09C9 /* HighScoresModel.m */,
 			);
 			name = ControllerWithSlideOuts;
 			sourceTree = "<group>";
@@ -269,8 +271,6 @@
 				C762A3CC1B816929002B09C9 /* GamePlayViewControllerDelegate.h */,
 				C7213AE01BB99D4A004F572D /* MenuViewController.h */,
 				C7213AE11BB99D4A004F572D /* MenuViewController.m */,
-				C762A3D61B81A366002B09C9 /* HighScoresModel.h */,
-				C762A3D71B81A366002B09C9 /* HighScoresModel.m */,
 				C7827E4C1B7FAFF70024690F /* Main.storyboard */,
 				C7827E4F1B7FAFF70024690F /* Images.xcassets */,
 				C7827E511B7FAFF70024690F /* LaunchScreen.xib */,

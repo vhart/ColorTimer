@@ -275,7 +275,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
     
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@/%@",challenge.currentNumberOfSuccesses,challenge.numberOfSuccessesNeeded];
     // Configure the cell...
-    NSLog(@"%@",[NSString stringWithFormat:@"Challenge: %@\nDescription: %@ \nComplete:%@ \n-%@/%@",challenge.challengeIDNumber, challenge.challengeDescription,challenge.completed, challenge.currentNumberOfSuccesses,challenge.numberOfSuccessesNeeded]);
+
     return cell;
 }
 
@@ -340,6 +340,11 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
         }
     }
     return YES;
+}
+
+- (void)printChallengeStats:(Challenge *)challenge{
+
+    NSLog(@"%@",[NSString stringWithFormat:@"Challenge: %@\nDescription: %@ \nComplete:%@ \n-%@/%@",challenge.challengeIDNumber, challenge.challengeDescription,challenge.completed, challenge.currentNumberOfSuccesses,challenge.numberOfSuccessesNeeded]);
 }
 
 @end

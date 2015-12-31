@@ -59,14 +59,14 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
     if([defaults objectForKey:@"high scores"] == nil){
         NSMutableArray *temp = [[NSMutableArray alloc] initWithObjects:
                                 @{@"2500":@"April"},
-                                @{@"2300":@"Kelly"},
+                                @{@"2000":@"Kelly"},
                                 @{@"1800":@"V"},
-                                @{@"1600":@"Mesfin"},
-                                @{@"1400":@"Nav"},
-                                @{@"1200":@"Kash"},
-                                @{@"1000":@"Vic"},
-                                @{@"800":@"Mike"},
-                                @{@"600":@"Derek"},
+                                @{@"1500":@"Mesfin"},
+                                @{@"1200":@"Nav"},
+                                @{@"1000":@"Kash"},
+                                @{@"800" :@"Vic"},
+                                @{@"600" :@"Mike"},
+                                @{@"400" :@"Derek"},
                                 @{@"100" :@"Max"},
                                   nil];
         
