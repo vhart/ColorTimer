@@ -275,7 +275,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
     
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@/%@",challenge.currentNumberOfSuccesses,challenge.numberOfSuccessesNeeded];
     // Configure the cell...
-
+    NSLog(@"%@",[NSString stringWithFormat:@"Challenge: %@\nDescription: %@ \nComplete:%@ \n-%@/%@",challenge.challengeIDNumber, challenge.challengeDescription,challenge.completed, challenge.currentNumberOfSuccesses,challenge.numberOfSuccessesNeeded]);
     return cell;
 }
 
@@ -294,12 +294,10 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%d<%K AND %K <%d",indexPath.section,@"challengeIDNumber",@"challengeIDNumber",indexPath.section+1];
-    NSArray *newArray = [self.fetchedResultsController.fetchedObjects filteredArrayUsingPredicate:predicate];
-    Challenge *chal = newArray[indexPath.row];
-    chal.completed = @NO;
+
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
     [delegate.managedObjectContext save:nil];
+    
     [self.tableView reloadData];
 }
 

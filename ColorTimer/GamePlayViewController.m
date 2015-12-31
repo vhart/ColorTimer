@@ -515,7 +515,7 @@ NSTimeInterval const GameTimerInteval = 0.01f;
 
 - (void)addScoreOrStreak:(NSNotification *)notif{
 
-    NSString *name = notif.object;
+    NSString *name = (NSString *)notif.object;
 
     if (self.streakRank!=-1) {
         [[HighScoresModel sharedModel] addStreak:[NSString stringWithFormat:@"%lu",self.streak] forUser:name];
@@ -525,13 +525,15 @@ NSTimeInterval const GameTimerInteval = 0.01f;
         [[HighScoresModel sharedModel] addScore:[NSString stringWithFormat:@"%lu",self.score] forUser:name];
     }
 
-    [self.delegate viewController:self newScoreAdded:YES];
+    [self.delegate highScoresModelDataUpdated];
 
     [HDNotificationView showNotificationViewWithImage:[UIImage imageNamed:@"welcomeToTheLeaderBoard"] title:@"Crushing It!" message:@"The leaderboard recognizes your skill"];
 
     self.addAction.enabled = NO;
 
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:self.alertController.textFields.firstObject];
+
+    self.alertController = nil;
 }
 
 #pragma MARK - UIConfiguration

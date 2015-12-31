@@ -157,7 +157,7 @@
 
     colorset.applied = [colorset isApplied];
 
-    colorset.unlocked = YES;
+    colorset.unlocked = [[[NSUserDefaults standardUserDefaults]objectForKey:@"BlueComplete"] boolValue];
 
     return colorset;
 }

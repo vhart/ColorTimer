@@ -10,4 +10,6 @@
 
 @interface HighScoreTableViewController : UITableViewController
 
+- (void)pullAndReloadData;
+
 @end

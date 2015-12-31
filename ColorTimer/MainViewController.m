@@ -60,9 +60,9 @@
     [self swipeRecognized:swipe];
 }
 
-- (void) viewController:(GamePlayViewController *)sender newScoreAdded:(BOOL)added{
+- (void) highScoresModelDataUpdated{
     
-    [self.highScoreTVC.tableView reloadData];
+    [self.highScoreTVC pullAndReloadData];
 }
 
 - (void)swipeRecognized:(UISwipeGestureRecognizer *)swipe{

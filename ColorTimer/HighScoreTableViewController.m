@@ -84,11 +84,8 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
-    self.highStreaksArray = [HighScoresModel sharedModel].highStreakData;
-    self.highScoresArray = [HighScoresModel sharedModel].highScoreData;
-    [self.tableView reloadData];
-    
+
+    [self pullAndReloadData];
 }
 
 #pragma mark - Header methods
@@ -192,6 +189,14 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
     }
 
     return nil;
+}
+
+- (void)pullAndReloadData{
+
+    self.highStreaksArray = [HighScoresModel sharedModel].highStreakData;
+    self.highScoresArray = [HighScoresModel sharedModel].highScoreData;
+    [self.tableView reloadData];
+
 }
 
 @end

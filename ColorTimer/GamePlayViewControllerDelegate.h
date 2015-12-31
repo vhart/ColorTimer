@@ -19,5 +19,5 @@
 
 @optional
 
--(void) viewController:(GamePlayViewController *)sender newScoreAdded:(BOOL)added;
+-(void) highScoresModelDataUpdated;
 @end
