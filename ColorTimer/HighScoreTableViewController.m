@@ -39,13 +39,13 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if([defaults objectForKey:@"high streaks"] == nil){
         NSMutableArray *temp = [[NSMutableArray alloc] initWithObjects:
-                            @{@"350":@"April"},
-                            @{@"300":@"Kelly"},
-                            @{@"250":@"V"},
-                            @{@"200":@"Mesfin"},
-                            @{@"175":@"Nav"},
-                            @{@"150":@"Kash"},
-                            @{@"140":@"Vic"},
+                            @{@"400":@"April"},
+                            @{@"350":@"Kelly"},
+                            @{@"300":@"V"},
+                            @{@"250":@"Mesfin"},
+                            @{@"200":@"Nav"},
+                            @{@"175":@"Kash"},
+                            @{@"150":@"Vic"},
                             @{@"130":@"Mike"},
                             @{@"100":@"Derek"},
                             @{@"50" :@"Max"},

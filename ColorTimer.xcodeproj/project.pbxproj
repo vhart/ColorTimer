@@ -19,7 +19,6 @@
 		C7213B2F1BBED6C4004F572D /* BebasKai-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C7213B2E1BBED6C4004F572D /* BebasKai-Regular.otf */; };
 		C7213B311BBED6D7004F572D /* Geometos.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C7213B301BBED6D7004F572D /* Geometos.ttf */; };
 		C7213B351BBF3AA8004F572D /* HDNotificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7213B341BBF3AA8004F572D /* HDNotificationView.m */; };
-		C75E8FC21BD18E95002699B1 /* StatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C75E8FC11BD18E95002699B1 /* StatsViewController.m */; };
 		C762A3D21B818D2F002B09C9 /* HighScoreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C762A3D11B818D2F002B09C9 /* HighScoreTableViewController.m */; };
 		C762A3D51B819327002B09C9 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C762A3D41B819327002B09C9 /* SettingsViewController.m */; };
 		C762A3D81B81A366002B09C9 /* HighScoresModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C762A3D71B81A366002B09C9 /* HighScoresModel.m */; };
@@ -75,8 +74,6 @@
 		C7213B301BBED6D7004F572D /* Geometos.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Geometos.ttf; sourceTree = "<group>"; };
 		C7213B331BBF3AA8004F572D /* HDNotificationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDNotificationView.h; sourceTree = "<group>"; };
 		C7213B341BBF3AA8004F572D /* HDNotificationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDNotificationView.m; sourceTree = "<group>"; };
-		C75E8FC01BD18E95002699B1 /* StatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsViewController.h; sourceTree = "<group>"; };
-		C75E8FC11BD18E95002699B1 /* StatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsViewController.m; sourceTree = "<group>"; };
 		C762A3CC1B816929002B09C9 /* GamePlayViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamePlayViewControllerDelegate.h; sourceTree = "<group>"; };
 		C762A3D01B818D2F002B09C9 /* HighScoreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HighScoreTableViewController.h; path = ColorTimer/HighScoreTableViewController.h; sourceTree = "<group>"; };
 		C762A3D11B818D2F002B09C9 /* HighScoreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HighScoreTableViewController.m; path = ColorTimer/HighScoreTableViewController.m; sourceTree = "<group>"; };
@@ -215,8 +212,6 @@
 		C75E8FBF1BD18E7A002699B1 /* Statistics */ = {
 			isa = PBXGroup;
 			children = (
-				C75E8FC01BD18E95002699B1 /* StatsViewController.h */,
-				C75E8FC11BD18E95002699B1 /* StatsViewController.m */,
 				C7A6EB031BD35A6E0064BD4A /* StatsTableViewController.h */,
 				C7A6EB041BD35A6E0064BD4A /* StatsTableViewController.m */,
 			);
@@ -266,11 +261,11 @@
 			children = (
 				C7827E461B7FAFF70024690F /* AppDelegate.h */,
 				C7827E471B7FAFF70024690F /* AppDelegate.m */,
+				C7213AE01BB99D4A004F572D /* MenuViewController.h */,
+				C7213AE11BB99D4A004F572D /* MenuViewController.m */,
 				C7827E491B7FAFF70024690F /* GamePlayViewController.h */,
 				C7827E4A1B7FAFF70024690F /* GamePlayViewController.m */,
 				C762A3CC1B816929002B09C9 /* GamePlayViewControllerDelegate.h */,
-				C7213AE01BB99D4A004F572D /* MenuViewController.h */,
-				C7213AE11BB99D4A004F572D /* MenuViewController.m */,
 				C7827E4C1B7FAFF70024690F /* Main.storyboard */,
 				C7827E4F1B7FAFF70024690F /* Images.xcassets */,
 				C7827E511B7FAFF70024690F /* LaunchScreen.xib */,
@@ -486,7 +481,6 @@
 				C7127BCA1BF85AEE0069CF76 /* ColorSets.m in Sources */,
 				C7A6EB051BD35A6E0064BD4A /* StatsTableViewController.m in Sources */,
 				C771B2E81C31D3F40049C9DD /* UIColor+HexToUIColor.m in Sources */,
-				C75E8FC21BD18E95002699B1 /* StatsViewController.m in Sources */,
 				C7827E451B7FAFF70024690F /* main.m in Sources */,
 				C7127BC71BF840AB0069CF76 /* DemoCollectionViewCell.m in Sources */,
 				C771B2EB1C3276F50049C9DD /* NSUserDefaults+Updates.m in Sources */,
