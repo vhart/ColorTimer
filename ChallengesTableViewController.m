@@ -96,11 +96,11 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
     [three setValue:@"Great job! 5/5" forKey:@"challengeCompletedMessage"];
     [three setValue:@0.3 forKey:@"challengeIDNumber"];
     
-    [four setValue:@"Get 5 consecutive 100+ streaks" forKey:@"challengeDescription"];
+    [four setValue:@"Get 3 consecutive 100+ streaks" forKey:@"challengeDescription"];
     [four setValue:[NSNumber numberWithBool:YES] forKey:@"streakChallenge"];
     [four setValue:@YES forKey:@"consecutiveChallenge"];
     [four setValue:@100 forKey:@"streakMax"];
-    [four setValue:@5 forKey:@"numberOfSuccessesNeeded"];
+    [four setValue:@3 forKey:@"numberOfSuccessesNeeded"];
     [four setValue:@0 forKey:@"currentNumberOfSuccesses"];
     [four setValue:@"Great job! 5/5" forKey:@"challengeCompletedMessage"];
     [four setValue:@1.1 forKey:@"challengeIDNumber"];
@@ -173,10 +173,10 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
     [eleven setValue:@"Great job! 1/1" forKey:@"challengeCompletedMessage"];
     [eleven setValue:@3.1 forKey:@"challengeIDNumber"];
     
-    [twelve setValue:@"Get a 550+ score" forKey:@"challengeDescription"];
+    [twelve setValue:@"Get a 400+ score" forKey:@"challengeDescription"];
     [twelve setValue:[NSNumber numberWithBool:YES] forKey:@"scoreChallenge"];
     [twelve setValue:[NSNumber numberWithBool:YES] forKey:@"speedChallenge"];
-    [twelve setValue:@550 forKey:@"scoreMax"];
+    [twelve setValue:@400 forKey:@"scoreMax"];
     [twelve setValue:@1 forKey:@"timeMax"];
     [twelve setValue:@1 forKey:@"numberOfSuccessesNeeded"];
     [twelve setValue:@0 forKey:@"currentNumberOfSuccesses"];
