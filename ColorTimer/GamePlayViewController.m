@@ -339,9 +339,7 @@ NSTimeInterval const GameTimerInteval = 0.01f;
         [self increaseStreak];
         [self nextQuestion];
     }
-
     else {
-
         [self gameOver];
         [self disableButtons];
     }
@@ -454,11 +452,11 @@ NSTimeInterval const GameTimerInteval = 0.01f;
 
 
 #pragma mark - Delegate Methods For Swipes
--(void) swipeRecognized:(UISwipeGestureRecognizer *)swipe{
+- (void)swipeRecognized:(UISwipeGestureRecognizer *)swipe{
     [self.delegate viewController:self swipeGesture:swipe];
 }
 
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
 
     [self swapTimeLabelForChallengeLabel];
     [self updateChallengeLabelText];
