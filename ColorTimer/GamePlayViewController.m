@@ -282,7 +282,21 @@ NSTimeInterval const GameTimerInteval = 0.01f;
     }
 
     else{
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"GAME OVER!" message:@"Good Effort\nTry Again!" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+
+        NSString *message;
+        if (self.currentChallenge) {
+            if ([self.currentChallenge wasChallengeGoalMetScore:self.score andStreak:self.streak]){
+                message = @"Challenge Accomplished.. again!";
+            }
+            else{
+                message = @"Good Effort\nTry Again!";
+            }
+        }
+        else {
+            message = @"Good Effort\nTry Again!";
+        }
+
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"GAME OVER!" message:message delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
         alert.delegate = self;
         [alert show];
     }

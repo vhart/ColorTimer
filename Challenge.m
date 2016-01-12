@@ -11,5 +11,19 @@
 @implementation Challenge
 
 // Insert code here to add functionality to your managed object subclass
+- (BOOL)wasChallengeGoalMetScore:(int)score andStreak:(int)streak{
 
+    if ([self.scoreChallenge boolValue]) {
+        if (score < [self.scoreMax intValue]) {
+            return NO;
+        }
+    }
+    if ([self.streakChallenge boolValue]) {
+        if (streak < [self.streakMax intValue]) {
+            return NO;
+        }
+    }
+
+    return YES;
+}
 @end

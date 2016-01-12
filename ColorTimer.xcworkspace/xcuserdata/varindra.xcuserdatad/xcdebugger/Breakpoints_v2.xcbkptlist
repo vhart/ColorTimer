@@ -106,12 +106,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ColorTimer/GamePlayViewController.m"
-            timestampString = "473248111.550249"
+            timestampString = "474250818.606545"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "518"
-            endingLineNumber = "518"
-            landmarkName = "-addScoreOrStreak:"
+            startingLineNumber = "532"
+            endingLineNumber = "532"
+            landmarkName = "-checkForNewStreak"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -154,12 +154,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ColorTimer/GamePlayViewController.m"
-            timestampString = "473248605.778483"
+            timestampString = "474250818.606545"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "528"
-            endingLineNumber = "528"
-            landmarkName = "-addScoreOrStreak:"
+            startingLineNumber = "542"
+            endingLineNumber = "542"
+            landmarkName = "-checkForNewStreak"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

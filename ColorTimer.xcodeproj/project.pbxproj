@@ -375,7 +375,7 @@
 				TargetAttributes = {
 					C7827E3E1B7FAFF70024690F = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 3L76772298;
+						DevelopmentTeam = 26RHXP32FH;
 					};
 					C7827E571B7FAFF70024690F = {
 						CreatedOnToolsVersion = 6.4;
@@ -617,6 +617,7 @@
 				INFOPLIST_FILE = ColorTimer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.c4q.ColorTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -632,6 +633,7 @@
 				INFOPLIST_FILE = ColorTimer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.c4q.ColorTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

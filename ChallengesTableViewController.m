@@ -32,7 +32,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.navigationBar.hidden = NO;
-    self.navigationItem.title = @"Challenges";
+    self.navigationItem.title = @"Tap A Challenge To Begin!";
     
     [self.tableView registerNib:[UINib nibWithNibName:@"ChallengesCustomHeaderViewNib" bundle:nil] forHeaderFooterViewReuseIdentifier:@"ChallengesHeaderIdentifier"];
     
