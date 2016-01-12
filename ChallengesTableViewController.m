@@ -102,7 +102,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
     [four setValue:@100 forKey:@"streakMax"];
     [four setValue:@3 forKey:@"numberOfSuccessesNeeded"];
     [four setValue:@0 forKey:@"currentNumberOfSuccesses"];
-    [four setValue:@"Great job! 5/5" forKey:@"challengeCompletedMessage"];
+    [four setValue:@"Great job! 3/3" forKey:@"challengeCompletedMessage"];
     [four setValue:@1.1 forKey:@"challengeIDNumber"];
     
     [five setValue:@"Get 3 consecutive 150+ streaks" forKey:@"challengeDescription"];
@@ -132,10 +132,10 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
     [seven setValue:@"Great job! 1/1" forKey:@"challengeCompletedMessage"];
     [seven setValue:@2.1 forKey:@"challengeIDNumber"];
     
-    [eight setValue:@"Get a 310+ score in 30 seconds" forKey:@"challengeDescription"];
+    [eight setValue:@"Get a 325+ score in 30 seconds" forKey:@"challengeDescription"];
     [eight setValue:[NSNumber numberWithBool:YES] forKey:@"scoreChallenge"];
     [eight setValue:[NSNumber numberWithBool:YES] forKey:@"speedChallenge"];
-    [eight setValue:@310 forKey:@"scoreMax"];
+    [eight setValue:@325 forKey:@"scoreMax"];
     [eight setValue:@30 forKey:@"timeMax"];
     [eight setValue:@1 forKey:@"numberOfSuccessesNeeded"];
     [eight setValue:@0 forKey:@"currentNumberOfSuccesses"];
@@ -153,10 +153,10 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
     [nine setValue:@"Great job! 1/1" forKey:@"challengeCompletedMessage"];
     [nine setValue:@2.3 forKey:@"challengeIDNumber"];
     
-    [ten setValue:@"Get a 165+ score in 15 seconds" forKey:@"challengeDescription"];
+    [ten setValue:@"Get a 175+ score in 15 seconds" forKey:@"challengeDescription"];
     [ten setValue:[NSNumber numberWithBool:YES] forKey:@"scoreChallenge"];
     [ten setValue:[NSNumber numberWithBool:YES] forKey:@"speedChallenge"];
-    [ten setValue:@165 forKey:@"scoreMax"];
+    [ten setValue:@175 forKey:@"scoreMax"];
     [ten setValue:@15 forKey:@"timeMax"];
     [ten setValue:@1 forKey:@"numberOfSuccessesNeeded"];
     [ten setValue:@0 forKey:@"currentNumberOfSuccesses"];

@@ -31,12 +31,10 @@ float const orbitRadius = 40.0;
 #pragma mark - Life Cycle Methods
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //[self setGradient];
-    [self addCircularAnimation];
-    
-    // Do any additional setup after loading the view.
-}
 
+    [self addCircularAnimation];
+
+}
 
 - (void) viewWillAppear:(BOOL)animated
 {
@@ -60,23 +58,6 @@ float const orbitRadius = 40.0;
     [[NSRunLoop currentRunLoop]addTimer:timer forMode:NSDefaultRunLoopMode];
     
 }
-
-
-//- (void)setGradient{
-//
-//    UIColor *startColor = [UIColor uig_horizonEndColor];
-//    UIColor *endColor = [UIColor uig_horizonStartColor];
-//
-//    CAGradientLayer *gradient = [CAGradientLayer layer];
-//    gradient.frame = self.gradientView.bounds;
-//    gradient.position = self.gradientView.center;
-//    gradient.startPoint = CGPointMake(0, 0);
-//    gradient.endPoint = CGPointMake(1,1);
-//    gradient.colors = @[(id)[startColor CGColor], (id)[endColor CGColor]];
-//
-//    [self.gradientView.layer insertSublayer:gradient atIndex:0];
-//
-//}
 
 #pragma mark - Circular Animation For Menu
 - (void)addCircularAnimation{
