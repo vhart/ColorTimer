@@ -34,28 +34,28 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     self.highStreaksArray = [NSMutableArray new];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if([defaults objectForKey:@"high streaks"] == nil){
         NSMutableArray *temp = [[NSMutableArray alloc] initWithObjects:
-                            @{@"400":@"April"},
-                            @{@"350":@"Kelly"},
-                            @{@"300":@"V"},
-                            @{@"250":@"Mesfin"},
-                            @{@"200":@"Nav"},
-                            @{@"175":@"Kash"},
-                            @{@"150":@"Vic"},
-                            @{@"130":@"Mike"},
-                            @{@"100":@"Derek"},
-                            @{@"50" :@"Max"},
-                              nil];
-    
+                                @{@"400":@"April"},
+                                @{@"350":@"Kelly"},
+                                @{@"300":@"V"},
+                                @{@"250":@"Mesfin"},
+                                @{@"200":@"Nav"},
+                                @{@"175":@"Kash"},
+                                @{@"150":@"Vic"},
+                                @{@"130":@"Mike"},
+                                @{@"100":@"Derek"},
+                                @{@"50" :@"Max"},
+                                nil];
+
         [defaults setObject:temp forKey:@"high streaks"];
     }
-    
+
     self.highScoresArray = [NSMutableArray new];
-    
+
     if([defaults objectForKey:@"high scores"] == nil){
         NSMutableArray *temp = [[NSMutableArray alloc] initWithObjects:
                                 @{@"2500":@"April"},
@@ -68,18 +68,39 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
                                 @{@"500" :@"Mike"},
                                 @{@"200" :@"Derek"},
                                 @{@"100" :@"Max"},
-                                  nil];
-        
+                                nil];
+
         [defaults setObject:temp forKey:@"high scores"];
-    
+
     }
-    
+
     _gold   = UIColorFromRGB(0xD9C132);
     _silver = UIColorFromRGB(0xB8B8C7);
     _bronze = UIColorFromRGB(0xEF530A);
-    
-    [self.tableView registerNib:[UINib nibWithNibName:@"HSHeaderViewNib" bundle:nil] forHeaderFooterViewReuseIdentifier:@"HSHeaderIdentifier"];
 
+    [self.tableView registerNib:[UINib nibWithNibName:@"HSHeaderViewNib" bundle:nil] forHeaderFooterViewReuseIdentifier:@"HSHeaderIdentifier"];
+    [self runUpdateForScore];
+
+}
+
+- (void)runUpdateForScore {
+    if (![[NSUserDefaults standardUserDefaults]objectForKey:@"update 1.01"]) {
+
+        NSMutableArray *updateArray = [[NSMutableArray alloc]initWithArray:[[NSUserDefaults standardUserDefaults]objectForKey:@"high scores"]];
+        NSDictionary *newScore = @{@"800":@"Kash"};
+        for (int i =0; i< updateArray.count; i++){
+
+            NSDictionary *dict = updateArray[i];
+            if ([dict.allKeys.firstObject isEqualToString:@"8000"]) {
+                updateArray[i] = newScore;
+                break;
+            }
+
+        }
+        [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"high scores"];
+        [[NSUserDefaults standardUserDefaults]setObject:updateArray forKey:@"high scores"];
+        [[NSUserDefaults standardUserDefaults]setObject:@YES forKey:@"update 1.01"];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -91,7 +112,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
 #pragma mark - Header methods
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    
+
     HSHeaderView *header = [self.tableView dequeueReusableHeaderFooterViewWithIdentifier:@"HSHeaderIdentifier"];
     switch (section) {
         case 0:
@@ -103,13 +124,13 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
         default:
             break;
     }
-    
+
     return header;
-    
+
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    
+
     return 40.0f;
 }
 
@@ -132,25 +153,25 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HighScoresCell" forIndexPath:indexPath];
-    
+
     if (indexPath.section == 0) {
-        
-    NSDictionary *cellDictionary = [[NSDictionary alloc] initWithDictionary:[[HighScoresModel sharedModel].highStreakData objectAtIndex:indexPath.row]];
-    
-    NSString *score = [[cellDictionary allKeys]objectAtIndex:0];
-    cell.textLabel.text = score;
-    cell.detailTextLabel.text = [cellDictionary objectForKey:score];
-        
-    }
-    
-    if (indexPath.section == 1) {
-        
-        NSDictionary *cellDictionary = [[NSDictionary alloc] initWithDictionary:[[HighScoresModel sharedModel].highScoreData objectAtIndex:indexPath.row]];
-        
+
+        NSDictionary *cellDictionary = [[NSDictionary alloc] initWithDictionary:[[HighScoresModel sharedModel].highStreakData objectAtIndex:indexPath.row]];
+
         NSString *score = [[cellDictionary allKeys]objectAtIndex:0];
         cell.textLabel.text = score;
         cell.detailTextLabel.text = [cellDictionary objectForKey:score];
-        
+
+    }
+
+    if (indexPath.section == 1) {
+
+        NSDictionary *cellDictionary = [[NSDictionary alloc] initWithDictionary:[[HighScoresModel sharedModel].highScoreData objectAtIndex:indexPath.row]];
+
+        NSString *score = [[cellDictionary allKeys]objectAtIndex:0];
+        cell.textLabel.text = score;
+        cell.detailTextLabel.text = [cellDictionary objectForKey:score];
+
     }
 
     switch (indexPath.row) {
@@ -167,7 +188,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
             cell.detailTextLabel.textColor = [UIColor blackColor];
             break;
     }
-    
+
     return cell;
 }
 
@@ -176,7 +197,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    
+
     switch (section) {
         case 0:
             return @"HIGHEST STREAKS";
@@ -196,7 +217,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
     self.highStreaksArray = [HighScoresModel sharedModel].highStreakData;
     self.highScoresArray = [HighScoresModel sharedModel].highScoreData;
     [self.tableView reloadData];
-
+    
 }
 
 @end
